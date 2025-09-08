@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 23:52:24 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 00:16:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,11 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-// macros
-# define WIN_HEIGHT 500
-# define WIN_WITH 500
+// win_dimensions
+# define WIN_WITH 2500
+# define WIN_HEIGHT 1200
 
+//key_code
 # define ESC_KEY 65307
 # define W_KEY 119
 # define S_KEY 115
