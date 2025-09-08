@@ -1,21 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   memset.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 22:42:07 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/08 22:29:24 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/08 22:30:14 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main(int ac, char **av)
+void	*ft_memset(void *b, int c, size_t len)
 {
-	t_cub	cub;
+	size_t		i;
+	char		*buffer;
 
-	init_cub(&cub, ac, av);
-	mlx_loop(cub.mlx.mlx);
+	i = 0;
+	buffer = (char *) b;
+	while (i < len)
+	{
+		buffer[i] = (unsigned char)c;
+		i++;
+	}
+	return (b);
 }

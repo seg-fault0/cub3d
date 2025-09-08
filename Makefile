@@ -1,10 +1,14 @@
-SRCS = srcs/core/main.c	\
+SRCS = 	srcs/core/main.c	\
+		srcs/core/exit.c	\
+		srcs/core/init.c	\
+		srcs/libft/memset.c	\
+		srcs/mlx/init.c		\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
 NAME	= cub3d
 
-FLAGS	= -Wall -Wextra -Werror
+FLAGS	= -g #-Wall -Wextra -Werror
 
 I		= -I includes/
 
@@ -15,7 +19,7 @@ all: mlx $(NAME)
 $(NAME): $(OBJS)
 	cc $(OBJS) $(L) -o $(NAME)
 
-objs/%.o: srcs/%.c includes/cub3d.h | objs/
+objs/%.o: srcs/%.c includes/cub.h | objs/
 	@mkdir -p $(@D)
 	cc -c $(I) $(FLAGS) $< -o $@
 
@@ -27,7 +31,6 @@ clean:
 
 fclean: clean
 	rm -f $(NAME)
-	rm -f includes/mlx.h mlxlib/libmlx_Linux.a
 
 re: fclean all
 
@@ -42,3 +45,7 @@ mlx:
 		mv -f minilibx-linux/mlx.h includes/ && \
 		rm -fr minilibx-linux; \
 	fi
+
+ffclean:
+	rm -fr includes/mlx.h
+	rm -fr mlxlib/libmlx_Linux.a

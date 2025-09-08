@@ -1,21 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 22:42:07 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/08 22:42:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main(int ac, char **av)
+void	ft_exit(t_cub *cub, int code)
 {
-	t_cub	cub;
-
-	init_cub(&cub, ac, av);
-	mlx_loop(cub.mlx.mlx);
+	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
+	exit(code);
 }
