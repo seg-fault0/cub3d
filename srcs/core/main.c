@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 22:42:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/08 22:46:20 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,5 @@ int	main(int ac, char **av)
 	t_cub	cub;
 
 	init_cub(&cub, ac, av);
-	mlx_loop(cub.mlx.mlx);
+	luncher(&cub);
 }

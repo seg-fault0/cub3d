@@ -1,20 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   luncher.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 22:54:51 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/08 22:45:04 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/08 22:56:04 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	ft_exit(t_cub *cub, int code)
+void	luncher(t_cub *cub)
 {
-	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
-	mlx_destroy_display(cub->mlx.mlx);
-	exit(code);
+	mlx_key_hook(cub->mlx.win, player_input, cub);
+	mlx_loop(cub->mlx.mlx);
 }

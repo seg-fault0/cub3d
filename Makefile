@@ -1,4 +1,6 @@
 SRCS = 	srcs/core/main.c	\
+		srcs/core/input.c	\
+		srcs/core/luncher.c	\
 		srcs/core/exit.c	\
 		srcs/core/init.c	\
 		srcs/libft/memset.c	\
