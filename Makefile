@@ -5,6 +5,7 @@ SRCS = 	srcs/core/main.c	\
 		srcs/core/init.c	\
 		srcs/libft/memset.c	\
 		srcs/mlx/init.c		\
+		srcs/mlx/free.c		\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 

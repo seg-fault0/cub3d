@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:26:24 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/09 00:23:44 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/09 00:28:26 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	main(int ac, char **av)
+void	free_mlx(t_mlx *mlx)
 {
-	t_cub	cub;
-
-	if (init_cub(&cub, ac, av) == false)
-		return (1);
-	luncher(&cub);
+	mlx_destroy_window(mlx->mlx, mlx->win);
+	mlx_destroy_display(mlx->mlx);
 }

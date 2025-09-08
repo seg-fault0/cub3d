@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 23:55:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 00:26:45 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_exit(t_cub *cub, int code)
 {
-	mlx_destroy_window(cub->mlx.mlx, cub->mlx.win);
+	free_mlx(&cub->mlx);
 	exit(code);
 	return (0);
 }

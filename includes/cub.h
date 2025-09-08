@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:16:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 00:26:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ typedef struct s_cub
 }t_cub;
 
 //core
-void	init_cub(t_cub *cub, int ac, char **av);
+bool	init_cub(t_cub *cub, int ac, char **av);
 void	luncher(t_cub *cub);
 int		ft_exit(t_cub *cub, int code);
 
@@ -65,6 +65,7 @@ int		input_hander(t_cub *cub);
 
 //mlx
 bool	ft_mlx_init(t_mlx *mlx);
+void	free_mlx(t_mlx *mlx);
 
 //libft
 void	*ft_memset(void *b, int c, size_t len);
