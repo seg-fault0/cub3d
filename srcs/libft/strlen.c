@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init.c                                             :+:      :+:    :+:   */
+/*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:37:53 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/09 00:31:53 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/09 00:32:45 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool	init_cub(t_cub *cub, int ac, char **av)
+int	ft_strlen(char *str)
 {
-	ft_memset(cub, 0, sizeof(t_cub));
-	if (ft_mlx_init(&cub->mlx) == false)
-		return (free_mlx(&cub->mlx), false);
-	return (true);
+	int	len;
+
+	len = 0;
+	while (str[len])
+		len++;
+	return (len);
 }

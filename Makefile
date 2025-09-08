@@ -1,11 +1,14 @@
-SRCS = 	srcs/core/main.c	\
-		srcs/core/input.c	\
-		srcs/core/luncher.c	\
-		srcs/core/exit.c	\
-		srcs/core/init.c	\
-		srcs/libft/memset.c	\
-		srcs/mlx/init.c		\
-		srcs/mlx/free.c		\
+SRCS = 	srcs/core/main.c		\
+		srcs/core/input.c		\
+		srcs/core/luncher.c		\
+		srcs/core/exit.c		\
+		srcs/core/init.c		\
+		srcs/core/err_msg.c		\
+		srcs/libft/memset.c		\
+		srcs/libft/strlen.c		\
+		srcs/libft/putstr_fd.c	\
+		srcs/mlx/init.c			\
+		srcs/mlx/free.c			\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 

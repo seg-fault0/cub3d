@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:26:37 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 00:39:22 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 # define S_KEY 115
 # define A_KEY 97
 # define D_KEY 100 
+
+//ERR_MSG
+# define ERR_MALLOC 1
+# define ERR_MLX 2
+# define ERR_WIN 3
 
 //structs
 typedef struct s_mlx
@@ -57,6 +62,7 @@ typedef struct s_cub
 bool	init_cub(t_cub *cub, int ac, char **av);
 void	luncher(t_cub *cub);
 int		ft_exit(t_cub *cub, int code);
+void	err_msg(int msg);
 
 //input
 int		key_press(int key, t_key *keys);
@@ -69,5 +75,7 @@ void	free_mlx(t_mlx *mlx);
 
 //libft
 void	*ft_memset(void *b, int c, size_t len);
+int		ft_strlen(char *str);
+void	ft_putstr_fd(char *s, int fd);
 
 #endif
