@@ -5,19 +5,17 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:21:53 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/09 02:54:44 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/09 03:29:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool	init_cub(t_cub *cub, char **av)
+bool	map_init(t_cub *cub, char **av)
 {
-	ft_memset(cub, 0, sizeof(t_cub));
-	if (ft_mlx_init(&cub->mlx) == false)
+	cub->map = read_map(av);
+	if (!cub->map)
 		return (false);
-	if (map_init(cub, av) == false)
-		return (free_mlx(&cub->mlx), false);
 	return (true);
 }

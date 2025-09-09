@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:26:24 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 03:30:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@ int	main(int ac, char **av)
 {
 	t_cub	cub;
 
-	if (init_cub(&cub, ac, av) == false)
+	if (ac != 2)
+		return (err_msg(ERR_AC), 1);
+	if (init_cub(&cub, av) == false)
 		return (1);
 	luncher(&cub);
 }

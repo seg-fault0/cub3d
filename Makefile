@@ -10,6 +10,8 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/strlen.c		\
 		srcs/libft/strdup.c		\
 		srcs/libft/putstr_fd.c	\
+		srcs/map/init.c			\
+		srcs/map/reader.c		\
 		srcs/mlx/init.c			\
 		srcs/mlx/free.c			\
 

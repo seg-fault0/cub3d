@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 02:52:38 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 03:28:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,11 +36,17 @@
 # define ERR_MALLOC 1
 # define ERR_MLX 2
 # define ERR_WIN 3
+# define ERR_AC 4
+# define ERR_OPEN 5
+# define ERR_MAP_SIZE 6
 
 //gnl
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 42
 # endif
+
+//other
+# define MAX_MAP_SIZE 100
 
 //structs
 typedef struct s_mlx
@@ -62,13 +68,18 @@ typedef struct s_cub
 {
 	t_mlx	mlx;
 	t_key	key;
+	char	**map;
 }t_cub;
 
 //core
-bool	init_cub(t_cub *cub, int ac, char **av);
+bool	init_cub(t_cub *cub, char **av);
 void	luncher(t_cub *cub);
 int		ft_exit(t_cub *cub, int code);
 void	err_msg(int msg);
+
+//map
+bool	map_init(t_cub *cub, char **av);
+char	**read_map(char **av);
 
 //input
 int		key_press(int key, t_key *keys);
