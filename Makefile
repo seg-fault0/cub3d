@@ -1,11 +1,11 @@
 SRCS = 	srcs/core/main.c		\
-		srcs/core/input.c		\
-		srcs/core/luncher.c		\
 		srcs/core/exit.c		\
 		srcs/core/setup.c		\
 		srcs/core/free.c		\
-		srcs/core/game_cycle.c	\
 		srcs/core/init.c		\
+		srcs/engine/input.c		\
+		srcs/engine/game_cycle.c\
+		srcs/engine/luncher.c	\
 		srcs/gnl/gnl.c			\
 		srcs/gnl/gnl_utils.c	\
 		srcs/core/err_msg.c		\
