@@ -3,9 +3,12 @@ SRCS = 	srcs/core/main.c		\
 		srcs/core/luncher.c		\
 		srcs/core/exit.c		\
 		srcs/core/init.c		\
+		srcs/gnl/gnl.c			\
+		srcs/gnl/gnl_utils.c	\
 		srcs/core/err_msg.c		\
 		srcs/libft/memset.c		\
 		srcs/libft/strlen.c		\
+		srcs/libft/strdup.c		\
 		srcs/libft/putstr_fd.c	\
 		srcs/mlx/init.c			\
 		srcs/mlx/free.c			\

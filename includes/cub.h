@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:39:22 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 02:52:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 // win_dimensions
 # define WIN_WITH 2500
@@ -35,6 +36,11 @@
 # define ERR_MALLOC 1
 # define ERR_MLX 2
 # define ERR_WIN 3
+
+//gnl
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
 
 //structs
 typedef struct s_mlx
@@ -77,5 +83,12 @@ void	free_mlx(t_mlx *mlx);
 void	*ft_memset(void *b, int c, size_t len);
 int		ft_strlen(char *str);
 void	ft_putstr_fd(char *s, int fd);
+char	*ft_strdup(char *str);
+
+//gnl
+char	*ft_strljoin(char *s1, char *s2, int size);
+int		ft_new_line_check(char *str);
+char	*ft_init(char *str);
+char	*get_next_line(int fd);
 
 #endif
