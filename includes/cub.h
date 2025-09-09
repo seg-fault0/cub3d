@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:49:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 04:16:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ bool	init_cub(t_cub *cub, char **av);
 void	luncher(t_cub *cub);
 int		ft_exit(t_cub *cub, int code);
 void	err_msg(int msg);
+int		game_cycle(t_cub *cub);
 
 //map
 bool	map_init(t_cub *cub, char *path);
@@ -85,7 +86,6 @@ void	free_map(char **map);
 //input
 int		key_press(int key, t_key *keys);
 int		key_release(int key, t_key *keys);
-int		input_hander(t_cub *cub);
 
 //mlx
 bool	ft_mlx_init(t_mlx *mlx);

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:45:04 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/08 23:53:00 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 04:16:07 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,6 @@ void	luncher(t_cub *cub)
 	mlx_hook(cub->mlx.win, 17, 0, ft_exit, cub);
 	mlx_hook(cub->mlx.win, 2, 1L << 0, key_press, &cub->key);
 	mlx_hook(cub->mlx.win, 3, 1L << 1, key_release, &cub->key);
-	mlx_loop_hook(cub->mlx.mlx, input_hander, cub);
+	mlx_loop_hook(cub->mlx.mlx, game_cycle, cub);
 	mlx_loop(cub->mlx.mlx);
 }

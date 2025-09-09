@@ -2,6 +2,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/core/input.c		\
 		srcs/core/luncher.c		\
 		srcs/core/exit.c		\
+		srcs/core/game_cycle.c	\
 		srcs/core/init.c		\
 		srcs/gnl/gnl.c			\
 		srcs/gnl/gnl_utils.c	\
