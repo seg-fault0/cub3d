@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:07:08 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 02:52:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 04:10:30 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ static char	*ft_get_line(char	*data)
 		line[i] = data[i];
 		i++;
 	}
-	line[i] = data[i];
+	line[i] = '\n';
 	line[++i] = '\0';
 	return (line);
 }
