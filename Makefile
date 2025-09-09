@@ -2,6 +2,8 @@ SRCS = 	srcs/core/main.c		\
 		srcs/core/input.c		\
 		srcs/core/luncher.c		\
 		srcs/core/exit.c		\
+		srcs/core/setup.c		\
+		srcs/core/free.c		\
 		srcs/core/game_cycle.c	\
 		srcs/core/init.c		\
 		srcs/gnl/gnl.c			\
@@ -11,11 +13,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/strlen.c		\
 		srcs/libft/strdup.c		\
 		srcs/libft/putstr_fd.c	\
-		srcs/map/init.c			\
 		srcs/map/reader.c		\
-		srcs/map/free.c			\
-		srcs/mlx/init.c			\
-		srcs/mlx/free.c			\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 

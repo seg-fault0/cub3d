@@ -5,19 +5,28 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:31:19 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/09 05:00:02 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/09 05:02:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool	init_cub(t_cub *cub, char **av)
+bool	map_init(t_cub *cub, char *path)
 {
-	ft_memset(cub, 0, sizeof(t_cub));
-	if (ft_mlx_init(&cub->mlx) == false)
+	cub->map = read_map(path);
+	if (!cub->map)
 		return (false);
-	if (map_init(cub, av[1]) == false)
-		return (free_mlx(&cub->mlx), false);
+	return (true);
+}
+
+bool	ft_mlx_init(t_mlx *mlx)
+{
+	mlx->mlx = mlx_init();
+	if (!mlx->mlx)
+		return (err_msg(ERR_MLX), false);
+	mlx->win = mlx_new_window(mlx->mlx, WIN_WITH, WIN_HEIGHT, "cub3d");
+	if (!mlx->win)
+		return (err_msg(ERR_WIN), false);
 	return (true);
 }
