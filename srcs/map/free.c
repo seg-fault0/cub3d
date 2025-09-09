@@ -1,21 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   free.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:49:31 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/09 03:42:21 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/09 03:43:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	ft_exit(t_cub *cub, int code)
+void	free_map(char **map)
 {
-	free_mlx(&cub->mlx);
-	free_map(cub->map);
-	exit(code);
-	return (0);
+	int	i;
+
+	i = -1;
+	while (map[++i])
+		free(map[i]);
+	free(map);
 }

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:33:10 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 03:49:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@
 
 //gnl
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 42
+#  define BUFFER_SIZE 1
 # endif
 
 //other
@@ -80,6 +80,7 @@ void	err_msg(int msg);
 //map
 bool	map_init(t_cub *cub, char *path);
 char	**read_map(char *path);
+void	free_map(char **map);
 
 //input
 int		key_press(int key, t_key *keys);

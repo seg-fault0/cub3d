@@ -12,6 +12,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/putstr_fd.c	\
 		srcs/map/init.c			\
 		srcs/map/reader.c		\
+		srcs/map/free.c			\
 		srcs/mlx/init.c			\
 		srcs/mlx/free.c			\
 
