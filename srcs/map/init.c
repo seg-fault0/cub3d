@@ -6,15 +6,15 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 02:54:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:29:24 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 03:31:34 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool	map_init(t_cub *cub, char **av)
+bool	map_init(t_cub *cub, char *path)
 {
-	cub->map = read_map(av);
+	cub->map = read_map(path);
 	if (!cub->map)
 		return (false);
 	return (true);

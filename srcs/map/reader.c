@@ -6,19 +6,19 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 03:03:59 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:30:36 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/09 03:32:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	get_map_size(char **av)
+static int	get_map_size(char *path)
 {
 	char	*line;
 	int		size;
 	int		fd;
 
-	fd = open (av[1], O_RDONLY);
+	fd = open (path, O_RDONLY);
 	if (fd < 0)
 		return (err_msg(ERR_OPEN), -1);
 	size = 0;
@@ -34,13 +34,13 @@ static int	get_map_size(char **av)
 	return (close (fd), size);
 }
 
-static char	**ft_read_map(char **av, int size)
+static char	**ft_read_map(char *path, int size)
 {
 	char	**map;
 	int		i;
 	int		fd;
 
-	fd = open (av[1], O_RDONLY);
+	fd = open (path, O_RDONLY);
 	if (fd < 0)
 		return (err_msg(ERR_OPEN), NULL);
 	map = malloc((size + 1) * sizeof(char *));
@@ -53,14 +53,14 @@ static char	**ft_read_map(char **av, int size)
 	return (close (fd), map);
 }
 
-char	**read_map(char **av)
+char	**read_map(char *path)
 {
 	char	**map;
 	int		map_size;
 
-	map_size = get_map_size(av);
+	map_size = get_map_size(path);
 	if (map_size == -1)
 		return (NULL);
-	map = ft_read_map(av, map_size);
+	map = ft_read_map(path, map_size);
 	return (map);
 }
