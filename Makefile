@@ -58,6 +58,6 @@ mlx:
 		rm -fr minilibx-linux; \
 	fi
 
-ffclean:
+ffclean: fclean
 	rm -fr includes/mlx.h
 	rm -fr mlxlib/libmlx_Linux.a

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:20:27 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:34:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,11 @@ void	*mlx_get_img(void *mlx, char *path)
 
 bool	img_init(t_cub *cub)
 {
-	t_img	img;
 	int		size;
 
-	img = cub->img;
-	img.mm_player = mlx_get_img(cub->mlx.mlx, MM_PLAYER);
-	if (!img.mm_player)
+	cub->img = cub->img;
+	cub->img.mm_player = mlx_get_img(cub->mlx.mlx, MM_PLAYER);
+	if (!cub->img.mm_player)
 		return (err_msg(ERR_IMG), free_img(cub), false);
 	return (true);
 }
