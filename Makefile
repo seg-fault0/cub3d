@@ -13,6 +13,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/putstr_fd.c	\
 		srcs/minimap/main.c		\
 		srcs/mlx/img.c			\
+		srcs/mlx/draw.c			\
 		srcs/mlx/mlx.c			\
 		srcs/parser/main.c		\
 		srcs/parser/reader.c	\

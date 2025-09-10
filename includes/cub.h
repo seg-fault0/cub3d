@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:27:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:33:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <limits.h>
 
 // win_dimensions
-# define WIN_WITH 2500
+# define WIN_WIDTH 2500
 # define WIN_HEIGHT 1200
 
 //key_code
@@ -52,7 +52,7 @@
 # define UPDATE_RATE 500
 
 //img_paths
-# define MM_FRAME "./textures/minimap/frame.xpm"
+# define MM_FRAME "./textures/frame.xpm"
 
 //structs
 typedef struct s_mlx
@@ -74,7 +74,7 @@ typedef struct s_img
 {
 	void	*p;
 	int		height;
-	int		with;
+	int		width;
 }t_img;
 
 typedef struct s_imgs
@@ -101,6 +101,7 @@ bool	ft_mlx_init(t_mlx *mlx);
 bool	map_init(t_cub *cub, char *path);
 
 //img
+void	draw_img(t_cub *cub, t_img img, int x0, int y0);
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 
