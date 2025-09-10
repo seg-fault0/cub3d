@@ -16,8 +16,8 @@ SRCS = 	srcs/core/main.c		\
 		srcs/mlx/draw.c			\
 		srcs/mlx/mlx.c			\
 		srcs/parser/main.c		\
-		srcs/parser/max_pos.c	\
 		srcs/parser/reader.c	\
+		srcs/parser/map.c		\
 		srcs/player/init.c		\
 		srcs/player/main.c		\
 

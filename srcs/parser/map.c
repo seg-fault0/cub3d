@@ -1,32 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:45:37 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/10 20:46:25 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/10 20:50:23 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	free_map(char **map)
+void	get_map_limits(t_cub *cub)
 {
 	int	i;
 
-	i = -1;
-	while (map[++i])
-		free(map[i]);
-	free(map);
-}
-
-int	ft_exit(t_cub *cub, int code)
-{
-	free_map(cub->parse.map);
-	free_img(cub);
-	free_mlx(cub->mlx);
-	exit(code);
-	return (0);
+	i = 0;
+	while (cub->parse.map[i])
+		i++;
+	cub->parse.max_map_y = i;
 }

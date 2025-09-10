@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:29:51 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:45:20 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ static void	b_zero(t_cub *cub)
 	ft_memset(&cub->mlx, 0, sizeof(t_mlx));
 	ft_memset(&cub->key, 0, sizeof(t_key));
 	ft_memset(&cub->player, 0, sizeof(t_player));
+	ft_memset(&cub->parse, 0, sizeof(t_parse));
 	imgs_bzero(&cub->img);
 }
 
@@ -30,8 +31,8 @@ bool	setup_cub(t_cub *cub, char **av)
 	if (map_init(cub, av[1]) == false)
 		return (free_mlx(cub->mlx), false);
 	if (img_init(cub) == false)
-		return (free_map(cub->map), free_mlx(cub->mlx), false);
+		return (free_map(cub->parse.map), free_mlx(cub->mlx), false);
 	if (player_init(cub) == false)
-		return (free_img(cub), free_map(cub->map), free_mlx(cub->mlx), false);
+		return (free_img(cub), free_map(cub->parse.map), free_mlx(cub->mlx), false);
 	return (true);
 }

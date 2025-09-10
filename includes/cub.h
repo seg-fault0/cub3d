@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:35:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:48:26 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,19 @@ typedef struct s_player
 	float	yp;
 }t_player;
 
+typedef struct s_parse
+{
+	char	**map;
+	int		max_map_y;
+}t_parse;
+
 typedef struct s_cub
 {
 	t_mlx		mlx;
 	t_key		key;
 	t_imgs		img;
 	t_player	player;
-	char		**map;
+	t_parse		parse;
 }t_cub;
 
 //core
@@ -128,6 +134,7 @@ void	input_hander(t_cub *cub);
 int		game_cycle(t_cub *cub);
 
 //parser
+void	get_map_limits(t_cub *cub);
 char	**read_map(char *path);
 
 //minimap
