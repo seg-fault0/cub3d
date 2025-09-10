@@ -10,6 +10,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/memset.c		\
 		srcs/libft/strlen.c		\
 		srcs/libft/strdup.c		\
+		srcs/libft/arrays.c		\
 		srcs/libft/putstr_fd.c	\
 		srcs/minimap/main.c		\
 		srcs/mlx/img.c			\
@@ -17,7 +18,6 @@ SRCS = 	srcs/core/main.c		\
 		srcs/mlx/mlx.c			\
 		srcs/parser/main.c		\
 		srcs/parser/reader.c	\
-		srcs/parser/map.c		\
 		srcs/player/init.c		\
 		srcs/player/main.c		\
 

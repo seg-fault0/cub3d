@@ -6,25 +6,15 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:45:37 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:58:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	free_map(char **map)
-{
-	int	i;
-
-	i = -1;
-	while (map[++i])
-		free(map[i]);
-	free(map);
-}
-
 int	ft_exit(t_cub *cub, int code)
 {
-	free_map(cub->parse.map);
+	free2(cub->parse.map);
 	free_img(cub);
 	free_mlx(cub->mlx);
 	exit(code);

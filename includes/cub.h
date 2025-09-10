@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:48:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:59:32 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,7 +122,6 @@ bool	img_init(t_cub *cub);
 
 //free
 void	free_mlx(t_mlx mlx);
-void	free_map(char **map);
 void	free_img(t_cub *cub);
 
 //player
@@ -134,7 +133,6 @@ void	input_hander(t_cub *cub);
 int		game_cycle(t_cub *cub);
 
 //parser
-void	get_map_limits(t_cub *cub);
 char	**read_map(char *path);
 
 //minimap
@@ -149,6 +147,10 @@ void	*ft_memset(void *b, int c, size_t len);
 int		ft_strlen(char *str);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(char *str);
+int		get_arr_size(char **arr);
+char	**get_2darr_cp(char **arr);
+void	print_arr(char **arr);
+void	free2(char **arr);
 
 //gnl
 char	*ft_strljoin(char *s1, char *s2, int size);
