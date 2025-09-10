@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:17:28 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:40:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,11 @@ void	free_img(t_cub *cub);
 void	input_hander(t_cub *cub);
 int		game_cycle(t_cub *cub);
 
-//map
+//parser
 char	**read_map(char *path);
+
+//minimap
+void	draw_minimap(t_cub *cub);
 
 //input
 int		key_press(int key, t_key *keys);
