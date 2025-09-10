@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:17:52 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:26:46 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,10 @@
 static void	b_zero(t_cub *cub)
 {
 	ft_memset(cub, 0, sizeof(t_cub));
-	ft_memset(&cub->img, 0, sizeof(t_img));
+	ft_memset(&cub->img, 0, sizeof(t_imgs));
 	ft_memset(&cub->mlx, 0, sizeof(t_mlx));
 	ft_memset(&cub->key, 0, sizeof(t_key));
+	imgs_bzero(&cub->img);
 }
 
 bool	setup_cub(t_cub *cub, char **av)

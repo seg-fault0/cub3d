@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 10:17:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:27:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,14 +72,21 @@ typedef struct s_key
 
 typedef struct s_img
 {
-	void	*mm_frame;
+	void	*p;
+	int		height;
+	int		with;
 }t_img;
+
+typedef struct s_imgs
+{
+	t_img	mm_frame;
+}t_imgs;
 
 typedef struct s_cub
 {
 	t_mlx	mlx;
 	t_key	key;
-	t_img	img;
+	t_imgs	img;
 	char	**map;
 }t_cub;
 
@@ -92,6 +99,9 @@ void	err_msg(int msg);
 //init
 bool	ft_mlx_init(t_mlx *mlx);
 bool	map_init(t_cub *cub, char *path);
+
+//img
+void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 
 //free
