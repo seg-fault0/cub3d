@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:40:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 10:17:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <limits.h>
 
 // win_dimensions
 # define WIN_WITH 2500
@@ -48,6 +49,10 @@
 
 //other
 # define MAX_MAP_SIZE 100
+# define UPDATE_RATE 500
+
+//img_paths
+# define MM_FRAME "./textures/minimap/frame.xpm"
 
 //structs
 typedef struct s_mlx
@@ -67,7 +72,7 @@ typedef struct s_key
 
 typedef struct s_img
 {
-	void	*mm_player;
+	void	*mm_frame;
 }t_img;
 
 typedef struct s_cub

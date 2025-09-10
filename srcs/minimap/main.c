@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:37:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:42:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 10:16:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	draw_minimap(t_cub *cub)
 {
-	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.mm_player, 120, 80);
+	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.mm_frame, 0, 0);
 }
