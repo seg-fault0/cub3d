@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_cycle.c                                       :+:      :+:    :+:   */
+/*   img.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 04:12:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:12:45 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/10 09:13:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	game_cycle(t_cub *cub)
+#define MM_PLAYER "./textures/minimap/player.xpm"
+
+void	*mlx_get_img(void *mlx, char *path)
 {
-	input_hander(cub);
-	return (0);
+	int	size;
+
+	return (mlx_xpm_file_to_image(mlx, path, &size, &size));
+}
+
+bool	img_init(t_cub *cub)
+{
+	t_img	img;
+	int		size;
+
+	img = cub->img;
+	img.mm_player = mlx_get_img(cub->mlx.mlx, MM_PLAYER);
+	if (!img.mm_player)
+		return (err_msg(ERR_IMG), free_img(cub), false);
+	return (true);
 }

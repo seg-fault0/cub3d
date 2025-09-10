@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 05:07:41 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:13:06 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@
 # define ERR_AC 4
 # define ERR_OPEN 5
 # define ERR_MAP_SIZE 6
+# define ERR_IMG 7
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -64,10 +65,16 @@ typedef struct s_key
 	bool	esq;
 }t_key;
 
+typedef struct s_img
+{
+	void	*mm_player;
+}t_img;
+
 typedef struct s_cub
 {
 	t_mlx	mlx;
 	t_key	key;
+	t_img	img;
 	char	**map;
 }t_cub;
 
@@ -80,10 +87,12 @@ void	err_msg(int msg);
 //init
 bool	ft_mlx_init(t_mlx *mlx);
 bool	map_init(t_cub *cub, char *path);
+bool	img_init(t_cub *cub);
 
 //free
 void	free_mlx(t_mlx *mlx);
 void	free_map(char **map);
+void	free_img(t_cub *cub);
 
 //engine
 void	input_hander(t_cub *cub);

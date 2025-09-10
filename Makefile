@@ -11,6 +11,8 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/strlen.c		\
 		srcs/libft/strdup.c		\
 		srcs/libft/putstr_fd.c	\
+		srcs/mlx/img.c			\
+		srcs/mlx/mlx.c			\
 		srcs/parser/main.c		\
 		srcs/parser/reader.c	\
 
