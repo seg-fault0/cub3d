@@ -1,28 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_cycle.c                                       :+:      :+:    :+:   */
+/*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 04:12:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:11:17 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/10 20:34:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	game_cycle(t_cub *cub)
+static void	pos_init(t_cub *cub)
 {
-	static unsigned int	fps;
+	int	x;
+	int	y;
 
-	if (fps == UINT_MAX)
-		fps = 0;
-	if ((fps % UPDATE_RATE) == 0)
+	y = -1;
+	while (++y < 10)
 	{
-		input_hander(cub);
-		minimap(cub);
-		player_draw(cub);
+		x = 0;
+		while (cub->map[y][++x] != '\n')
+		{
+			if (cub->map[y][x] == 'P')
+			{
+				cub->player.xp = x;
+				cub->player.yp = y;
+				break ;
+			}
+		}
 	}
-	return (fps++, 0);
+}
+
+bool	player_init(t_cub *cub)
+{
+	pos_init(cub);
+	return (true);
 }

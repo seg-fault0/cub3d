@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 12:01:32 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:35:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,19 @@
 # define PLAYER "./textures/player.xpm"
 
 //structs
+typedef struct s_img
+{
+	void	*p;
+	int		height;
+	int		width;
+}t_img;
+
+typedef struct s_imgs
+{
+	t_img	mm_frame;
+	t_img	player;
+}t_imgs;
+
 typedef struct s_mlx
 {
 	void	*mlx;
@@ -71,25 +84,19 @@ typedef struct s_key
 	bool	esq;
 }t_key;
 
-typedef struct s_img
+typedef struct s_player
 {
-	void	*p;
-	int		height;
-	int		width;
-}t_img;
-
-typedef struct s_imgs
-{
-	t_img	mm_frame;
-	t_img	player;
-}t_imgs;
+	float	xp;
+	float	yp;
+}t_player;
 
 typedef struct s_cub
 {
-	t_mlx	mlx;
-	t_key	key;
-	t_imgs	img;
-	char	**map;
+	t_mlx		mlx;
+	t_key		key;
+	t_imgs		img;
+	t_player	player;
+	char		**map;
 }t_cub;
 
 //core
@@ -113,7 +120,8 @@ void	free_map(char **map);
 void	free_img(t_cub *cub);
 
 //player
-void	player(t_cub *cub);
+void	player_draw(t_cub *cub);
+bool	player_init(t_cub *cub);
 
 //engine
 void	input_hander(t_cub *cub);

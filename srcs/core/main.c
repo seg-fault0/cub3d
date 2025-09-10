@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:37 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 05:01:06 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:17:27 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ int	main(int ac, char **av)
 		return (err_msg(ERR_AC), 1);
 	if (setup_cub(&cub, av) == false)
 		return (1);
+	printf("xp = %f | yp = %f\n", cub.player.xp, cub.player.yp);
 	luncher(&cub);
 }

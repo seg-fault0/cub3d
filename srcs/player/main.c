@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:55:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 12:02:10 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 20:11:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static void	draw_player(t_cub *cub)
 	draw_no_bg(cub, cub->img.player, x, y);
 }
 
-void	player(t_cub *cub)
+void	player_draw(t_cub *cub)
 {
 	draw_player(cub);
 }
