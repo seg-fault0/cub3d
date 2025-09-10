@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:59:32 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 21:12:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 
 //img_paths
 # define MM_FRAME "./textures/frame.xpm"
+# define MM_WALL "./textures/mm_wall.xpm"
 # define PLAYER "./textures/player.xpm"
 
 //structs
@@ -67,6 +68,7 @@ typedef struct s_imgs
 {
 	t_img	mm_frame;
 	t_img	player;
+	void	*mm_wall;
 }t_imgs;
 
 typedef struct s_mlx
@@ -137,6 +139,7 @@ char	**read_map(char *path);
 
 //minimap
 void	minimap(t_cub *cub);
+void	draw_walls(t_cub *cub);
 
 //input
 int		key_press(int key, t_key *keys);

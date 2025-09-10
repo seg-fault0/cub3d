@@ -13,6 +13,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/arrays.c		\
 		srcs/libft/putstr_fd.c	\
 		srcs/minimap/main.c		\
+		srcs/minimap/walls.c	\
 		srcs/mlx/img.c			\
 		srcs/mlx/draw.c			\
 		srcs/mlx/mlx.c			\

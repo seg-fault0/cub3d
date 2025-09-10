@@ -1,24 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   walls.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 09:37:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 21:06:35 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/10 21:40:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	draw_frame(t_cub *cub)
+void	draw_walls(t_cub *cub)
 {
-	draw_no_bg(cub, cub->img.mm_frame, 0, 0);
-}
-
-void	minimap(t_cub *cub)
-{
-	draw_walls(cub);
-	draw_frame(cub);
+	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.mm_wall, 500, 500);
 }
