@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:10:46 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:20:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,21 +22,9 @@ void	free_map(char **map)
 	free(map);
 }
 
-void	free_mlx(t_mlx *mlx)
-{
-	mlx_destroy_window(mlx->mlx, mlx->win);
-	mlx_destroy_display(mlx->mlx);
-}
-
-void	free_img(t_cub *cub)
-{
-	if (cub->img.mm_player)
-		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_player);
-}
-
 int	ft_exit(t_cub *cub, int code)
 {
-	free_mlx(&cub->mlx);
+	free_mlx(cub->mlx);
 	free_map(cub->map);
 	free_img(cub);
 	exit(code);

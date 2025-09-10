@@ -1,16 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   mlx_init.c                                         :+:      :+:    :+:   */
+/*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 08:42:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:19:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	free_mlx(t_mlx mlx)
+{
+	mlx_destroy_window(mlx.mlx, mlx.win);
+	mlx_destroy_display(mlx.mlx);
+	free(mlx.mlx);
+}
 
 bool	ft_mlx_init(t_mlx *mlx)
 {

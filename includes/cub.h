@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 09:13:06 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 09:17:28 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ bool	map_init(t_cub *cub, char *path);
 bool	img_init(t_cub *cub);
 
 //free
-void	free_mlx(t_mlx *mlx);
+void	free_mlx(t_mlx mlx);
 void	free_map(char **map);
 void	free_img(t_cub *cub);
 
