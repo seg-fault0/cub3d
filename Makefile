@@ -1,8 +1,6 @@
 SRCS = 	srcs/core/main.c		\
 		srcs/core/exit.c		\
 		srcs/core/setup.c		\
-		srcs/core/free.c		\
-		srcs/core/init.c		\
 		srcs/engine/input.c		\
 		srcs/engine/game_cycle.c\
 		srcs/engine/luncher.c	\
@@ -13,7 +11,8 @@ SRCS = 	srcs/core/main.c		\
 		srcs/libft/strlen.c		\
 		srcs/libft/strdup.c		\
 		srcs/libft/putstr_fd.c	\
-		srcs/map/reader.c		\
+		srcs/parser/main.c		\
+		srcs/parser/reader.c	\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
