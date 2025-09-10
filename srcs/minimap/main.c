@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:37:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:35:08 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:41:39 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 void	draw_minimap(t_cub *cub)
 {
-	draw_img(cub, cub->img.mm_frame, 0, 0);
+	draw_no_bg(cub, cub->img.mm_frame, 0, 0);
 }

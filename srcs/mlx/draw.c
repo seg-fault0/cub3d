@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:38:31 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:41:06 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	get_pixel(void *img, int x, int y)
 	return (color);
 }
 
-void	draw_img(t_cub *cub, t_img img, int x0, int y0)
+void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0)
 {
 	int	x;
 	int	y;

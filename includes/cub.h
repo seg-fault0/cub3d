@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:33:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 11:41:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ bool	ft_mlx_init(t_mlx *mlx);
 bool	map_init(t_cub *cub, char *path);
 
 //img
-void	draw_img(t_cub *cub, t_img img, int x0, int y0);
+void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0);
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 
