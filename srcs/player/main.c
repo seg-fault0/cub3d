@@ -5,19 +5,24 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 09:37:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 12:01:22 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/10 11:55:32 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/10 12:02:10 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	draw_minimap(t_cub *cub)
+static void	draw_player(t_cub *cub)
 {
-	draw_no_bg(cub, cub->img.mm_frame, 0, 0);
+	int	x;
+	int	y;
+
+	x = ((WIN_WIDTH - cub->img.player.width) / 2);
+	y = WIN_HEIGHT - cub->img.player.height;
+	draw_no_bg(cub, cub->img.player, x, y);
 }
 
-void	minimap(t_cub *cub)
+void	player(t_cub *cub)
 {
-	draw_minimap(cub);
+	draw_player(cub);
 }

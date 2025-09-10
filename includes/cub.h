@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:41:48 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 12:01:32 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 
 //img_paths
 # define MM_FRAME "./textures/frame.xpm"
+# define PLAYER "./textures/player.xpm"
 
 //structs
 typedef struct s_mlx
@@ -80,6 +81,7 @@ typedef struct s_img
 typedef struct s_imgs
 {
 	t_img	mm_frame;
+	t_img	player;
 }t_imgs;
 
 typedef struct s_cub
@@ -110,6 +112,9 @@ void	free_mlx(t_mlx mlx);
 void	free_map(char **map);
 void	free_img(t_cub *cub);
 
+//player
+void	player(t_cub *cub);
+
 //engine
 void	input_hander(t_cub *cub);
 int		game_cycle(t_cub *cub);
@@ -118,7 +123,7 @@ int		game_cycle(t_cub *cub);
 char	**read_map(char *path);
 
 //minimap
-void	draw_minimap(t_cub *cub);
+void	minimap(t_cub *cub);
 
 //input
 int		key_press(int key, t_key *keys);

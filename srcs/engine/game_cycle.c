@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 04:12:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 10:17:02 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/10 12:01:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ int	game_cycle(t_cub *cub)
 	if ((fps % UPDATE_RATE) == 0)
 	{
 		input_hander(cub);
-		draw_minimap(cub);
+		minimap(cub);
+		player(cub);
 	}
 	return (fps++, 0);
 }

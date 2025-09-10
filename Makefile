@@ -17,6 +17,7 @@ SRCS = 	srcs/core/main.c		\
 		srcs/mlx/mlx.c			\
 		srcs/parser/main.c		\
 		srcs/parser/reader.c	\
+		srcs/player/main.c		\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
