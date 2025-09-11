@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 21:41:20 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 18:53:14 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	free_img(t_cub *cub)
 {
 	if (cub->img.mm_frame.p)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_frame.p);
+	printf("p = %p\n", cub->img.player.p);
 	if (cub->img.player.p)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.player.p);
 	if (cub->img.mm_wall)
@@ -44,6 +45,6 @@ bool	img_init(t_cub *cub)
 	cub->img.player.p = mlx_get_img(cub->mlx.mlx, PLAYER, &cub->img.player.width, &cub->img.player.height);
 	cub->img.mm_wall = mlx_xpm_file_to_image(cub->mlx.mlx, MM_WALL, &size, &size);
 	if (!cub->img.mm_frame.p || !cub->img.player.p || !cub->img.mm_wall)
-		return (err_msg(ERR_IMG), free_img(cub), false);
+		return (err_msg(ERR_IMG), false);
 	return (true);
 }
