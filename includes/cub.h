@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/11 19:08:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 19:53:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ typedef struct s_img
 typedef struct s_imgs
 {
 	t_img	mm_frame;
-	t_img	player;
+	void	*player;
 	void	*mm_wall;
 }t_imgs;
 
