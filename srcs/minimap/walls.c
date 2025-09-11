@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/11 19:53:30 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 20:10:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ void	draw_walls(t_cub *cub)
 	int	map_y;
 
 	y = -1;
-	mlx_clear_window(cub->mlx.mlx, cub->mlx.win);
 	while (++y < RADIUS - 10)
 	{
 		x = -1;

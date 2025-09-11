@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/11 19:53:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 20:10:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 //img_paths
 # define MM_FRAME "./textures/frame.xpm"
 # define MM_WALL "./textures/mm_wall.xpm"
+# define MM_FLOOR "./textures/mm_floor.xpm"
 # define PLAYER "./textures/player.xpm"
 
 //structs
@@ -68,6 +69,7 @@ typedef struct s_imgs
 	t_img	mm_frame;
 	void	*player;
 	void	*mm_wall;
+	void	*mm_floor;
 }t_imgs;
 
 typedef struct s_mlx
