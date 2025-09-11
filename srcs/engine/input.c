@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 05:06:42 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 19:07:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,5 +45,13 @@ void	input_hander(t_cub *cub)
 	if (cub->key.esq == true)
 		ft_exit(cub, 0);
 	if (cub->key.w == true)
-		write(1, "w", 1);
+		cub->player.yp --;
+	if (cub->key.s == true)
+		cub->player.yp ++;
+	if (cub->key.a == true)
+		cub->player.xp --;
+	if (cub->key.d == true)
+		cub->player.xp ++;
+	if (cub->key.d == true || cub->key.a == true || cub->key.s == true || cub->key.w == true)
+		printf("yp = %f | xp = %f\n", cub->player.yp, cub->player.xp);
 }

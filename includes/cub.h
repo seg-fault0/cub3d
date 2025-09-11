@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 21:12:52 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/11 19:08:04 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,6 @@
 
 //other
 # define MAX_MAP_SIZE 100
-# define UPDATE_RATE 500
 
 //img_paths
 # define MM_FRAME "./textures/frame.xpm"
