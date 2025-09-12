@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 12:37:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 12:48:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <math.h>
 
 // win_dimensions
 # define WIN_WIDTH 2500
@@ -49,7 +50,7 @@
 
 //player
 # define PLAYER_SPEED 0.1
-# define ROTATION_SPEED 1
+# define ROTATION_SPEED 0.01
 
 //other
 # define MAX_MAP_SIZE 100

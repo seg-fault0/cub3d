@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 20:48:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 12:46:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,5 +36,6 @@ static void	pos_init(t_cub *cub)
 bool	player_init(t_cub *cub)
 {
 	pos_init(cub);
+	cub->player.angle = 3 * M_PI / 2;
 	return (true);
 }

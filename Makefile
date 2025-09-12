@@ -32,7 +32,7 @@ FLAGS	= -g #-Wall -Wextra -Werror
 
 I		= -I includes/
 
-L = -L mlxlib/ -lmlx_Linux -lXext -lX11
+L = -L mlxlib/ -lmlx_Linux -lXext -lX11 -lm
 
 all: mlx $(NAME)
 
