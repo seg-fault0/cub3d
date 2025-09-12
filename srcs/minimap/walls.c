@@ -6,36 +6,67 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 07:39:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 11:11:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-#define TILE_SIZE 20
-#define RADIUS 20
+#define X_RADIUS 20
+#define Y_RADIUS 10
+#define IMG_SIZE 20
+
+static void	draw_minimap_cp(t_cub *cub, char **map)
+{
+	int	y;
+	int	x;
+
+	y = -1;
+	while (map[++y])
+	{
+		x = -1;
+		while (map[y][++x])
+		{
+			if (map[y][x] == '1')
+				mlx_draw(cub, MM_WALL, x * IMG_SIZE, y * IMG_SIZE);
+		}
+	}
+}
+
+static char	**get_minimap_cp(t_cub *cub)
+{
+	char	**minimap;
+	int		y;
+	int		x;
+	int		map_y;
+	int		map_x;
+
+	minimap = malloc((Y_RADIUS + 1) * sizeof(char *));
+	y = -1;
+	while (++y < Y_RADIUS)
+	{
+		minimap[y] = malloc(X_RADIUS + 1);
+		ft_memset(minimap[y], '0', X_RADIUS);
+		x = -1;
+		while (++x < X_RADIUS)
+		{
+			map_y = (int)cub->player.yp - Y_RADIUS / 2 + y;
+			map_x = (int)cub->player.xp - X_RADIUS / 2 + x;
+			if (map_y >= 0 && map_y < cub->parse.max_map_y
+				&& map_x >= 0 && map_x < (int)ft_strlen(cub->parse.map[map_y]))
+				minimap[y][x] = cub->parse.map[map_y][map_x];
+		}
+		minimap[y][X_RADIUS] = '\0';
+	}
+	minimap[Y_RADIUS] = NULL;
+	return (minimap);
+}
 
 void	draw_walls(t_cub *cub)
 {
-	int	x;
-	int	y;
-	int	map_x;
-	int	map_y;
+	char	**map_cp;
 
-	y = -1;
-	while (++y < RADIUS - 10)
-	{
-		x = -1;
-		while (++x < RADIUS)
-		{
-			map_x = cub->player.xp + x;
-			map_y = cub->player.yp + y;
-			if (map_y >= 0 && map_y < cub->parse.max_map_y
-				&& map_x >= 0 && map_x < 20)
-			{
-				if (cub->parse.map[map_y][map_x] == '1')
-					mlx_draw(cub, MM_WALL, x * TILE_SIZE, y * TILE_SIZE);
-			}
-		}
-	}
+	map_cp = get_minimap_cp(cub);
+	draw_minimap_cp(cub, map_cp);
+	free2(map_cp);
 }
