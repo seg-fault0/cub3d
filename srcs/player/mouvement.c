@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 11:31:50 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 12:34:39 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,5 @@ void	player_mouvement(t_cub *cub)
 		cub->player.xp -= PLAYER_SPEED;
 	if (cub->key.d == true)
 		cub->player.xp += PLAYER_SPEED;
-	if (cub->key.d == true || cub->key.a == true || cub->key.s == true || cub->key.w == true)
-		printf("yp = %f | xp = %f\n", cub->player.yp, cub->player.xp);
+	printf("angle = %f\n", cub->player.angle);
 }

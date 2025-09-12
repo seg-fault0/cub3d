@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 11:41:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 12:37:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,9 +47,12 @@
 #  define BUFFER_SIZE 1
 # endif
 
+//player
+# define PLAYER_SPEED 0.1
+# define ROTATION_SPEED 1
+
 //other
 # define MAX_MAP_SIZE 100
-# define PLAYER_SPEED 0.1
 
 //img_paths
 # define MM_FRAME_PATH "./textures/frame.xpm"
@@ -98,6 +101,7 @@ typedef struct s_player
 {
 	float	xp;
 	float	yp;
+	float	angle;
 }t_player;
 
 typedef struct s_parse
@@ -155,6 +159,7 @@ void	draw_walls(t_cub *cub);
 //input
 int		key_press(int key, t_key *keys);
 int		key_release(int key, t_key *keys);
+int		mouse_move(int x, int y, t_player *player);
 
 //libft
 void	*ft_memset(void *b, int c, size_t len);
