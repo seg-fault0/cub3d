@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:40:04 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 12:01:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 13:18:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,25 @@ bool	collisions(t_cub *cub)
 
 	new_x = cub->player.xp;
 	new_y = cub->player.yp;
-	if (cub->key.w == true)
-		new_y -= PLAYER_SPEED;
-	if (cub->key.s == true)
-		new_y += PLAYER_SPEED;
-	if (cub->key.a == true)
-		new_x -= PLAYER_SPEED;
-	if (cub->key.d == true)
-		new_x += PLAYER_SPEED;
+	if (cub->key.w)
+	{
+		new_x += cos(cub->player.angle) * PLAYER_SPEED;
+		new_y += sin(cub->player.angle) * PLAYER_SPEED;
+	}
+	if (cub->key.s)
+	{
+		new_x -= cos(cub->player.angle) * PLAYER_SPEED;
+		new_y -= sin(cub->player.angle) * PLAYER_SPEED;
+	}
+	if (cub->key.a)
+	{
+		new_x += cos(cub->player.angle - M_PI / 2) * PLAYER_SPEED;
+		new_y += sin(cub->player.angle - M_PI / 2) * PLAYER_SPEED;
+	}
+	if (cub->key.d)
+	{
+		new_x += cos(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
+		new_y += sin(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
+	}
 	return (can_player_move(cub, new_y, new_x));
 }
