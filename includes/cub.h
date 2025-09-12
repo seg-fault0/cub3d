@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 07:38:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 08:37:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,11 @@ void	free_mlx(t_mlx mlx);
 void	free_img(t_cub *cub);
 
 //player
-void	player_draw(t_cub *cub);
+void	player(t_cub *cub);
+void	player_mouvement(t_cub *cub);
 bool	player_init(t_cub *cub);
 
 //engine
-void	input_hander(t_cub *cub);
 int		game_cycle(t_cub *cub);
 
 //parser

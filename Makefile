@@ -1,26 +1,27 @@
-SRCS = 	srcs/core/main.c		\
-		srcs/core/exit.c		\
-		srcs/core/setup.c		\
-		srcs/engine/input.c		\
-		srcs/engine/game_cycle.c\
-		srcs/engine/luncher.c	\
-		srcs/gnl/gnl.c			\
-		srcs/gnl/gnl_utils.c	\
-		srcs/core/err_msg.c		\
-		srcs/libft/memset.c		\
-		srcs/libft/strlen.c		\
-		srcs/libft/strdup.c		\
-		srcs/libft/arrays.c		\
-		srcs/libft/putstr_fd.c	\
-		srcs/minimap/main.c		\
-		srcs/minimap/walls.c	\
-		srcs/mlx/img.c			\
-		srcs/mlx/draw.c			\
-		srcs/mlx/mlx.c			\
-		srcs/parser/main.c		\
-		srcs/parser/reader.c	\
-		srcs/player/init.c		\
-		srcs/player/main.c		\
+SRCS = 	srcs/core/main.c			\
+		srcs/core/exit.c			\
+		srcs/core/setup.c			\
+		srcs/engine/input_detector.c\
+		srcs/engine/game_cycle.c	\
+		srcs/engine/luncher.c		\
+		srcs/gnl/gnl.c				\
+		srcs/gnl/gnl_utils.c		\
+		srcs/core/err_msg.c			\
+		srcs/libft/memset.c			\
+		srcs/libft/strlen.c			\
+		srcs/libft/strdup.c			\
+		srcs/libft/arrays.c			\
+		srcs/libft/putstr_fd.c		\
+		srcs/minimap/main.c			\
+		srcs/minimap/walls.c		\
+		srcs/mlx/img.c				\
+		srcs/mlx/draw.c				\
+		srcs/mlx/mlx.c				\
+		srcs/parser/main.c			\
+		srcs/parser/reader.c		\
+		srcs/player/init.c			\
+		srcs/player/mouvement.c		\
+		srcs/player/main.c			\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
