@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/11 20:10:15 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 07:38:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,10 +51,16 @@
 # define MAX_MAP_SIZE 100
 
 //img_paths
-# define MM_FRAME "./textures/frame.xpm"
-# define MM_WALL "./textures/mm_wall.xpm"
-# define MM_FLOOR "./textures/mm_floor.xpm"
-# define PLAYER "./textures/player.xpm"
+# define MM_FRAME_PATH "./textures/frame.xpm"
+# define MM_WALL_PATH "./textures/mm_wall.xpm"
+# define MM_FLOOR_PATH "./textures/mm_floor.xpm"
+# define PLAYER_PATH "./textures/player.xpm"
+
+//img
+# define MM_FRAME 1
+# define MM_WALL 2
+# define MM_FLOOR 3
+# define PLAYER 4
 
 //structs
 typedef struct s_img
@@ -119,9 +125,11 @@ bool	ft_mlx_init(t_mlx *mlx);
 bool	map_init(t_cub *cub, char *path);
 
 //img
-void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0);
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
+
+//mlx
+void	mlx_draw(t_cub *cub, int img, int x, int y);
 
 //free
 void	free_mlx(t_mlx mlx);

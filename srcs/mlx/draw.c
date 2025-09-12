@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:41:06 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 07:43:29 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	get_pixel(void *img, int x, int y)
+static int	get_pixel(void *img, int x, int y)
 {
 	char	*data;
 	int		bpp;
@@ -26,7 +26,7 @@ int	get_pixel(void *img, int x, int y)
 	return (color);
 }
 
-void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0)
+static void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0)
 {
 	int	x;
 	int	y;
@@ -47,4 +47,21 @@ void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0)
 		}
 		y++;
 	}
+}
+
+void	mlx_draw(t_cub *cub, int img, int x, int y)
+{
+	void	*mlx;
+	void	*win;
+
+	mlx = cub->mlx.mlx;
+	win = cub->mlx.win;
+	if (img == MM_FLOOR)
+		mlx_put_image_to_window(mlx, win, cub->img.mm_floor, x, y);
+	else if (img == MM_WALL)
+		mlx_put_image_to_window(mlx, win, cub->img.mm_wall, x, y);
+	else if (img == PLAYER)
+		mlx_put_image_to_window(mlx, win, cub->img.player, (WIN_WIDTH / 2) - 400, WIN_HEIGHT - 513);
+	else if (img == MM_FRAME)
+		draw_no_bg(cub, cub->img.mm_frame, x, y);
 }

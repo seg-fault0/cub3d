@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/11 20:10:38 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 07:39:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	draw_walls(t_cub *cub)
 				&& map_x >= 0 && map_x < 20)
 			{
 				if (cub->parse.map[map_y][map_x] == '1')
-					mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.mm_wall, x * TILE_SIZE, y * TILE_SIZE);
+					mlx_draw(cub, MM_WALL, x * TILE_SIZE, y * TILE_SIZE);
 			}
 		}
 	}
