@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 09:37:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 09:37:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 13:23:11 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 void	minimap(t_cub *cub)
 {
 	mlx_draw(cub, MM_FLOOR, 0, 0);
+	minimap_rays(cub);
 	draw_walls(cub);
 	mlx_draw(cub, MM_FRAME, 0, 0);
 }

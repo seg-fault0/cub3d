@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 12:48:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/12 14:09:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,7 @@ char	**read_map(char *path);
 
 //minimap
 void	minimap(t_cub *cub);
+void	minimap_rays(t_cub *cub);
 void	draw_walls(t_cub *cub);
 
 //input
