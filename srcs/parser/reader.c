@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 03:03:59 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 03:32:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 09:30:09 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	get_map_size(char *path)
+static int	get_file_size(char *path)
 {
 	char	*line;
 	int		size;
@@ -26,7 +26,7 @@ static int	get_map_size(char *path)
 	while (line)
 	{
 		size++;
-		if (size == MAX_MAP_SIZE)
+		if (size == MAX_FILE_SIZE)
 			return (close (fd), free(line), err_msg(ERR_MAP_SIZE), -1);
 		free(line);
 		line = get_next_line(fd);
@@ -34,7 +34,7 @@ static int	get_map_size(char *path)
 	return (close (fd), size);
 }
 
-static char	**ft_read_map(char *path, int size)
+static char	**ft_read_file(char *path, int size)
 {
 	char	**map;
 	int		i;
@@ -53,14 +53,13 @@ static char	**ft_read_map(char *path, int size)
 	return (close (fd), map);
 }
 
-char	**read_map(char *path)
+bool	read_file(t_cub *cub, char *path)
 {
-	char	**map;
 	int		map_size;
 
-	map_size = get_map_size(path);
+	map_size = get_file_size(path);
 	if (map_size == -1)
-		return (NULL);
-	map = ft_read_map(path, map_size);
-	return (map);
+		return (false);
+	cub->parse.all = ft_read_file(path, map_size);
+	return (true);
 }

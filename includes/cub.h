@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 08:49:03 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 09:33:16 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@
 # define ROTATION_SPEED 0.06
 
 //other
-# define MAX_MAP_SIZE 100
+# define MAX_FILE_SIZE 150
 
 //img_paths
 # define MM_FRAME_PATH "./textures/frame.xpm"
@@ -111,7 +111,15 @@ typedef struct s_player
 
 typedef struct s_parse
 {
+	char	**all;
+	char	*sky_clr;
+	char	*groud_clr;
+	char	*n_wall;
+	char	*s_wall;
+	char	*e_wall;
+	char	*w_wall;
 	char	**map;
+	int		cur_i;
 	int		max_map_y;
 }t_parse;
 
@@ -132,7 +140,6 @@ void	err_msg(int msg);
 
 //init
 bool	ft_mlx_init(t_mlx *mlx);
-bool	map_init(t_cub *cub, char *path);
 
 //img
 void	imgs_bzero(t_imgs *imgs);
@@ -155,7 +162,9 @@ bool	collisions(t_cub *cub);
 int		game_cycle(t_cub *cub);
 
 //parser
-char	**read_map(char *path);
+bool	parse(t_cub *cub, char *path);
+bool	read_file(t_cub *cub, char *path);
+bool	get_map(t_cub *cub);
 
 //minimap
 void	minimap(t_cub *cub);

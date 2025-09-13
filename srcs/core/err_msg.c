@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:29:43 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 08:49:28 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 09:29:04 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	err_msg(int msg)
 	else if (msg == ERR_OPEN)
 		ft_putstr_fd("open failed\n", STDERR);
 	else if (msg == ERR_MAP_SIZE)
-		ft_putstr_fd("map is too big\n", STDERR);
+		ft_putstr_fd("file is too big\n", STDERR);
 	else if (msg == ERR_IMG)
 		ft_putstr_fd("image failed to open\n", STDERR);
 }

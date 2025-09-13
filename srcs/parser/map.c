@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/10 08:20:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 09:37:52 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/13 09:30:36 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/13 09:38:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-bool	parse(t_cub *cub, char *path)
+bool	get_map(t_cub *cub)
 {
-	if (read_file(cub, path) == false
-		|| get_map(cub) == false)
-		return (false);
-	cub->parse.max_map_y = get_arr_size(cub->parse.map);
+	int	cur_i;
+
+	cur_i = cub->parse.cur_i;
+	cub->parse.map = get_2darr_cp(&cub->parse.all[cur_i]);
 	return (true);
 }
