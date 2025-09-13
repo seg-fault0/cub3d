@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 07:43:20 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 10:31:29 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,12 @@ bool	img_init(t_cub *cub)
 	cub->img.player = mlx_get_img(mlx, PLAYER_PATH, &size, &size);
 	cub->img.mm_wall = mlx_xpm_file_to_image(mlx, MM_WALL_PATH, &size, &size);
 	cub->img.mm_floor = mlx_xpm_file_to_image(mlx, MM_FLOOR_PATH, &size, &size);
-	if (!cub->img.mm_frame.p || !cub->img.player || !cub->img.mm_wall || !cub->img.mm_floor)
+	cub->img.n_wall = mlx_xpm_file_to_image(mlx, cub->parse.n_wall, &size, &size);
+	cub->img.s_wall = mlx_xpm_file_to_image(mlx, cub->parse.s_wall, &size, &size);
+	cub->img.e_wall = mlx_xpm_file_to_image(mlx, cub->parse.e_wall, &size, &size);
+	cub->img.w_wall = mlx_xpm_file_to_image(mlx, cub->parse.w_wall, &size, &size);
+	if (!cub->img.mm_frame.p || !cub->img.player || !cub->img.mm_wall || !cub->img.mm_floor
+		|| !cub->img.n_wall || !cub->img.s_wall || !cub->img.e_wall || !cub->img.w_wall)
 		return (err_msg(ERR_IMG), false);
 	return (true);
 }
