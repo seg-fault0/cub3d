@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:35:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 10:37:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,14 @@ void	free_img(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_wall);
 	if (cub->img.mm_floor)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_floor);
+	if (cub->img.n_wall)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.n_wall);
+	if (cub->img.s_wall)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.s_wall);
+	if (cub->img.e_wall)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.e_wall);
+	if (cub->img.w_wall)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.w_wall);
 }
 
 void	*mlx_xpm(void *mlx, char *path, int *width, int *height)
