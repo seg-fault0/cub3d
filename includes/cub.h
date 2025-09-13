@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:49:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:52:40 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -164,6 +164,7 @@ void	free_img(t_cub *cub);
 
 //world	render
 void	render_world(t_cub *cub);
+void	world_raycaster(t_cub *cub);
 
 //player
 bool	player_init(t_cub *cub);

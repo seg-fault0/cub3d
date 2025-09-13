@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 10:39:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:11:54 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:52:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ static void	render_floor_ceiling(t_cub *cub)
 void	render_world(t_cub *cub)
 {
 	render_floor_ceiling(cub);
+	world_raycaster(cub);
 }

@@ -29,6 +29,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/player/mouvement.c		\
 		srcs/player/collisions.c	\
 		srcs/render/main.c			\
+		srcs/render/raycaster.c		\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
