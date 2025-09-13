@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:10:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:49:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,6 @@
 # define MM_FRAME_PATH "./textures/frame.xpm"
 # define MM_WALL_PATH "./textures/mm_wall.xpm"
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
-# define PLAYER_PATH "./textures/player.xpm"
 
 //img
 # define MM_FRAME 1
@@ -82,7 +81,6 @@ typedef struct s_img
 typedef struct s_imgs
 {
 	t_img	mm_frame;
-	void	*player;
 	void	*mm_wall;
 	void	*mm_floor;
 	void	*n_wall;
@@ -165,7 +163,7 @@ void	free_mlx(t_mlx mlx);
 void	free_img(t_cub *cub);
 
 //world	render
-void render_world(t_cub *cub);
+void	render_world(t_cub *cub);
 
 //player
 bool	player_init(t_cub *cub);

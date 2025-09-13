@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 07:43:29 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:47:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,6 @@ void	mlx_draw(t_cub *cub, int img, int x, int y)
 		mlx_put_image_to_window(mlx, win, cub->img.mm_floor, x, y);
 	else if (img == MM_WALL)
 		mlx_put_image_to_window(mlx, win, cub->img.mm_wall, x, y);
-	else if (img == PLAYER)
-		mlx_put_image_to_window(mlx, win, cub->img.player, (WIN_WIDTH / 2) - 400, WIN_HEIGHT - 513);
 	else if (img == MM_FRAME)
 		draw_no_bg(cub, cub->img.mm_frame, x, y);
 }

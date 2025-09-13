@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:55:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 08:48:55 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:47:09 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	player(t_cub *cub)
 {
-	mlx_draw(cub, PLAYER, 0, 0);
 	if (collisions(cub) == false)
 		player_mouvement(cub);
 }
