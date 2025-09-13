@@ -23,10 +23,11 @@ SRCS = 	srcs/core/main.c			\
 		srcs/parser/reader.c		\
 		srcs/parser/map.c			\
 		srcs/parser/textures.c		\
+		srcs/player/main.c			\
 		srcs/player/init.c			\
 		srcs/player/mouvement.c		\
 		srcs/player/collisions.c	\
-		srcs/player/main.c			\
+		srcs/render/main.c			\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 

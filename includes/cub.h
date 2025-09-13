@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:27:00 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 10:41:05 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -155,6 +155,9 @@ void	mlx_draw(t_cub *cub, int img, int x, int y);
 //free
 void	free_mlx(t_mlx mlx);
 void	free_img(t_cub *cub);
+
+//world	render
+void render_world(t_cub *cub);
 
 //player
 bool	player_init(t_cub *cub);
