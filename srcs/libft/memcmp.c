@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   exit.c                                             :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:03:21 by wimam            ###   ########.fr       */
+/*   Created: 2025/09/13 09:51:55 by wimam             #+#    #+#             */
+/*   Updated: 2025/09/13 09:52:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-int	ft_exit(t_cub *cub, int code)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	free2(cub->parse.file);
-	free2(cub->parse.map);
-	free(cub->parse.n_wall);
-	free(cub->parse.s_wall);
-	free(cub->parse.e_wall);
-	free(cub->parse.w_wall);
-	free(cub->parse.sky_clr);
-	free(cub->parse.floor_clr);
-	free_img(cub);
-	free_mlx(cub->mlx);
-	exit(code);
+	const unsigned char	*buffer1;
+	const unsigned char	*buffer2;
+	size_t				i;
+
+	buffer1 = (const unsigned char *) s1;
+	buffer2 = (const unsigned char *) s2;
+	i = 0;
+	while (i < n)
+	{
+		if (buffer1[i] != buffer2[i])
+			return (buffer1[i] - buffer2[i]);
+		i++;
+	}
 	return (0);
 }

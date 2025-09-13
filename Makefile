@@ -11,6 +11,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/libft/strlen.c			\
 		srcs/libft/strdup.c			\
 		srcs/libft/arrays.c			\
+		srcs/libft/memcmp.c			\
 		srcs/libft/putstr_fd.c		\
 		srcs/minimap/main.c			\
 		srcs/minimap/raycaster.c	\
@@ -21,6 +22,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/parser/main.c			\
 		srcs/parser/reader.c		\
 		srcs/parser/map.c			\
+		srcs/parser/textures.c		\
 		srcs/player/init.c			\
 		srcs/player/mouvement.c		\
 		srcs/player/collisions.c	\

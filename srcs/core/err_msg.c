@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:29:43 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 09:29:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 10:05:21 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,4 +31,6 @@ void	err_msg(int msg)
 		ft_putstr_fd("file is too big\n", STDERR);
 	else if (msg == ERR_IMG)
 		ft_putstr_fd("image failed to open\n", STDERR);
+	else if (msg == ERR_ELMT_NF)
+		ft_putstr_fd("element not found\n", STDERR);
 }

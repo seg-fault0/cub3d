@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 09:33:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 10:08:05 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@
 # define ERR_OPEN 5
 # define ERR_MAP_SIZE 6
 # define ERR_IMG 7
+# define ERR_ELMT_NF 8
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -111,15 +112,14 @@ typedef struct s_player
 
 typedef struct s_parse
 {
-	char	**all;
+	char	**file;
 	char	*sky_clr;
-	char	*groud_clr;
+	char	*floor_clr;
 	char	*n_wall;
 	char	*s_wall;
 	char	*e_wall;
 	char	*w_wall;
 	char	**map;
-	int		cur_i;
 	int		max_map_y;
 }t_parse;
 
@@ -164,6 +164,8 @@ int		game_cycle(t_cub *cub);
 //parser
 bool	parse(t_cub *cub, char *path);
 bool	read_file(t_cub *cub, char *path);
+bool	get_textures(t_cub *cub);
+void	print_elemts(t_cub *cub);
 bool	get_map(t_cub *cub);
 
 //minimap
@@ -178,6 +180,7 @@ int		mouse_move(int x, int y, t_player *player);
 
 //libft
 void	*ft_memset(void *b, int c, size_t len);
+int		ft_memcmp(const void *s1, const void *s2, size_t n);
 int		ft_strlen(char *str);
 void	ft_putstr_fd(char *s, int fd);
 char	*ft_strdup(char *str);
