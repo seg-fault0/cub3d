@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:41:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:10:49 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@
 # define ERR_MAP_SIZE 6
 # define ERR_IMG 7
 # define ERR_ELMT_NF 8
+# define ERR_CLR_FORMAT 9
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -114,6 +115,12 @@ typedef struct s_player
 	float	angle;
 }t_player;
 
+typedef struct s_clr
+{
+	int	floor;
+	int	sky;
+}t_clr;
+
 typedef struct s_parse
 {
 	char	**file;
@@ -129,11 +136,12 @@ typedef struct s_parse
 
 typedef struct s_cub
 {
+	t_parse		parse;
 	t_mlx		mlx;
 	t_key		key;
 	t_imgs		img;
+	t_clr		clr;
 	t_player	player;
-	t_parse		parse;
 }t_cub;
 
 //core
@@ -172,7 +180,7 @@ int		game_cycle(t_cub *cub);
 bool	parse(t_cub *cub, char *path);
 bool	read_file(t_cub *cub, char *path);
 bool	get_textures(t_cub *cub);
-void	print_elemts(t_cub *cub);
+bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 
 //minimap

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 09:46:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:23:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:06:24 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static bool	texture_checker(t_cub *cub)
 	return (true);
 }
 
-char	*skip_spaces(char	*str)
+static char	*skip_spaces(char	*str)
 {
 	char	*p;
 

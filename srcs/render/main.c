@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 10:39:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:01:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:11:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,9 +29,9 @@ static void	render_floor_ceiling(t_cub *cub)
 			if (x < MM_WIDTH && y < MM_HEIGHT)
 				continue ;
 			if (y < WIN_HEIGHT / 2)
-				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, 0xE11E00);
+				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, cub->clr.sky);
 			else
-				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, 0xDC6400);
+				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, cub->clr.floor);
 		}
 	}
 }

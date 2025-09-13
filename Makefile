@@ -23,6 +23,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/parser/reader.c		\
 		srcs/parser/map.c			\
 		srcs/parser/textures.c		\
+		srcs/parser/color.c			\
 		srcs/player/main.c			\
 		srcs/player/init.c			\
 		srcs/player/mouvement.c		\
