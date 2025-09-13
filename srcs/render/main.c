@@ -6,13 +6,37 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 10:39:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:42:20 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 11:01:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+#define MM_HEIGHT 210
+#define MM_WIDTH 400
+
+static void	render_floor_ceiling(t_cub *cub)
+{
+	int	x;
+	int	y;
+
+	y = -1;
+	while (++y < WIN_HEIGHT)
+	{
+		x = -1;
+		while (++x < WIN_WIDTH)
+		{
+			if (x < MM_WIDTH && y < MM_HEIGHT)
+				continue ;
+			if (y < WIN_HEIGHT / 2)
+				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, 0xE11E00);
+			else
+				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x, y, 0xDC6400);
+		}
+	}
+}
+
 void	render_world(t_cub *cub)
 {
-	return ;
+	render_floor_ceiling(cub);
 }
