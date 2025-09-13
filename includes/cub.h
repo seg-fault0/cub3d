@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 14:09:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/13 08:49:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@
 # define S_KEY 115
 # define A_KEY 97
 # define D_KEY 100 
+# define R_ARR 65363
+# define L_ARR 65361
 
 //ERR_MSG
 # define ERR_MALLOC 1
@@ -50,7 +52,7 @@
 
 //player
 # define PLAYER_SPEED 0.1
-# define ROTATION_SPEED 0.01
+# define ROTATION_SPEED 0.06
 
 //other
 # define MAX_MAP_SIZE 100
@@ -96,6 +98,8 @@ typedef struct s_key
 	bool	s;
 	bool	d;
 	bool	esq;
+	bool	r_arr;
+	bool	l_arr;
 }t_key;
 
 typedef struct s_player
