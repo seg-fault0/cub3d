@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_detector.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 08:50:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/15 23:29:57 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,23 @@ int	key_release(int key, t_key *keys)
 	return (0);
 }
 
+void	rotate_vectores(t_player *player, int delta_x)
+{
+	double	angle;
+	int		x;
+	int		y;
+
+	angle = delta_x * ROTATION_SPEED;
+	x = player->dir_x;
+	y = player->dir_y;
+	player->dir_x = x * cos(delta_x) - y * sin(delta_x);
+	player->dir_y = x * sin(delta_x) + y * cos(delta_x);
+	x = player->plane_x;
+	y = player->plane_y;
+	player->plane_x = x * cos(delta_x) - y * sin(delta_x);
+	player->plane_y = x * sin(delta_x) + y * cos(delta_x);
+}
+
 int	mouse_move(int x, int y, t_player *player)
 {
 	static int	old_x;
@@ -57,6 +74,7 @@ int	mouse_move(int x, int y, t_player *player)
 		player->angle += (ROTATION_SPEED / 15);
 	else if (x < old_x)
 		player->angle -= (ROTATION_SPEED / 15);
+	rotate_vectores(player, (x - old_x));
 	old_x = x;
 	return (0);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/12 12:46:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/15 21:56:51 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ bool	player_init(t_cub *cub)
 {
 	pos_init(cub);
 	cub->player.angle = 3 * M_PI / 2;
+	cub->player.dir_x = 0;
+	cub->player.dir_y = -1;
+	cub->player.plane_x = 0;
+	cub->player.plane_y = 0.66;
 	return (true);
 }

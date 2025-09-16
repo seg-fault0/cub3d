@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:52:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/09/15 23:03:33 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,10 @@ typedef struct s_player
 {
 	float	xp;
 	float	yp;
+	double	dir_x;
+	double	dir_y;
+	double	plane_x;
+	double	plane_y;
 	float	angle;
 }t_player;
 
@@ -132,6 +136,20 @@ typedef struct s_parse
 	int		max_map_y;
 }t_parse;
 
+typedef struct s_dda
+{
+	int	map_x;
+	int	map_y;
+	double	raydir_x;
+	double	raydir_y;
+	double	camera_x;
+	double sidedistx;
+    double sidedisty;
+	double deltadistx;
+    double deltadisty;
+	int	side;
+}t_dda;
+
 typedef struct s_cub
 {
 	t_parse		parse;
@@ -140,6 +158,7 @@ typedef struct s_cub
 	t_imgs		img;
 	t_clr		clr;
 	t_player	player;
+	t_dda		dda;
 }t_cub;
 
 //core
