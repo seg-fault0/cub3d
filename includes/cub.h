@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/15 23:03:33 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/09/26 22:14:23 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,8 @@
 // win_dimensions
 # define WIN_WIDTH 2500
 # define WIN_HEIGHT 1200
-
+# define TEXTERE_HEIGHT 64
+# define TEXTERE_WIDHT  64 
 //key_code
 # define ESC_KEY 65307
 # define W_KEY 119
@@ -87,6 +88,11 @@ typedef struct s_imgs
 	void	*s_wall;
 	void	*e_wall;
 	void	*w_wall;
+	int	**textere;
+	int		size;
+	int bits_per_pixel;
+	int	size_line; 
+	int	endian;
 }t_imgs;
 
 typedef struct s_mlx
@@ -146,7 +152,7 @@ typedef struct s_dda
 	double sidedistx;
     double sidedisty;
 	double deltadistx;
-    double deltadisty;
+	double deltadisty;
 	int	side;
 }t_dda;
 

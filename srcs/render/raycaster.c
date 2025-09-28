@@ -6,35 +6,13 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/16 19:52:47 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/09/26 20:52:07 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
 
-
-// void	draw_wall(t_cub *cub, int x, double walldist)
-// {
-// 	int	h_line;
-// 	int	draw_start;
-// 	int	draw_end;
-
-// 	h_line = (WIN_HEIGHT / walldist);
-// 	draw_start = WIN_HEIGHT / 2 - h_line / 2;
-// 	if (draw_start < 0)
-// 		draw_start = 0;
-// 	draw_end = h_line / 2 + WIN_HEIGHT / 2;
-// 	if (draw_end >= WIN_HEIGHT)
-// 		draw_end = WIN_HEIGHT - 1;
-// 	for (int y = 0; y < draw_start, y++)
-// 		cub->img.data[y * WIN_WIDTH + x] = cub->colors.ceiling;
-// 	int wall_color = get_wall_color(cub);
-// 	for (int y = drawStart; y <= drawEnd; y++)
-// 	    cub->img.data[y * WIN_WIDTH + x] = wall_color;
-// 	for (int y = drawEnd + 1; y < WIN_HEIGHT; y++)
-//         cub->img.data[y * WIN_WIDTH + x] = cub->colors.floor;
-// }
 
 void	check_raydir(t_cub *cub, int *step_x, int *step_y)
 {
