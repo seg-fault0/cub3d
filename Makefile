@@ -13,8 +13,8 @@ SRCS = 	srcs/core/main.c			\
 		srcs/libft/arrays.c			\
 		srcs/libft/memcmp.c			\
 		srcs/libft/putstr_fd.c		\
-		srcs/minimap/main.c			\
 		srcs/minimap/raycaster.c	\
+		srcs/minimap/main.c			\
 		srcs/minimap/walls.c		\
 		srcs/mlx/img.c				\
 		srcs/mlx/draw.c				\
@@ -29,13 +29,14 @@ SRCS = 	srcs/core/main.c			\
 		srcs/player/mouvement.c		\
 		srcs/player/collisions.c	\
 		srcs/render/main.c			\
+		srcs/render/ray.c	\
 		srcs/render/raycaster.c		\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
 NAME	= cub3d
 
-FLAGS	= -g #-Wall -Wextra -Werror
+FLAGS	= -g -Wall -Wextra -Werror -g
 
 I		= -I includes/
 

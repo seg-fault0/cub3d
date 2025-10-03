@@ -23,7 +23,7 @@ int	game_cycle(t_cub *cub)
 	if ((fps % UPDATE_RATE) == 0)
 	{
 		render_world(cub);
-		minimap(cub);
+		// minimap(cub);
 		player(cub);
 	}
 	return (fps++, 0);

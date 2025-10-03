@@ -82,17 +82,18 @@ typedef struct s_img
 typedef struct s_imgs
 {
 	t_img	mm_frame;
-	void	*mm_wall;
-	void	*mm_floor;
-	void	*n_wall;
-	void	*s_wall;
-	void	*e_wall;
-	void	*w_wall;
-	int	**textere;
-	int		size;
-	int bits_per_pixel;
-	int	size_line; 
-	int	endian;
+	int		*mm_wall;
+	int		*mm_floor;
+	int		*n_wall;
+	int		*s_wall;
+	int		*e_wall;
+	int		*w_wall;
+	int		tex_size;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		size_line;
+	int		endian;
 }t_imgs;
 
 typedef struct s_mlx
@@ -120,6 +121,7 @@ typedef struct s_player
 	double	dir_y;
 	double	plane_x;
 	double	plane_y;
+	int		has_move;
 	float	angle;
 }t_player;
 
@@ -153,7 +155,13 @@ typedef struct s_dda
     double sidedisty;
 	double deltadistx;
 	double deltadisty;
+	int	walldist;
+	int	step_x;
+	int	step_y;
 	int	side;
+	int	line_height;
+	int	draw_start;
+	int	draw_end;
 }t_dda;
 
 typedef struct s_cub
@@ -163,6 +171,7 @@ typedef struct s_cub
 	t_key		key;
 	t_imgs		img;
 	t_clr		clr;
+	int			**textures;
 	t_player	player;
 	t_dda		dda;
 }t_cub;
@@ -207,6 +216,10 @@ bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 
+//raycasting
+void	calc_line_height(t_dda *ray);
+void	update_draw(t_cub *cub, t_dda *ray, int x);
+void	init_ray(t_dda *ray, t_player *player, int x);
 //minimap
 void	minimap(t_cub *cub);
 void	minimap_rays(t_cub *cub);

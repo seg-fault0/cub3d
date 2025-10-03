@@ -50,11 +50,11 @@ int	key_release(int key, t_key *keys)
 
 void	rotate_vectores(t_player *player, int delta_x)
 {
-	double	angle;
+	// double	angle;
 	int		x;
 	int		y;
 
-	angle = delta_x * ROTATION_SPEED;
+	// angle = delta_x * ROTATION_SPEED;
 	x = player->dir_x;
 	y = player->dir_y;
 	player->dir_x = x * cos(delta_x) - y * sin(delta_x);

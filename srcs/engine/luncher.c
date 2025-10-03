@@ -14,6 +14,7 @@
 
 void	luncher(t_cub *cub)
 {
+	render_world(cub);
 	mlx_hook(cub->mlx.win, 17, 0, ft_exit, cub);
 	mlx_hook(cub->mlx.win, 2, 1L << 0, key_press, &cub->key);
 	mlx_hook(cub->mlx.win, 3, 1L << 1, key_release, &cub->key);

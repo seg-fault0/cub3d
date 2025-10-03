@@ -39,7 +39,7 @@ bool	player_init(t_cub *cub)
 	cub->player.angle = 3 * M_PI / 2;
 	cub->player.dir_x = 0;
 	cub->player.dir_y = -1;
-	cub->player.plane_x = 0;
-	cub->player.plane_y = 0.66;
+	cub->player.plane_x = 0.66;
+	cub->player.plane_y = 0;
 	return (true);
 }
