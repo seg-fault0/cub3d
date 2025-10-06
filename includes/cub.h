@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/26 22:14:23 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/06 04:54:54 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,10 +90,11 @@ typedef struct s_imgs
 	int		*w_wall;
 	int		tex_size;
 	void	*img;
-	char	*addr;
+	int	*addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
+	int		ppl;
 }t_imgs;
 
 typedef struct s_mlx
@@ -144,6 +145,26 @@ typedef struct s_parse
 	int		max_map_y;
 }t_parse;
 
+typedef struct s_floor
+{
+	float rayDirX0;
+	float rayDirY0;
+    float rayDirX1;
+    float rayDirY1;
+	float rowDistance;
+	int				p;
+	float	posz;
+	float	floor_sx;
+	float	floor_sy;
+	float	floor_x;
+	float	floor_y;
+	float	cell_x;
+	float	cell_y;
+	int	tx;
+	int	ty;
+}t_floor;
+
+
 typedef struct s_dda
 {
 	int	map_x;
@@ -174,6 +195,7 @@ typedef struct s_cub
 	int			**textures;
 	t_player	player;
 	t_dda		dda;
+	t_floor		rfloor;
 }t_cub;
 
 //core
