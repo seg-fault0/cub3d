@@ -6,11 +6,25 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/06 05:48:43 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/07 02:49:46 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+void	draw_ceilling(t_cub *cub)
+{
+	int	i;
+	int	x;
+
+	i = 0;
+	x = WIN_HEIGHT / 2 * WIN_WIDTH;
+	while (i < x)
+	{
+		cub->img.addr[i] = cub->clr.sky;
+		i++;
+	}
+}
 
 static void	ft_check(t_cub *cub)
 {
@@ -33,37 +47,6 @@ void	put_pixel(t_imgs *img,int x, int y, int color)
 	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
 		img->addr[y * img->ppl + x] = color;
 }
-
-// void my_mlx_pixel_put(t_imgs *img, int x, int y, int color)
-// {
-// 	char *dst;
-
-// 	dst = img->addr + (y * img->size_line + x * (img->bits_per_pixel / 8));
-// 	*(unsigned int*)dst = color;
-// }
-
-// void	update_draw(t_cub *cub, t_dda *ray, int x)
-// {
-// 	int y;
-// 	int color;
-
-// 	// Simple color-based drawing first to debug
-// 	if (ray->side == 0 && ray->raydir_x > 0)
-// 		color = 0xFF0000;  // Red - East wall
-// 	else if (ray->side == 0 && ray->raydir_x < 0)
-// 		color = 0x00FF00;  // Green - West wall
-// 	else if (ray->side == 1 && ray->raydir_y > 0)
-// 		color = 0x0000FF;  // Blue - South wall
-// 	else
-// 		color = 0xFFFF00;  // Yellow - North wall
-
-// 	y = ray->draw_start;
-// 	while (y < ray->draw_end)
-// 	{
-// 		my_mlx_pixel_put(&cub->img, x, y, color);
-// 		y++;
-// 	}
-// }
 
 void	check_raydir(t_dda *ray, t_player *player)
 {
@@ -104,6 +87,54 @@ void	calc_line_height(t_dda *ray)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
+void draw_wall_stripe(t_cub *cub, int x)
+{
+	int	 y;
+	int	 color;
+		
+	cub->dda.tex_step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
+	cub->dda.tex_pos = (cub->dda.draw_start - WIN_HEIGHT / 2 + cub->dda.line_height / 2) * cub->dda.tex_step;
+	if (cub->dda.side == 0)
+	{
+		if (cub->dda.raydir_x > 0)
+			cub->dda.tex_num = 0;
+		else
+			cub->dda.tex_num = 1;
+	}
+	else
+	{
+		if (cub->dda.raydir_y > 0)
+			cub->dda.tex_num = 2;
+		else
+			cub->dda.tex_num = 3;
+	}
+	y = cub->dda.draw_start;
+	while (y < cub->dda.draw_end)
+	{
+		cub->dda.tex_y = (int)cub->dda.tex_pos & (TEXTERE_HEIGHT - 1);
+		cub->dda.tex_pos += cub->dda.tex_step;
+		color = cub->textures[cub->dda.tex_num][TEXTERE_HEIGHT * cub->dda.tex_y + cub->dda.tex_x];
+		if (cub->dda.side == 1)
+			color = (color >> 1) & 8355711;
+		put_pixel(&cub->img, x, y, color);
+		y++;
+	}
+}
+
+void	calc_wall_texture_x(t_dda *ray, t_player *player)
+{
+	if (ray->side == 0)
+		ray->wall_x = player->yp + ray->walldist * ray->raydir_y;
+	else
+		ray->wall_x = player->xp + ray->walldist * ray->raydir_x;
+	ray->wall_x -= floor(ray->wall_x);
+	ray->tex_x = (int)(ray->wall_x * (double)TEXTERE_WIDHT);
+	if (ray->side == 0 && ray->raydir_x > 0)
+		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
+	if (ray->side == 1 && ray->raydir_y < 0)
+		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
+}
+
 void	wall_cast(t_cub *cub)
 {
 	int	hit;
@@ -125,10 +156,10 @@ void	wall_cast(t_cub *cub)
     				hit = 1;
 		}
 		calc_line_height(&cub->dda);
-		update_draw(cub, &cub->dda, x);
+		calc_wall_texture_x(&cub->dda,&cub->player);
+		draw_wall_stripe(cub, x);
 		x++;
 	}
-	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.img, 0, 0);
 	return ;
 }
 
@@ -146,17 +177,16 @@ void	init_floor_ray(t_cub *cub, int y)
 	cub->rfloor.floor_x = cub->player.xp + cub->rfloor.rowDistance * cub->rfloor.rayDirX0;
 	cub->rfloor.floor_y = cub->player.yp + cub->rfloor.rowDistance * cub->rfloor.rayDirY0;
 }
+
 void	floor_cast(t_cub *cub)
 {
 	int	y;
 	int	x;
 	int	color;
     int	floor_texture;
-    int	ceiling_texture;
 
 	y = 0;
 	floor_texture = 2;
-	ceiling_texture = 7;
 	while (y < WIN_HEIGHT)
 	{
 		init_floor_ray(cub, y);
@@ -167,14 +197,11 @@ void	floor_cast(t_cub *cub)
 			cub->rfloor.cell_y = (int)cub->rfloor.floor_y;
 			cub->rfloor.tx = (int)(TEXTERE_WIDHT * (cub->rfloor.floor_x - cub->rfloor.cell_x)) & (TEXTERE_WIDHT - 1);
 			cub->rfloor.ty = (int)(TEXTERE_HEIGHT * (cub->rfloor.floor_y - cub->rfloor.cell_y)) & (TEXTERE_HEIGHT - 1);
-			cub->rfloor.floor_x += cub->rfloor.floor_sx;
-			cub->rfloor.floor_y += cub->rfloor.floor_sy;
 			color = cub->textures[floor_texture][TEXTERE_WIDHT * cub->rfloor.ty + cub->rfloor.tx];
 			color = (color >> 1) & 8355711;
 			put_pixel(&cub->img, x, y, color);
-			//draw ceilling but need textere;
 			cub->rfloor.floor_x += cub->rfloor.floor_sx;
-            cub->rfloor.floor_y += cub->rfloor.floor_sy;
+			cub->rfloor.floor_y += cub->rfloor.floor_sy;
 			x++;
 		}
 		y++;
@@ -183,6 +210,7 @@ void	floor_cast(t_cub *cub)
 
 void	world_raycaster(t_cub *cub)
 {
+	draw_ceilling(cub);
 	floor_cast(cub);
 	wall_cast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 10:39:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/15 23:51:28 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/07 05:01:33 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,14 +36,6 @@
 // 	}
 // }
 
-void init_image(t_cub *cub)
-{
-    cub->img.img = mlx_new_image(cub->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
-    cub->img.addr = mlx_get_data_addr(cub->img.img, 
-                                       &cub->img.bits_per_pixel,
-                                       &cub->img.size_line,
-                                       &cub->img.endian);
-}
 
 void	render_world(t_cub *cub)
 {

@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/06 05:00:39 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/07 05:01:05 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ int	*load_tex(void *mlx, char *path)
 		mlx_destroy_image(mlx, img);
 		return (NULL);
 	}
-	addr = (int *)mlx_get_data_addr(img, &bpp, &sl, endian);
+	addr = (int *)mlx_get_data_addr(img, &bpp, &sl, &endian);
 	ppl = sl / sizeof(int);
 	y = 0;
 	while (y < height && y < TEXTERE_HEIGHT)
@@ -94,12 +94,9 @@ int	*load_tex(void *mlx, char *path)
 
 bool	ft_img_init(t_cub *cub)
 {
-	int	i;
-
 	cub->textures = malloc(sizeof(int *) * 7);
 	if (!cub->textures)
 		return (false);
-	i = 0;
 	cub->textures[0] = load_tex(cub->mlx.mlx, MM_FRAME_PATH);
 	cub->textures[1] = load_tex(cub->mlx.mlx, MM_WALL_PATH);
 	cub->textures[2] = load_tex(cub->mlx.mlx, MM_FLOOR_PATH);

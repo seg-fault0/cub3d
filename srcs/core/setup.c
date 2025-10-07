@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   setup.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 09:33:57 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/07 05:06:02 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ bool	setup_cub(t_cub *cub, char **av)
 	b_zero(cub);
 	if (ft_mlx_init(&cub->mlx) == false
 		||parse(cub, av[1]) == false
-		||img_init(cub) == false
+		||ft_img_init(cub) == false
+		||init_scr_img(cub)
 		||player_init(cub) == false)
 		return (ft_exit(cub, 1), false);
 	return (true);

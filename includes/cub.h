@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/06 04:54:54 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/07 05:00:09 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,6 +183,12 @@ typedef struct s_dda
 	int	line_height;
 	int	draw_start;
 	int	draw_end;
+	int	wall_x;
+	int	tex_x;
+	int	tex_y;
+	double	tex_pos;
+	double	tex_step;
+	int	tex_num;
 }t_dda;
 
 typedef struct s_cub
@@ -210,6 +216,9 @@ bool	ft_mlx_init(t_mlx *mlx);
 //img
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
+bool	ft_img_init(t_cub *cub);
+int	*load_tex(void *mlx, char *path);
+bool	init_scr_img(t_cub *cub);
 
 //mlx
 void	mlx_draw(t_cub *cub, int img, int x, int y);
