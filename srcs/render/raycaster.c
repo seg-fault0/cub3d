@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/08 00:57:35 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/08 03:20:12 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,12 +78,14 @@ void	check_raydir(t_dda *ray, t_player *player)
 	}
 }
 
-void	calc_line_height(t_dda *ray)
+void calc_line_height(t_dda *ray)
 {
 	if (ray->side == 0)
 		ray->walldist = ray->sidedistx - ray->deltadistx;
 	else
 		ray->walldist = ray->sidedisty - ray->deltadisty;
+	if (ray->walldist < 0.0001)
+		ray->walldist = 0.0001;
 	ray->line_height = (int)(WIN_HEIGHT / ray->walldist);
 	ray->draw_start = WIN_HEIGHT / 2 - ray->line_height / 2;
 	if (ray->draw_start < 0)
@@ -234,8 +236,23 @@ void	floor_cast(t_cub *cub)
 	}
 }
 
+void clear_image(t_cub *cub)
+{
+	int i;
+	int total_pixels;
+
+	total_pixels = WIN_WIDTH * WIN_HEIGHT;
+	i = 0;
+	while (i < total_pixels)
+	{
+		cub->img.addr[i] = 0;
+		i++;
+	}
+}
+
 void	world_raycaster(t_cub *cub)
 {
+	clear_image(cub);
 	draw_ceilling(cub);
 	draw_floor(cub);
 	// floor_cast(cub);

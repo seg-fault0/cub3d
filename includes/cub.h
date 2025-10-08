@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/07 05:00:09 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/08 03:19:05 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <unistd.h>
 # include <fcntl.h>
 # include <limits.h>
+# include <time.h>
 # include <math.h>
 
 // win_dimensions
@@ -176,7 +177,7 @@ typedef struct s_dda
     double sidedisty;
 	double deltadistx;
 	double deltadisty;
-	int	walldist;
+	double	walldist;
 	int	step_x;
 	int	step_y;
 	int	side;
