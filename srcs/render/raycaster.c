@@ -6,23 +6,29 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/07 02:49:46 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/08 00:57:35 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	draw_ceilling(t_cub *cub)
+void draw_ceilling(t_cub *cub)
 {
-	int	i;
-	int	x;
+	int y;
+	int x;
+	int index;
 
-	i = 0;
-	x = WIN_HEIGHT / 2 * WIN_WIDTH;
-	while (i < x)
+	y = 0;
+	while (y < WIN_HEIGHT / 2)
 	{
-		cub->img.addr[i] = cub->clr.sky;
-		i++;
+		x = 0;
+		while (x < WIN_WIDTH)
+		{
+			index = (y * WIN_WIDTH) + x;
+			cub->img.addr[index] = cub->clr.sky;
+			x++;
+		}
+		y++;
 	}
 }
 
@@ -178,6 +184,26 @@ void	init_floor_ray(t_cub *cub, int y)
 	cub->rfloor.floor_y = cub->player.yp + cub->rfloor.rowDistance * cub->rfloor.rayDirY0;
 }
 
+void draw_floor(t_cub *cub)
+{
+    int y;
+    int x;
+    int index;
+
+    y = WIN_HEIGHT / 2;
+    while (y < WIN_HEIGHT)
+    {
+        x = 0;
+        while (x < WIN_WIDTH)
+        {
+            index = y * cub->img.ppl + x;
+            cub->img.addr[index] = cub->clr.floor;
+            x++;
+        }
+        y++;
+    }
+}
+
 void	floor_cast(t_cub *cub)
 {
 	int	y;
@@ -197,7 +223,7 @@ void	floor_cast(t_cub *cub)
 			cub->rfloor.cell_y = (int)cub->rfloor.floor_y;
 			cub->rfloor.tx = (int)(TEXTERE_WIDHT * (cub->rfloor.floor_x - cub->rfloor.cell_x)) & (TEXTERE_WIDHT - 1);
 			cub->rfloor.ty = (int)(TEXTERE_HEIGHT * (cub->rfloor.floor_y - cub->rfloor.cell_y)) & (TEXTERE_HEIGHT - 1);
-			color = cub->textures[floor_texture][TEXTERE_WIDHT * cub->rfloor.ty + cub->rfloor.tx];
+			color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex_y + cub->dda.tex_x];
 			color = (color >> 1) & 8355711;
 			put_pixel(&cub->img, x, y, color);
 			cub->rfloor.floor_x += cub->rfloor.floor_sx;
@@ -211,7 +237,8 @@ void	floor_cast(t_cub *cub)
 void	world_raycaster(t_cub *cub)
 {
 	draw_ceilling(cub);
-	floor_cast(cub);
+	draw_floor(cub);
+	// floor_cast(cub);
 	wall_cast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.img, 0, 0);
 	return ;
