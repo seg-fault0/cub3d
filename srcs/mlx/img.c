@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/07 05:01:05 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/11 00:58:34 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	*mlx_xpm(void *mlx, char *path, int *width, int *height)
 
 bool	init_scr_img(t_cub *cub)
 {
-	cub->img.img = mlx_new_image(cub->mlx.mlx, WIN_HEIGHT, WIN_WIDTH);
+	cub->img.img = mlx_new_image(cub->mlx.mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!cub->img.img)
 		return (false);
 	cub->img.addr = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bits_per_pixel, &cub->img.size_line, &cub->img.endian);
@@ -55,41 +55,43 @@ bool	init_scr_img(t_cub *cub)
 	return (true);
 }
 
-int	*load_tex(void *mlx, char *path)
+int *load_tex(void *mlx, char *path)
 {
-	void	*img;
-	int		*addr;
-	int		*buffer;
-	int     bpp, sl, endian, ppl;
-	int		height;
-	int		width;
-	int		x;
-	int		y;
+    t_imgs   tex;
+    int     *buffer;
+    int     x, y;
 
-	img	= mlx_xpm_file_to_image(mlx, path, &height, &width);
-	if (!img)
-		return (NULL);
-	buffer = malloc(sizeof(int) * TEXTERE_HEIGHT * TEXTERE_HEIGHT);
-	if (!buffer)
-	{
-		mlx_destroy_image(mlx, img);
-		return (NULL);
-	}
-	addr = (int *)mlx_get_data_addr(img, &bpp, &sl, &endian);
-	ppl = sl / sizeof(int);
-	y = 0;
-	while (y < height && y < TEXTERE_HEIGHT)
-	{
-		x = 0;
-		while (x < width && x < TEXTERE_WIDHT)
-		{
-			buffer[y * TEXTERE_WIDHT + x] = addr[y * ppl + x];
-			x++;
-		}
-		y++;
-	}
-	mlx_destroy_image(mlx, img);
-	return (buffer);
+    tex.img = mlx_xpm_file_to_image(mlx, path, &tex.width, &tex.height);
+    if (!tex.img)
+        return (NULL);
+    
+    tex.addr = (int *)mlx_get_data_addr(tex.img, &tex.bits_per_pixel, &tex.size_line, &tex.endian);
+    if (!tex.addr)
+    {
+        mlx_destroy_image(mlx, tex.img);
+        return (NULL);
+    }
+    buffer = malloc(sizeof(int) * TEXTERE_HEIGHT * TEXTERE_WIDHT);
+    if (!buffer)
+    {
+        mlx_destroy_image(mlx, tex.img);
+        return (NULL);
+    }  
+    int line_len = tex.size_line / (tex.bits_per_pixel / 8);
+    y = 0;
+    while (y < tex.height && y < TEXTERE_HEIGHT)
+    {
+        x = 0;
+        while (x < tex.width && x < TEXTERE_WIDHT)
+        {
+            buffer[y * TEXTERE_WIDHT + x] = tex.addr[y * line_len + x];
+            x++;
+        }
+        y++;
+    }
+    
+    mlx_destroy_image(mlx, tex.img);
+    return (buffer);
 }
 
 bool	ft_img_init(t_cub *cub)
@@ -110,6 +112,7 @@ bool	ft_img_init(t_cub *cub)
 		return (err_msg(ERR_IMG), false);
 	return (true);
 }
+
 
 bool	img_init(t_cub *cub)
 {

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:47:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/09 02:48:58 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	mlx_draw(t_cub *cub, int img, int x, int y)
 	win = cub->mlx.win;
 	if (img == MM_FLOOR)
 		mlx_put_image_to_window(mlx, win, cub->img.mm_floor, x, y);
-	else if (img == MM_WALL)
+	else if (img == MM_WALL && mlx && win && cub->img.mm_wall)
 		mlx_put_image_to_window(mlx, win, cub->img.mm_wall, x, y);
 	else if (img == MM_FRAME)
 		draw_no_bg(cub, cub->img.mm_frame, x, y);

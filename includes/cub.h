@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/08 03:19:05 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/10 23:48:59 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,11 +91,13 @@ typedef struct s_imgs
 	int		*w_wall;
 	int		tex_size;
 	void	*img;
-	int	*addr;
+	int		*addr;
 	int		bits_per_pixel;
 	int		size_line;
 	int		endian;
 	int		ppl;
+	int		height;
+	int		width;
 }t_imgs;
 
 typedef struct s_mlx
@@ -231,6 +233,7 @@ void	free_img(t_cub *cub);
 //world	render
 void	render_world(t_cub *cub);
 void	world_raycaster(t_cub *cub);
+void	rotate_vectores(t_player *player, double delta_x);
 
 //player
 bool	player_init(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/08 03:20:12 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/11 00:59:41 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,33 +95,48 @@ void calc_line_height(t_dda *ray)
 		ray->draw_end = WIN_HEIGHT - 1;
 }
 
-void draw_wall_stripe(t_cub *cub, int x)
+
+void	draw_wall_stripe(t_cub *cub, int x)
 {
-	int	 y;
-	int	 color;
-		
+	int  y;
+	int  color;
+	double wall_x;
+
 	cub->dda.tex_step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
-	cub->dda.tex_pos = (cub->dda.draw_start - WIN_HEIGHT / 2 + cub->dda.line_height / 2) * cub->dda.tex_step;
+	cub->dda.tex_pos = (cub->dda.draw_start - WIN_HEIGHT / 2 
+				+ cub->dda.line_height / 2) * cub->dda.tex_step;
 	if (cub->dda.side == 0)
 	{
 		if (cub->dda.raydir_x > 0)
-			cub->dda.tex_num = 0;
+			cub->dda.tex_num = 5;
 		else
-			cub->dda.tex_num = 1;
+			cub->dda.tex_num = 6;
 	}
 	else
 	{
 		if (cub->dda.raydir_y > 0)
-			cub->dda.tex_num = 2;
+			cub->dda.tex_num = 4;
 		else
 			cub->dda.tex_num = 3;
 	}
+	if (cub->dda.side == 0)
+		wall_x = cub->player.yp + cub->dda.walldist * cub->dda.raydir_y;
+	else
+		wall_x = cub->player.xp + cub->dda.walldist * cub->dda.raydir_x;
+	wall_x -= floor(wall_x);
+	int tex_x = (int)(wall_x * (double)TEXTERE_WIDHT);
+	if (cub->dda.side == 0 && cub->dda.raydir_x > 0)
+		tex_x = TEXTERE_WIDHT - tex_x - 1;
+	if (cub->dda.side == 1 && cub->dda.raydir_y < 0)
+		tex_x = TEXTERE_WIDHT - tex_x - 1;
+	if (tex_x < 0) tex_x = 0;
+	if (tex_x >= TEXTERE_WIDHT) tex_x = TEXTERE_WIDHT - 1;
 	y = cub->dda.draw_start;
 	while (y < cub->dda.draw_end)
 	{
 		cub->dda.tex_y = (int)cub->dda.tex_pos & (TEXTERE_HEIGHT - 1);
 		cub->dda.tex_pos += cub->dda.tex_step;
-		color = cub->textures[cub->dda.tex_num][TEXTERE_HEIGHT * cub->dda.tex_y + cub->dda.tex_x];
+		color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex_y + tex_x];
 		if (cub->dda.side == 1)
 			color = (color >> 1) & 8355711;
 		put_pixel(&cub->img, x, y, color);
@@ -141,6 +156,10 @@ void	calc_wall_texture_x(t_dda *ray, t_player *player)
 		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
 	if (ray->side == 1 && ray->raydir_y < 0)
 		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
+	if (ray->tex_x < 0)
+        ray->tex_x = 0;
+    if (ray->tex_x >= TEXTERE_WIDHT)
+        ray->tex_x = TEXTERE_WIDHT - 1;
 }
 
 void	wall_cast(t_cub *cub)
@@ -160,7 +179,7 @@ void	wall_cast(t_cub *cub)
 			if (cub->dda.map_x >= 0 && cub->dda.map_y >= 0 &&
 				cub->dda.map_y < cub->parse.max_map_y &&
 				cub->dda.map_x < ft_strlen(cub->parse.map[cub->dda.map_y]) &&
-    			cub->parse.map[cub->dda.map_y][cub->dda.map_x] != '0')
+    			cub->parse.map[cub->dda.map_y][cub->dda.map_x] == '1')
     				hit = 1;
 		}
 		calc_line_height(&cub->dda);

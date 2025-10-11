@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/07 23:31:35 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/09 02:50:22 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ bool	setup_cub(t_cub *cub, char **av)
 	if (ft_mlx_init(&cub->mlx) == false
 		||parse(cub, av[1]) == false
 		||ft_img_init(cub) == false
+		||img_init(cub) == false
 		||init_scr_img(cub) == false
 		||player_init(cub) == false)
 		return (ft_exit(cub, 1), false);

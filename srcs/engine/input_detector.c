@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/15 23:29:57 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/10 08:01:06 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,13 +48,11 @@ int	key_release(int key, t_key *keys)
 	return (0);
 }
 
-void	rotate_vectores(t_player *player, int delta_x)
+void	rotate_vectores(t_player *player, double delta_x)
 {
-	// double	angle;
 	int		x;
 	int		y;
 
-	// angle = delta_x * ROTATION_SPEED;
 	x = player->dir_x;
 	y = player->dir_y;
 	player->dir_x = x * cos(delta_x) - y * sin(delta_x);
