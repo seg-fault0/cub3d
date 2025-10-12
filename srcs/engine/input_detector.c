@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/10 08:01:06 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/11 21:13:20 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,6 @@ int	mouse_move(int x, int y, t_player *player)
 		player->angle += (ROTATION_SPEED / 15);
 	else if (x < old_x)
 		player->angle -= (ROTATION_SPEED / 15);
-	rotate_vectores(player, (x - old_x));
 	old_x = x;
 	return (0);
 }

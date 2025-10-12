@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/11 01:16:38 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/11 21:11:52 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,14 +46,8 @@ void	player_mouvement(t_cub *cub)
 		cub->player.yp += sin(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
 	}
 	if (cub->key.r_arr == true)
-	{
 		cub->player.angle += ROTATION_SPEED;
-		update_vectors_from_angle(&cub->player);
-	}
 	if (cub->key.l_arr == true)
-	{
 		cub->player.angle -= ROTATION_SPEED;
-		update_vectors_from_angle(&cub->player);
-	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/10 23:48:59 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/11 22:41:51 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,26 +148,6 @@ typedef struct s_parse
 	int		max_map_y;
 }t_parse;
 
-typedef struct s_floor
-{
-	float rayDirX0;
-	float rayDirY0;
-    float rayDirX1;
-    float rayDirY1;
-	float rowDistance;
-	int				p;
-	float	posz;
-	float	floor_sx;
-	float	floor_sy;
-	float	floor_x;
-	float	floor_y;
-	float	cell_x;
-	float	cell_y;
-	int	tx;
-	int	ty;
-}t_floor;
-
-
 typedef struct s_dda
 {
 	int	map_x;
@@ -204,7 +184,6 @@ typedef struct s_cub
 	int			**textures;
 	t_player	player;
 	t_dda		dda;
-	t_floor		rfloor;
 }t_cub;
 
 //core
@@ -240,6 +219,7 @@ bool	player_init(t_cub *cub);
 void	player(t_cub *cub);
 void	player_mouvement(t_cub *cub);
 bool	collisions(t_cub *cub);
+void update_vectors_from_angle(t_player *player);
 
 //engine
 int		game_cycle(t_cub *cub);

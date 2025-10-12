@@ -6,7 +6,7 @@
 /*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/11 00:59:41 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 09:25:00 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	check_raydir(t_dda *ray, t_player *player)
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedistx = (ray->map_x + 1.0 - player->xp) * ray->deltadistx;
+		ray->sidedistx = (ray->map_x + 1 - player->xp) * ray->deltadistx;
 	}
 	if (ray->raydir_y < 0)
 	{
@@ -74,7 +74,7 @@ void	check_raydir(t_dda *ray, t_player *player)
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedisty = (player->yp - ray->map_y + 1) * ray->deltadisty;
+		ray->sidedisty = (ray->map_y + 1 - player->yp) * ray->deltadisty;
 	}
 }
 
@@ -190,70 +190,26 @@ void	wall_cast(t_cub *cub)
 	return ;
 }
 
-void	init_floor_ray(t_cub *cub, int y)
-{
-	cub->rfloor.rayDirX0 = cub->player.dir_x - cub->player.plane_x;
-	cub->rfloor.rayDirY0 = cub->player.dir_y - cub->player.plane_y;
-	cub->rfloor.rayDirX1 = cub->player.dir_x + cub->player.plane_x;
-	cub->rfloor.rayDirY1 = cub->player.dir_y + cub->player.plane_y;
-	cub->rfloor.p = y - WIN_HEIGHT / 2;
-	cub->rfloor.posz = 0.5 * WIN_HEIGHT;
-	cub->rfloor.rowDistance = cub->rfloor.posz / cub->rfloor.p;
-	cub->rfloor.floor_sx = cub->rfloor.rowDistance * (cub->rfloor.rayDirX1 - cub->rfloor.rayDirX0) / WIN_HEIGHT;
-	cub->rfloor.floor_sy = cub->rfloor.rowDistance * (cub->rfloor.rayDirY1 - cub->rfloor.rayDirY0) / WIN_HEIGHT;
-	cub->rfloor.floor_x = cub->player.xp + cub->rfloor.rowDistance * cub->rfloor.rayDirX0;
-	cub->rfloor.floor_y = cub->player.yp + cub->rfloor.rowDistance * cub->rfloor.rayDirY0;
-}
-
 void draw_floor(t_cub *cub)
 {
-    int y;
-    int x;
-    int index;
+	int y;
+	int x;
+	int index;
 
-    y = WIN_HEIGHT / 2;
-    while (y < WIN_HEIGHT)
-    {
-        x = 0;
-        while (x < WIN_WIDTH)
-        {
-            index = y * cub->img.ppl + x;
-            cub->img.addr[index] = cub->clr.floor;
-            x++;
-        }
-        y++;
-    }
-}
-
-void	floor_cast(t_cub *cub)
-{
-	int	y;
-	int	x;
-	int	color;
-    int	floor_texture;
-
-	y = 0;
-	floor_texture = 2;
+	y = WIN_HEIGHT / 2;
 	while (y < WIN_HEIGHT)
 	{
-		init_floor_ray(cub, y);
 		x = 0;
-		while(x < WIN_WIDTH)
+		while (x < WIN_WIDTH)
 		{
-			cub->rfloor.cell_x = (int)cub->rfloor.floor_x;
-			cub->rfloor.cell_y = (int)cub->rfloor.floor_y;
-			cub->rfloor.tx = (int)(TEXTERE_WIDHT * (cub->rfloor.floor_x - cub->rfloor.cell_x)) & (TEXTERE_WIDHT - 1);
-			cub->rfloor.ty = (int)(TEXTERE_HEIGHT * (cub->rfloor.floor_y - cub->rfloor.cell_y)) & (TEXTERE_HEIGHT - 1);
-			color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex_y + cub->dda.tex_x];
-			color = (color >> 1) & 8355711;
-			put_pixel(&cub->img, x, y, color);
-			cub->rfloor.floor_x += cub->rfloor.floor_sx;
-			cub->rfloor.floor_y += cub->rfloor.floor_sy;
+			index = y * cub->img.ppl + x;
+			cub->img.addr[index] = cub->clr.floor;
 			x++;
 		}
 		y++;
 	}
 }
+
 
 void clear_image(t_cub *cub)
 {
@@ -271,10 +227,10 @@ void clear_image(t_cub *cub)
 
 void	world_raycaster(t_cub *cub)
 {
+	update_vectors_from_angle(&cub->player);
 	clear_image(cub);
 	draw_ceilling(cub);
 	draw_floor(cub);
-	// floor_cast(cub);
 	wall_cast(cub);
 	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.img, 0, 0);
 	return ;
