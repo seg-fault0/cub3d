@@ -3,63 +3,56 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/09 02:48:58 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:56:00 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static int	get_pixel(void *img, int x, int y)
+void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
-	char	*data;
-	int		bpp;
-	int		size_line;
-	int		offset;
-	int		color;
+	char	*pixel;
 
-	data = mlx_get_data_addr(img, &bpp, &size_line, &offset);
-	offset = y * size_line + x * (bpp / 8);
-	color = *(int *)(data + offset);
-	return (color);
+	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
+		return;
+	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
+	*(unsigned int *)pixel = color;
 }
 
-static void	draw_no_bg(t_cub *cub, t_img img, int x0, int y0)
+void	draw_img_to_img(t_img *dst, t_img *src, int px, int py)
 {
-	int	x;
-	int	y;
-	int	color;
-	int	transp;
+	int		x;
+	int		y;
+	int		color;
+	char	*dst_pixel;
+	char	*src_pixel;
+	int		transp = 0xFF00FF;
 
-	transp = 0xFF00FF;
 	y = 0;
-	while (y < img.height)
+	while (y < src->height)
 	{
-		x = 0;
-		while (x < img.width)
+		if (py + y >= 0 && py + y < dst->height)
 		{
-			color = get_pixel(img.p, x, y);
-			if (color != transp)
-				mlx_pixel_put(cub->mlx.mlx, cub->mlx.win, x0 + x, y0 + y, color);
-			x++;
+			x = 0;
+			while (x < src->width)
+			{
+				if (px + x >= 0 && px + x < dst->width)
+				{
+					src_pixel = src->addr + (y * src->size_line + x * (src->bpp / 8));
+					color = *(unsigned int *)src_pixel;
+					if (color != transp)
+					{
+						dst_pixel = dst->addr
+							+ ((py + y) * dst->size_line + (px + x) * (dst->bpp / 8));
+						*(unsigned int *)dst_pixel = color;
+					}
+				}
+				x++;
+			}
 		}
 		y++;
 	}
-}
-
-void	mlx_draw(t_cub *cub, int img, int x, int y)
-{
-	void	*mlx;
-	void	*win;
-
-	mlx = cub->mlx.mlx;
-	win = cub->mlx.win;
-	if (img == MM_FLOOR)
-		mlx_put_image_to_window(mlx, win, cub->img.mm_floor, x, y);
-	else if (img == MM_WALL && mlx && win && cub->img.mm_wall)
-		mlx_put_image_to_window(mlx, win, cub->img.mm_wall, x, y);
-	else if (img == MM_FRAME)
-		draw_no_bg(cub, cub->img.mm_frame, x, y);
 }

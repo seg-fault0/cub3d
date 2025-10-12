@@ -3,23 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   mouvement.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/11 21:11:52 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 10:28:07 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-
-void update_vectors_from_angle(t_player *player)
-{
-	player->dir_x = cos(player->angle);
-	player->dir_y = sin(player->angle);
-	player->plane_x = -sin(player->angle) * 0.66;
-	player->plane_y = cos(player->angle) * 0.66;
-}
 
 void	player_mouvement(t_cub *cub)
 {

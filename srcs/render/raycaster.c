@@ -3,34 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 09:25:00 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 11:18:47 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-void draw_ceilling(t_cub *cub)
-{
-	int y;
-	int x;
-	int index;
-
-	y = 0;
-	while (y < WIN_HEIGHT / 2)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			index = (y * WIN_WIDTH) + x;
-			cub->img.addr[index] = cub->clr.sky;
-			x++;
-		}
-		y++;
-	}
-}
 
 static void	ft_check(t_cub *cub)
 {
@@ -46,12 +26,6 @@ static void	ft_check(t_cub *cub)
 		cub->dda.map_y += cub->dda.step_y;
 		cub->dda.side = 1;
 	}
-}
-
-void	put_pixel(t_imgs *img,int x, int y, int color)
-{
-	if (x >= 0 && x < WIN_WIDTH && y >= 0 && y < WIN_HEIGHT)
-		img->addr[y * img->ppl + x] = color;
 }
 
 void	check_raydir(t_dda *ray, t_player *player)
@@ -139,7 +113,7 @@ void	draw_wall_stripe(t_cub *cub, int x)
 		color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex_y + tex_x];
 		if (cub->dda.side == 1)
 			color = (color >> 1) & 8355711;
-		put_pixel(&cub->img, x, y, color);
+		put_pixel_to_img(&cub->img.display, x, y, color);
 		y++;
 	}
 }
@@ -190,48 +164,17 @@ void	wall_cast(t_cub *cub)
 	return ;
 }
 
-void draw_floor(t_cub *cub)
+void update_vectors_from_angle(t_player *player)
 {
-	int y;
-	int x;
-	int index;
-
-	y = WIN_HEIGHT / 2;
-	while (y < WIN_HEIGHT)
-	{
-		x = 0;
-		while (x < WIN_WIDTH)
-		{
-			index = y * cub->img.ppl + x;
-			cub->img.addr[index] = cub->clr.floor;
-			x++;
-		}
-		y++;
-	}
-}
-
-
-void clear_image(t_cub *cub)
-{
-	int i;
-	int total_pixels;
-
-	total_pixels = WIN_WIDTH * WIN_HEIGHT;
-	i = 0;
-	while (i < total_pixels)
-	{
-		cub->img.addr[i] = 0;
-		i++;
-	}
+	player->dir_x = cos(player->angle);
+	player->dir_y = sin(player->angle);
+	player->plane_x = -sin(player->angle) * 0.66;
+	player->plane_y = cos(player->angle) * 0.66;
 }
 
 void	world_raycaster(t_cub *cub)
 {
-	update_vectors_from_angle(&cub->player);
-	clear_image(cub);
-	draw_ceilling(cub);
-	draw_floor(cub);
+	update_vectors_from_angle(&cub->player);;
 	wall_cast(cub);
-	mlx_put_image_to_window(cub->mlx.mlx, cub->mlx.win, cub->img.img, 0, 0);
 	return ;
 }

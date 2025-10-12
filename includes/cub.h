@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 09:35:06 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 10:39:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,29 +75,27 @@
 //structs
 typedef struct s_img
 {
-	void	*p;
+	void	*img;
+	char	*addr;
+	int		bpp;
+	int		ppl;
+	int		size_line;
+	int		endian;
 	int		height;
 	int		width;
+	int		tex_size;
 }t_img;
 
 typedef struct s_imgs
 {
+	t_img	display;
 	t_img	mm_frame;
-	int		*mm_wall;
-	int		*mm_floor;
-	int		*n_wall;
-	int		*s_wall;
-	int		*e_wall;
-	int		*w_wall;
-	int		tex_size;
-	void	*img;
-	int		*addr;
-	int		bits_per_pixel;
-	int		size_line;
-	int		endian;
-	int		ppl;
-	int		height;
-	int		width;
+	t_img	mm_wall;
+	t_img	mm_floor;
+	t_img	n_wall;
+	t_img	s_wall;
+	t_img	e_wall;
+	t_img	w_wall;
 }t_imgs;
 
 typedef struct s_mlx
@@ -199,11 +197,10 @@ bool	ft_mlx_init(t_mlx *mlx);
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 bool	ft_img_init(t_cub *cub);
-int	*load_tex(void *mlx, char *path);
-bool	init_scr_img(t_cub *cub);
 
-//mlx
-void	mlx_draw(t_cub *cub, int img, int x, int y);
+//draw
+void	draw_img_to_img(t_img *dst, t_img *src, int px, int py);
+void	put_pixel_to_img(t_img *img, int x, int y, int color);
 
 //free
 void	free_mlx(t_mlx mlx);
@@ -235,6 +232,8 @@ bool	get_map(t_cub *cub);
 void	calc_line_height(t_dda *ray);
 void	update_draw(t_cub *cub, t_dda *ray, int x);
 void	init_ray(t_dda *ray, t_player *player, int x);
+void	wall_cast(t_cub *cub);
+
 //minimap
 void	minimap(t_cub *cub);
 void	minimap_rays(t_cub *cub);

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:20:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 08:10:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 10:41:50 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ static void	draw_ray(t_cub *cub, float angle)
 	{
 		if (ray_mm_border(px, py, rx, ry) == true)
 			break ;
-		mlx_pixel_put(cub->mlx.mlx, cub->mlx.win,
+		put_pixel_to_img(&cub->img.display,
 			(rx - px) * TILE_SIZE + 210,
 			(ry - py) * TILE_SIZE + 110,
 			RAY_COLOR);
