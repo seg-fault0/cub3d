@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:03 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 15:26:02 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:14:59 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,18 @@ int	*load_tex(t_img *img)
 	return (buffer);
 }
 
+int	*load_tex_animation(t_img demon[DEMON_NBR])
+{
+	static int	i;
+	static int	*buffer;
+	if (i == DEMON_NBR)
+		i = 0;
+	free(buffer);
+	buffer = load_tex(&demon[i]);
+	i++;
+	return (buffer);
+}
+
 bool	texture_loader(t_cub *cub)
 {
 	cub->textures[0] = load_tex(&cub->img.mm_frame);
@@ -48,9 +60,10 @@ bool	texture_loader(t_cub *cub)
 	cub->textures[4] = load_tex(&cub->img.s_wall);
 	cub->textures[5] = load_tex(&cub->img.e_wall);
 	cub->textures[6] = load_tex(&cub->img.e_wall);
+	cub->textures[7] = load_tex_animation(cub->img.demon);
 	if (!cub->textures[0] || !cub->textures[1] || !cub->textures[2]
 		|| !cub->textures[3] || !cub->textures[4] || !cub->textures[5]
-		|| !cub->textures[6])
+		|| !cub->textures[6] || !cub->textures[7])
 		return (false);
 	return (true);
 }

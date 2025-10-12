@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:03:59 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:15:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
 
 //img
-# define TEXTURE_NBR 7
+# define TEXTURE_NBR 8
 # define DEMON_NBR 7
 
 /*
@@ -236,6 +236,7 @@ void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 void	mlx_xpm(void *mlx, char *path, t_img *img);
 bool	texture_loader(t_cub *cub);
+int		*load_tex_animation(t_img demon[DEMON_NBR]);
 void	mlx_xpm_animaton(void *mlx, t_img demon[DEMON_NBR]);
 void	free_animation(void *mlx, t_img demon[DEMON_NBR]);
 
