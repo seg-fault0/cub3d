@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 13:35:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:40:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,7 @@
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
 
 //img
-# define MM_FRAME 1
-# define MM_WALL 2
-# define MM_FLOOR 3
-# define PLAYER 4
+# define TEXTURE_NBR 7
 
 /*
 *******************************************
@@ -218,7 +215,7 @@ typedef struct s_cub
 	t_key		key;
 	t_imgs		img;
 	t_clr		clr;
-	int			*textures[7];
+	int			*textures[TEXTURE_NBR];
 	t_player	player;
 	t_dda		dda;
 }t_cub;

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 13:35:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:46:20 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	*load_tex(t_img *img)
 		return (NULL);
 	buffer = malloc(sizeof(int) * img->width * img->height);
 	if (!buffer)
-		return (NULL);
+		return (err_msg(ERR_MALLOC), NULL);
 	y = 0;
 	while (y < img->height)
 	{
@@ -77,7 +77,7 @@ bool	texture_loader(t_cub *cub)
 	if (!cub->textures[0] || !cub->textures[1] || !cub->textures[2]
 		|| !cub->textures[3] || !cub->textures[4] || !cub->textures[5]
 		|| !cub->textures[6])
-		return (err_msg(ERR_IMG), false);
+		return (false);
 	return (true);
 }
 
