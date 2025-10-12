@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 15:59:52 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:53:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	free_loaded_textures(int *textures[])
 {
 	int	i;
-	
+
 	i = -1;
 	while (++i < TEXTURE_NBR)
 		free(textures[i]);

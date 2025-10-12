@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:44:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:56:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@
 //img
 # define TEXTURE_NBR 8
 # define DEMON_NBR 7
+# define TRANSP 0xFF00FF
 
 /*
 *******************************************
@@ -88,7 +89,6 @@ typedef struct s_ivector2
 	int	y;
 }t_ivector2;
 
-
 /*
 ****************************************
 ************     DDA    ****************
@@ -103,13 +103,13 @@ typedef struct s_tex
 	float	step;
 }t_tex;
 
-typedef	struct s_draw
+typedef struct s_draw
 {
 	int	start;
 	int	end;
 }t_draw;
 
-typedef	struct s_wall
+typedef struct s_wall
 {
 	float	dist;
 	int		x;
@@ -118,9 +118,9 @@ typedef	struct s_wall
 typedef struct s_dda
 {
 	t_ivector2	map;
-	t_fvector2	rayDir;
+	t_fvector2	ray_dir;
 	t_fvector2	delta;
-	t_fvector2	sideDist;
+	t_fvector2	side_dist;
 	t_ivector2	step;
 	t_tex		tex;
 	t_draw		draw;
@@ -130,7 +130,6 @@ typedef struct s_dda
 	int			line_height;
 	int			tex_num;
 }t_dda;
-
 
 /*
 ********************************************
@@ -187,8 +186,8 @@ typedef struct s_player
 	t_fvector2	pos;
 	t_fvector2	dir;
 	t_fvector2	plane;
-	int		has_move;
-	float	angle;
+	int			has_move;
+	float		angle;
 }t_player;
 
 typedef struct s_clr
@@ -209,8 +208,6 @@ typedef struct s_parse
 	char	**map;
 	int		max_map_y;
 }t_parse;
-
-
 
 typedef struct s_cub
 {

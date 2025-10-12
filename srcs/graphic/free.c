@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:30:08 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:41:54 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:56:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	free_animation(void *mlx, t_img demon[DEMON_NBR])
 	int	i;
 
 	i = -1;
-	while(++i < DEMON_NBR)
+	while (++i < DEMON_NBR)
 	{
 		if (demon[i].img)
 			mlx_destroy_image(mlx, demon[i].img);

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:03 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:14:59 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:54:50 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,8 @@ int	*load_tex(t_img *img)
 		x = 0;
 		while (x < img->width)
 		{
-			pixel = *(int *)(img->addr + (y * img->size_line + x * (img->bpp / 8)));
+			pixel = *(int *)(img->addr
+					+ (y * img->size_line + x * (img->bpp / 8)));
 			buffer[y * img->width + x] = pixel;
 			x++;
 		}
@@ -43,6 +44,7 @@ int	*load_tex_animation(t_img demon[DEMON_NBR])
 {
 	static int	i;
 	static int	*buffer;
+
 	if (i == DEMON_NBR)
 		i = 0;
 	free(buffer);

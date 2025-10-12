@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 10:56:00 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:53:11 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 	char	*pixel;
 
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
-		return;
+		return ;
 	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
 	*(unsigned int *)pixel = color;
 }
@@ -29,7 +29,6 @@ void	draw_img_to_img(t_img *dst, t_img *src, int px, int py)
 	int		color;
 	char	*dst_pixel;
 	char	*src_pixel;
-	int		transp = 0xFF00FF;
 
 	y = 0;
 	while (y < src->height)
@@ -43,7 +42,7 @@ void	draw_img_to_img(t_img *dst, t_img *src, int px, int py)
 				{
 					src_pixel = src->addr + (y * src->size_line + x * (src->bpp / 8));
 					color = *(unsigned int *)src_pixel;
-					if (color != transp)
+					if (color != TRANSP)
 					{
 						dst_pixel = dst->addr
 							+ ((py + y) * dst->size_line + (px + x) * (dst->bpp / 8));

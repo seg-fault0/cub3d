@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:42:11 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:55:57 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ void	mlx_xpm(void *mlx, char *path, t_img *img)
 	img->img = mlx_xpm_file_to_image(mlx, path, &img->width, &img->height);
 	if (!img->img)
 		return ;
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->size_line, &img->endian);
+	img->addr = mlx_get_data_addr(img->img,
+			&img->bpp, &img->size_line, &img->endian);
 	if (!img->addr)
 		return ;
 	img->ppl = img->size_line / (img->bpp / 8);
@@ -28,7 +29,8 @@ void	mlx_vimg(void *mlx, t_img *img)
 	img->img = mlx_new_image(mlx, WIN_WIDTH, WIN_HEIGHT);
 	if (!img->img)
 		return ;
-	img->addr = mlx_get_data_addr(img->img, &img->bpp, &img->size_line, &img->endian);
+	img->addr = mlx_get_data_addr(img->img,
+			&img->bpp, &img->size_line, &img->endian);
 	if (!img->addr)
 		return ;
 	img->ppl = img->size_line / (img->bpp / 8);
@@ -51,10 +53,10 @@ bool	img_init(t_cub *cub)
 	mlx_xpm(mlx, cub->parse.e_wall, &cub->img.e_wall);
 	mlx_xpm(mlx, cub->parse.w_wall, &cub->img.w_wall);
 	mlx_xpm_animaton(mlx, cub->img.demon);
-	if (!cub->img.mm_frame.img || !cub->img.mm_wall.img || !cub->img.mm_floor.img
+	if (!cub->img.mm_frame.img || !cub->img.mm_wall.img || !cub->img.display.img
 		|| !cub->img.n_wall.img || !cub->img.s_wall.img || !cub->img.e_wall.img
-		|| !cub->img.w_wall.img || !cub->img.display.img || !cub->img.demon[0].img
-		|| !cub->img.mm_demon.img)
+		|| !cub->img.w_wall.img || !cub->img.demon[0].img
+		|| !cub->img.mm_demon.img || !cub->img.mm_floor.img)
 		return (err_msg(ERR_IMG), false);
 	return (true);
 }

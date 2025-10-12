@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:58:45 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:51:10 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,3 @@ void	player_mouvement(t_cub *cub)
 	if (cub->key.l_arr == true)
 		cub->player.angle -= ROTATION_SPEED;
 }
-
