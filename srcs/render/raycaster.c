@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:04:34 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:05:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -168,8 +168,8 @@ void update_vectors_from_angle(t_player *player)
 {
 	player->dir.x = cos(player->angle);
 	player->dir.y = sin(player->angle);
-	player->plane_x = -sin(player->angle) * 0.66;
-	player->plane_y = cos(player->angle) * 0.66;
+	player->plane.x = -sin(player->angle) * 0.66;
+	player->plane.y = cos(player->angle) * 0.66;
 }
 
 void	world_raycaster(t_cub *cub)
