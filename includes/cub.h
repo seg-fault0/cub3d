@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:15:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:44:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 # define MM_FRAME_PATH "./textures/frame.xpm"
 # define MM_WALL_PATH "./textures/mm_wall.xpm"
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
+# define MM_DEMON_PATH "./textures/mm_demon.xpm"
 
 //img
 # define TEXTURE_NBR 8
@@ -156,6 +157,7 @@ typedef struct s_imgs
 	t_img	mm_frame;
 	t_img	mm_wall;
 	t_img	mm_floor;
+	t_img	mm_demon;
 	t_img	n_wall;
 	t_img	s_wall;
 	t_img	e_wall;

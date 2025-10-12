@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:20:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:57:55 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:43:36 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,8 @@ static void	draw_ray(t_cub *cub, float angle)
 	
 	ray = pos = cub->player.pos;
 	i = 0;
-	while (cub->parse.map[(int)ray.y][(int)ray.x] != '1')
+	while (cub->parse.map[(int)ray.y][(int)ray.x] != '1'
+		&& cub->parse.map[(int)ray.y][(int)ray.x] != 'D')
 	{
 		if (ray_mm_border(pos, ray) == true)
 			break ;

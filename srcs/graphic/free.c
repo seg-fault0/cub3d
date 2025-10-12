@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:30:08 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 15:57:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 16:41:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ void	free_img(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.w_wall.img);
 	if (cub->img.display.img)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.display.img);
+	if (cub->img.mm_demon.img)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_demon.img);
 }
 
 void	free_animation(void *mlx, t_img demon[DEMON_NBR])
