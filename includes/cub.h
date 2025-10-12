@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:07:06 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:11:05 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,8 +158,7 @@ typedef struct s_parse
 typedef struct s_dda
 {
 	t_ivector2	map;
-	double	raydir_x;
-	double	raydir_y;
+	t_fvector2	raydir;
 	double	camera_x;
 	double sidedistx;
     double sidedisty;

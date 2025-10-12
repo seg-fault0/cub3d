@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:09:51 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:14:02 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ static void	ft_check(t_cub *cub)
 
 void	check_raydir(t_dda *ray, t_player *player)
 {
-	if (ray->raydir_x < 0)
+	if (ray->raydir.x < 0)
 	{
 		ray->step_x = -1;
 		ray->sidedistx = (player->pos.x - ray->map.x) * ray->deltadistx;
@@ -40,7 +40,7 @@ void	check_raydir(t_dda *ray, t_player *player)
 		ray->step_x = 1;
 		ray->sidedistx = (ray->map.x + 1 - player->pos.x) * ray->deltadistx;
 	}
-	if (ray->raydir_y < 0)
+	if (ray->raydir.y < 0)
 	{
 		ray->step_y = -1;
 		ray->sidedisty = (player->pos.y - ray->map.y) * ray->deltadisty;
@@ -81,27 +81,27 @@ void	draw_wall_stripe(t_cub *cub, int x)
 				+ cub->dda.line_height / 2) * cub->dda.tex_step;
 	if (cub->dda.side == 0)
 	{
-		if (cub->dda.raydir_x > 0)
+		if (cub->dda.raydir.x > 0)
 			cub->dda.tex_num = 5;
 		else
 			cub->dda.tex_num = 6;
 	}
 	else
 	{
-		if (cub->dda.raydir_y > 0)
+		if (cub->dda.raydir.y > 0)
 			cub->dda.tex_num = 4;
 		else
 			cub->dda.tex_num = 3;
 	}
 	if (cub->dda.side == 0)
-		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir_y;
+		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir.y;
 	else
-		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir_x;
+		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir.x;
 	wall_x -= floor(wall_x);
 	int tex_x = (int)(wall_x * (double)TEXTERE_WIDHT);
-	if (cub->dda.side == 0 && cub->dda.raydir_x > 0)
+	if (cub->dda.side == 0 && cub->dda.raydir.x > 0)
 		tex_x = TEXTERE_WIDHT - tex_x - 1;
-	if (cub->dda.side == 1 && cub->dda.raydir_y < 0)
+	if (cub->dda.side == 1 && cub->dda.raydir.y < 0)
 		tex_x = TEXTERE_WIDHT - tex_x - 1;
 	if (tex_x < 0) tex_x = 0;
 	if (tex_x >= TEXTERE_WIDHT) tex_x = TEXTERE_WIDHT - 1;
@@ -121,14 +121,14 @@ void	draw_wall_stripe(t_cub *cub, int x)
 void	calc_wall_texture_x(t_dda *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->wall_x = player->pos.y + ray->walldist * ray->raydir_y;
+		ray->wall_x = player->pos.y + ray->walldist * ray->raydir.y;
 	else
-		ray->wall_x = player->pos.x + ray->walldist * ray->raydir_x;
+		ray->wall_x = player->pos.x + ray->walldist * ray->raydir.x;
 	ray->wall_x -= floor(ray->wall_x);
 	ray->tex_x = (int)(ray->wall_x * (double)TEXTERE_WIDHT);
-	if (ray->side == 0 && ray->raydir_x > 0)
+	if (ray->side == 0 && ray->raydir.x > 0)
 		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
-	if (ray->side == 1 && ray->raydir_y < 0)
+	if (ray->side == 1 && ray->raydir.y < 0)
 		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
 	if (ray->tex_x < 0)
         ray->tex_x = 0;
