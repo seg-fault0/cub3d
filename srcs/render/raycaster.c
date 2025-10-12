@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:52:46 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:00:36 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-void	draw_wall_stripe(t_cub *cub, int x)
+static void	draw_wall_stripe(t_cub *cub, int x)
 {
 	int  y;
 	int  color;
@@ -65,8 +65,8 @@ void	wall_cast(t_cub *cub)
 	int	hit;
 	int	x;
 
-	x = 0;
-	while (x < WIN_WIDTH)
+	x = -1;
+	while (++x < WIN_WIDTH)
 	{
 		init_ray(&cub->dda, &cub->player, x);
 		check_raydir(&cub->dda, &cub->player);
@@ -83,14 +83,6 @@ void	wall_cast(t_cub *cub)
 		calc_line_height(&cub->dda);
 		calc_wall_texture_x(&cub->dda,&cub->player);
 		draw_wall_stripe(cub, x);
-		x++;
 	}
-	return ;
-}
-
-void	world_raycaster(t_cub *cub)
-{
-	update_vectors_from_angle(&cub->player);;
-	wall_cast(cub);
 	return ;
 }

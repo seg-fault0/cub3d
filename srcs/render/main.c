@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 10:39:49 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:03:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:00:20 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,9 @@ static void	render_floor_ceiling(t_cub *cub)
 	}
 }
 
-
 void	render_world(t_cub *cub)
 {
 	render_floor_ceiling(cub);
-	world_raycaster(cub);
+	angle2vector(&cub->player);
+	wall_cast(cub);
 }

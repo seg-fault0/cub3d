@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:54:08 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:58:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -245,29 +245,25 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color);
 void	free_mlx(t_mlx mlx);
 void	free_img(t_cub *cub);
 
-//world	render
-void	render_world(t_cub *cub);
-void	world_raycaster(t_cub *cub);
-void	rotate_vectores(t_player *player, double delta_x);
-
 //player
+void	player(t_cub *cub);//main
 bool	player_init(t_cub *cub);
-void	player(t_cub *cub);
 void	player_mouvement(t_cub *cub);
 bool	collisions(t_cub *cub);
-void update_vectors_from_angle(t_player *player);
 
 //engine
-int		game_cycle(t_cub *cub);
+int		game_cycle(t_cub *cub);//main
 
 //parser
-bool	parse(t_cub *cub, char *path);
+bool	parse(t_cub *cub, char *path);//main
 bool	read_file(t_cub *cub, char *path);
 bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 
 //raycasting
+void	render_world(t_cub *cub); //main
+void	angle2vector(t_player *player);
 void	calc_line_height(t_dda *ray);
 void	calc_wall_texture_x(t_dda *ray, t_player *player);
 void	init_ray(t_dda *ray, t_player *player, int x);
@@ -276,7 +272,7 @@ void	ft_check(t_cub *cub);
 void	check_raydir(t_dda *ray, t_player *player);
 
 //minimap
-void	minimap(t_cub *cub);
+void	minimap(t_cub *cub);//main
 void	minimap_rays(t_cub *cub);
 void	draw_walls(t_cub *cub);
 

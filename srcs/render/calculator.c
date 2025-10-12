@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   calculations.c                                     :+:      :+:    :+:   */
+/*   calculator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 12:50:35 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:52:49 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:56:46 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ void calc_line_height(t_dda *ray)
 		ray->draw.end = WIN_HEIGHT - 1;
 }
 
-void update_vectors_from_angle(t_player *player)
+void angle2vector(t_player *player)
 {
 	player->dir.x = cos(player->angle);
 	player->dir.y = sin(player->angle);
