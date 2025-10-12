@@ -17,6 +17,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/minimap/main.c			\
 		srcs/minimap/walls.c		\
 		srcs/mlx/img.c				\
+		srcs/mlx/textures.c			\
 		srcs/mlx/draw.c				\
 		srcs/mlx/mlx.c				\
 		srcs/parser/main.c			\
