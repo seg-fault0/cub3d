@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:14:02 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:23:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ static void	ft_check(t_cub *cub)
 {
 	if (cub->dda.sidedistx < cub->dda.sidedisty)
 	{
-		cub->dda.sidedistx += cub->dda.deltadistx;
+		cub->dda.sidedistx += cub->dda.delta.x;
 		cub->dda.map.x += cub->dda.step_x;
 		cub->dda.side = 0;
 	}
 	else
 	{
-		cub->dda.sidedisty += cub->dda.deltadisty;
+		cub->dda.sidedisty += cub->dda.delta.y;
 		cub->dda.map.y += cub->dda.step_y;
 		cub->dda.side = 1;
 	}
@@ -33,31 +33,31 @@ void	check_raydir(t_dda *ray, t_player *player)
 	if (ray->raydir.x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedistx = (player->pos.x - ray->map.x) * ray->deltadistx;
+		ray->sidedistx = (player->pos.x - ray->map.x) * ray->delta.x;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedistx = (ray->map.x + 1 - player->pos.x) * ray->deltadistx;
+		ray->sidedistx = (ray->map.x + 1 - player->pos.x) * ray->delta.x;
 	}
 	if (ray->raydir.y < 0)
 	{
 		ray->step_y = -1;
-		ray->sidedisty = (player->pos.y - ray->map.y) * ray->deltadisty;
+		ray->sidedisty = (player->pos.y - ray->map.y) * ray->delta.y;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedisty = (ray->map.y + 1 - player->pos.y) * ray->deltadisty;
+		ray->sidedisty = (ray->map.y + 1 - player->pos.y) * ray->delta.y;
 	}
 }
 
 void calc_line_height(t_dda *ray)
 {
 	if (ray->side == 0)
-		ray->walldist = ray->sidedistx - ray->deltadistx;
+		ray->walldist = ray->sidedistx - ray->delta.x;
 	else
-		ray->walldist = ray->sidedisty - ray->deltadisty;
+		ray->walldist = ray->sidedisty - ray->delta.y;
 	if (ray->walldist < 0.0001)
 		ray->walldist = 0.0001;
 	ray->line_height = (int)(WIN_HEIGHT / ray->walldist);
