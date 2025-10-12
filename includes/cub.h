@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 13:40:52 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 15:58:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@
 
 //img
 # define TEXTURE_NBR 7
+# define DEMON_NBR 7
 
 /*
 *******************************************
@@ -159,6 +160,7 @@ typedef struct s_imgs
 	t_img	s_wall;
 	t_img	e_wall;
 	t_img	w_wall;
+	t_img	demon[DEMON_NBR];
 }t_imgs;
 
 typedef struct s_mlx
@@ -233,6 +235,8 @@ bool	ft_mlx_init(t_mlx *mlx);
 void	imgs_bzero(t_imgs *imgs);
 bool	img_init(t_cub *cub);
 bool	texture_loader(t_cub *cub);
+void	mlx_xpm_animaton(void *mlx, t_img demon[DEMON_NBR]);
+void	free_animation(void *mlx, t_img demon[DEMON_NBR]);
 
 //draw
 void	draw_img_to_img(t_img *dst, t_img *src, int px, int py);

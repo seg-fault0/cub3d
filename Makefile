@@ -3,6 +3,7 @@ SRCS = 	srcs/core/main.c			\
 		srcs/core/setup.c			\
 		srcs/engine/input_detector.c\
 		srcs/engine/game_cycle.c	\
+		srcs/engine/mlx.c			\
 		srcs/engine/luncher.c		\
 		srcs/gnl/gnl.c				\
 		srcs/gnl/gnl_utils.c		\
@@ -16,10 +17,11 @@ SRCS = 	srcs/core/main.c			\
 		srcs/minimap/raycaster.c	\
 		srcs/minimap/main.c			\
 		srcs/minimap/walls.c		\
-		srcs/mlx/img.c				\
-		srcs/mlx/textures.c			\
-		srcs/mlx/draw.c				\
-		srcs/mlx/mlx.c				\
+		srcs/graphic/animation.c 	\
+		srcs/graphic/draw.c			\
+		srcs/graphic/free.c			\
+		srcs/graphic/img.c			\
+		srcs/graphic/textures.c		\
 		srcs/parser/main.c			\
 		srcs/parser/reader.c		\
 		srcs/parser/map.c			\
