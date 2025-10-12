@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:28:31 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:35:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,33 +38,35 @@ void	free_img(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.display.img);
 }
 
-int *load_tex(t_img *img)
+int	*load_tex(t_img *img)
 {
-    int     *buffer;
-    int     x, y;
+	int		*buffer;
+	int		x;
+	int		y;
+	int		pixel;
 
-    buffer = malloc(sizeof(int) * TEXTERE_HEIGHT * TEXTERE_WIDHT);
-    if (!buffer)
-        return (NULL);
-    y = 0;
-    while (y < img->height && y < TEXTERE_HEIGHT)
-    {
-        x = 0;
-        while (x < img->width && x < TEXTERE_WIDHT)
-        {
-            buffer[y * TEXTERE_WIDHT + x] = img->addr[y * img->size_line + x];
-            x++;
-        }
-        y++;
+	if (!img || !img->addr)
+		return (NULL);
+	buffer = malloc(sizeof(int) * img->width * img->height);
+	if (!buffer)
+		return (NULL);
+	y = 0;
+	while (y < img->height)
+	{
+		x = 0;
+		while (x < img->width)
+		{
+			pixel = *(int *)(img->addr + (y * img->size_line + x * (img->bpp / 8)));
+			buffer[y * img->width + x] = pixel;
+			x++;
+		}
+		y++;
 	}
-    return (buffer);
+	return (buffer);
 }
 
-bool	ft_img_init(t_cub *cub)
+bool	texture_loader(t_cub *cub)
 {
-	cub->textures = malloc(7 * sizeof(int**));
-	if (!cub->textures)
-		return (false);
 	cub->textures[0] = load_tex(&cub->img.mm_frame);
 	cub->textures[1] = load_tex(&cub->img.mm_wall);
 	cub->textures[2] = load_tex(&cub->img.mm_floor);

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:18:02 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 10:39:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 13:35:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ bool	setup_cub(t_cub *cub, char **av)
 	b_zero(cub);
 	if (ft_mlx_init(&cub->mlx) == false
 		||parse(cub, av[1]) == false
-		||ft_img_init(cub) == false
 		||img_init(cub) == false
+		||texture_loader(cub) == false
 		||player_init(cub) == false)
 		return (ft_exit(cub, 1), false);
 	return (true);
