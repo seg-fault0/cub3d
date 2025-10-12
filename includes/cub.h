@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:32:10 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:49:09 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,11 @@
 # define MM_FLOOR 3
 # define PLAYER 4
 
-//structs
+/*
+*******************************************
+*************   VECTOR2  ******************
+*******************************************
+*/
 typedef struct s_fvector2
 {
 	float	x;
@@ -84,6 +88,56 @@ typedef struct s_ivector2
 	int	x;
 	int	y;
 }t_ivector2;
+
+
+/*
+****************************************
+************     DDA    ****************
+****************************************
+*/
+
+typedef struct s_tex
+{
+	int		x;
+	int		y;
+	float	pos;
+	float	step;
+}t_tex;
+
+typedef	struct s_draw
+{
+	int	start;
+	int	end;
+}t_draw;
+
+typedef	struct s_wall
+{
+	float	dist;
+	int		x;
+}t_wall;
+
+typedef struct s_dda
+{
+	t_ivector2	map;
+	t_fvector2	rayDir;
+	t_fvector2	delta;
+	t_fvector2	sideDist;
+	t_ivector2	step;
+	t_tex		tex;
+	t_draw		draw;
+	t_wall		wall;
+	double		camera;
+	int			side;
+	int			line_height;
+	int			tex_num;
+}t_dda;
+
+
+/*
+********************************************
+**************   IMG ***********************
+********************************************
+*/
 
 typedef struct s_img
 {
@@ -155,27 +209,7 @@ typedef struct s_parse
 	int		max_map_y;
 }t_parse;
 
-typedef struct s_dda
-{
-	t_ivector2	map;
-	t_fvector2	rayDir;
-	t_fvector2	delta;
-	t_fvector2	sideDist;
-	double	camera;
-	double	walldist;
-	int	step_x;
-	int	step_y;
-	int	side;
-	int	line_height;
-	int	draw_start;
-	int	draw_end;
-	int	wall_x;
-	int	tex_x;
-	int	tex_y;
-	double	tex_pos;
-	double	tex_step;
-	int	tex_num;
-}t_dda;
+
 
 typedef struct s_cub
 {

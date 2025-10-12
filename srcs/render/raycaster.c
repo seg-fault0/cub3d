@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:32:40 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:48:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	ft_check(t_cub *cub)
 	if (cub->dda.sideDist.x < cub->dda.sideDist.y)
 	{
 		cub->dda.sideDist.x += cub->dda.delta.x;
-		cub->dda.map.x += cub->dda.step_x;
+		cub->dda.map.x += cub->dda.step.x;
 		cub->dda.side = 0;
 	}
 	else
 	{
 		cub->dda.sideDist.y += cub->dda.delta.y;
-		cub->dda.map.y += cub->dda.step_y;
+		cub->dda.map.y += cub->dda.step.y;
 		cub->dda.side = 1;
 	}
 }
@@ -32,22 +32,22 @@ void	check_raydir(t_dda *ray, t_player *player)
 {
 	if (ray->rayDir.x < 0)
 	{
-		ray->step_x = -1;
+		ray->step.x = -1;
 		ray->sideDist.x = (player->pos.x - ray->map.x) * ray->delta.x;
 	}
 	else
 	{
-		ray->step_x = 1;
+		ray->step.x = 1;
 		ray->sideDist.x = (ray->map.x + 1 - player->pos.x) * ray->delta.x;
 	}
 	if (ray->rayDir.y < 0)
 	{
-		ray->step_y = -1;
+		ray->step.y = -1;
 		ray->sideDist.y = (player->pos.y - ray->map.y) * ray->delta.y;
 	}
 	else
 	{
-		ray->step_y = 1;
+		ray->step.y = 1;
 		ray->sideDist.y = (ray->map.y + 1 - player->pos.y) * ray->delta.y;
 	}
 }
@@ -55,18 +55,18 @@ void	check_raydir(t_dda *ray, t_player *player)
 void calc_line_height(t_dda *ray)
 {
 	if (ray->side == 0)
-		ray->walldist = ray->sideDist.x - ray->delta.x;
+		ray->wall.dist = ray->sideDist.x - ray->delta.x;
 	else
-		ray->walldist = ray->sideDist.y - ray->delta.y;
-	if (ray->walldist < 0.0001)
-		ray->walldist = 0.0001;
-	ray->line_height = (int)(WIN_HEIGHT / ray->walldist);
-	ray->draw_start = WIN_HEIGHT / 2 - ray->line_height / 2;
-	if (ray->draw_start < 0)
-		ray->draw_start = 0;
-	ray->draw_end = ray->line_height / 2 + WIN_HEIGHT / 2;
-	if (ray->draw_end >= WIN_HEIGHT)
-		ray->draw_end = WIN_HEIGHT - 1;
+		ray->wall.dist = ray->sideDist.y - ray->delta.y;
+	if (ray->wall.dist < 0.0001)
+		ray->wall.dist = 0.0001;
+	ray->line_height = (int)(WIN_HEIGHT / ray->wall.dist);
+	ray->draw.start = WIN_HEIGHT / 2 - ray->line_height / 2;
+	if (ray->draw.start < 0)
+		ray->draw.start = 0;
+	ray->draw.end = ray->line_height / 2 + WIN_HEIGHT / 2;
+	if (ray->draw.end >= WIN_HEIGHT)
+		ray->draw.end = WIN_HEIGHT - 1;
 }
 
 
@@ -76,9 +76,9 @@ void	draw_wall_stripe(t_cub *cub, int x)
 	int  color;
 	double wall_x;
 
-	cub->dda.tex_step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
-	cub->dda.tex_pos = (cub->dda.draw_start - WIN_HEIGHT / 2 
-				+ cub->dda.line_height / 2) * cub->dda.tex_step;
+	cub->dda.tex.step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
+	cub->dda.tex.pos = (cub->dda.draw.start - WIN_HEIGHT / 2 
+				+ cub->dda.line_height / 2) * cub->dda.tex.step;
 	if (cub->dda.side == 0)
 	{
 		if (cub->dda.rayDir.x > 0)
@@ -94,9 +94,9 @@ void	draw_wall_stripe(t_cub *cub, int x)
 			cub->dda.tex_num = 3;
 	}
 	if (cub->dda.side == 0)
-		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.rayDir.y;
+		wall_x = cub->player.pos.y + cub->dda.wall.dist * cub->dda.rayDir.y;
 	else
-		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.rayDir.x;
+		wall_x = cub->player.pos.y + cub->dda.wall.dist * cub->dda.rayDir.x;
 	wall_x -= floor(wall_x);
 	int tex_x = (int)(wall_x * (double)TEXTERE_WIDHT);
 	if (cub->dda.side == 0 && cub->dda.rayDir.x > 0)
@@ -105,12 +105,12 @@ void	draw_wall_stripe(t_cub *cub, int x)
 		tex_x = TEXTERE_WIDHT - tex_x - 1;
 	if (tex_x < 0) tex_x = 0;
 	if (tex_x >= TEXTERE_WIDHT) tex_x = TEXTERE_WIDHT - 1;
-	y = cub->dda.draw_start;
-	while (y < cub->dda.draw_end)
+	y = cub->dda.draw.start;
+	while (y < cub->dda.draw.end)
 	{
-		cub->dda.tex_y = (int)cub->dda.tex_pos & (TEXTERE_HEIGHT - 1);
-		cub->dda.tex_pos += cub->dda.tex_step;
-		color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex_y + tex_x];
+		cub->dda.tex.y = (int)cub->dda.tex.pos & (TEXTERE_HEIGHT - 1);
+		cub->dda.tex.pos += cub->dda.tex.step;
+		color = cub->textures[cub->dda.tex_num][TEXTERE_WIDHT * cub->dda.tex.y + tex_x];
 		if (cub->dda.side == 1)
 			color = (color >> 1) & 8355711;
 		put_pixel_to_img(&cub->img.display, x, y, color);
@@ -121,19 +121,19 @@ void	draw_wall_stripe(t_cub *cub, int x)
 void	calc_wall_texture_x(t_dda *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->wall_x = player->pos.y + ray->walldist * ray->rayDir.y;
+		ray->wall.x = player->pos.y + ray->wall.dist * ray->rayDir.y;
 	else
-		ray->wall_x = player->pos.x + ray->walldist * ray->rayDir.x;
-	ray->wall_x -= floor(ray->wall_x);
-	ray->tex_x = (int)(ray->wall_x * (double)TEXTERE_WIDHT);
+		ray->wall.x = player->pos.x + ray->wall.dist * ray->rayDir.x;
+	ray->wall.x -= floor(ray->wall.x);
+	ray->tex.x = (int)(ray->wall.x * (double)TEXTERE_WIDHT);
 	if (ray->side == 0 && ray->rayDir.x > 0)
-		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
+		ray->tex.x = TEXTERE_WIDHT - ray->tex.x - 1;
 	if (ray->side == 1 && ray->rayDir.y < 0)
-		ray->tex_x = TEXTERE_WIDHT - ray->tex_x - 1;
-	if (ray->tex_x < 0)
-        ray->tex_x = 0;
-    if (ray->tex_x >= TEXTERE_WIDHT)
-        ray->tex_x = TEXTERE_WIDHT - 1;
+		ray->tex.x = TEXTERE_WIDHT - ray->tex.x - 1;
+	if (ray->tex.x < 0)
+        ray->tex.x = 0;
+    if (ray->tex.x >= TEXTERE_WIDHT)
+        ray->tex.x = TEXTERE_WIDHT - 1;
 }
 
 void	wall_cast(t_cub *cub)
