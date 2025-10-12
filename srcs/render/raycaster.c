@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:05:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:09:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ static void	ft_check(t_cub *cub)
 	if (cub->dda.sidedistx < cub->dda.sidedisty)
 	{
 		cub->dda.sidedistx += cub->dda.deltadistx;
-		cub->dda.map_x += cub->dda.step_x;
+		cub->dda.map.x += cub->dda.step_x;
 		cub->dda.side = 0;
 	}
 	else
 	{
 		cub->dda.sidedisty += cub->dda.deltadisty;
-		cub->dda.map_y += cub->dda.step_y;
+		cub->dda.map.y += cub->dda.step_y;
 		cub->dda.side = 1;
 	}
 }
@@ -33,22 +33,22 @@ void	check_raydir(t_dda *ray, t_player *player)
 	if (ray->raydir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedistx = (player->pos.x - ray->map_x) * ray->deltadistx;
+		ray->sidedistx = (player->pos.x - ray->map.x) * ray->deltadistx;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedistx = (ray->map_x + 1 - player->pos.x) * ray->deltadistx;
+		ray->sidedistx = (ray->map.x + 1 - player->pos.x) * ray->deltadistx;
 	}
 	if (ray->raydir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->sidedisty = (player->pos.y - ray->map_y) * ray->deltadisty;
+		ray->sidedisty = (player->pos.y - ray->map.y) * ray->deltadisty;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedisty = (ray->map_y + 1 - player->pos.y) * ray->deltadisty;
+		ray->sidedisty = (ray->map.y + 1 - player->pos.y) * ray->deltadisty;
 	}
 }
 
@@ -150,10 +150,10 @@ void	wall_cast(t_cub *cub)
 		while (hit == 0)
 		{
 			ft_check(cub);
-			if (cub->dda.map_x >= 0 && cub->dda.map_y >= 0 &&
-				cub->dda.map_y < cub->parse.max_map_y &&
-				cub->dda.map_x < ft_strlen(cub->parse.map[cub->dda.map_y]) &&
-    			cub->parse.map[cub->dda.map_y][cub->dda.map_x] == '1')
+			if (cub->dda.map.x >= 0 && cub->dda.map.y >= 0 &&
+				cub->dda.map.y < cub->parse.max_map_y &&
+				cub->dda.map.x < ft_strlen(cub->parse.map[cub->dda.map.y]) &&
+    			cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '1')
     				hit = 1;
 		}
 		calc_line_height(&cub->dda);
