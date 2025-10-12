@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:58:12 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:03:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,6 @@ bool	player_init(t_cub *cub)
 {
 	pos_init(cub);
 	cub->player.angle = 3 * M_PI / 2;
-	cub->player.dir_x = 0;
-	cub->player.dir_y = -1;
 	cub->player.plane_x = 0.66;
 	cub->player.plane_y = 0;
 	return (true);

@@ -16,8 +16,8 @@ void	init_ray(t_dda *ray, t_player *player, int x)
 	ray->step_x = 0;
 	ray->step_y = 0;
 	ray->camera_x = 2 * x / (double)WIN_WIDTH - 1;
-	ray->raydir_x = player->dir_x + player->plane_x * ray->camera_x;
-	ray->raydir_y = player->dir_y + player->plane_y * ray->camera_x;
+	ray->raydir_x = player->dir.x + player->plane_x * ray->camera_x;
+	ray->raydir_y = player->dir.y + player->plane_y * ray->camera_x;
 	ray->map_x = (int)player->pos.x;
 	ray->map_y = (int)player->pos.y;
 	if (ray->raydir_x == 0)

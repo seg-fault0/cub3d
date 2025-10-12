@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:51:48 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:03:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,8 +130,7 @@ typedef struct s_key
 typedef struct s_player
 {
 	t_fvector2	pos;
-	double	dir_x;
-	double	dir_y;
+	t_fvector2	dir;
 	double	plane_x;
 	double	plane_y;
 	int		has_move;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   input_detector.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/11 21:13:20 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 12:03:43 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,6 @@ int	key_release(int key, t_key *keys)
 	if (key == R_ARR)
 		keys->r_arr = false;
 	return (0);
-}
-
-void	rotate_vectores(t_player *player, double delta_x)
-{
-	int		x;
-	int		y;
-
-	x = player->dir_x;
-	y = player->dir_y;
-	player->dir_x = x * cos(delta_x) - y * sin(delta_x);
-	player->dir_y = x * sin(delta_x) + y * cos(delta_x);
-	x = player->plane_x;
-	y = player->plane_y;
-	player->plane_x = x * cos(delta_x) - y * sin(delta_x);
-	player->plane_y = x * sin(delta_x) + y * cos(delta_x);
 }
 
 int	mouse_move(int x, int y, t_player *player)
