@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:49:09 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 12:54:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -269,9 +269,11 @@ bool	get_map(t_cub *cub);
 
 //raycasting
 void	calc_line_height(t_dda *ray);
-void	update_draw(t_cub *cub, t_dda *ray, int x);
+void	calc_wall_texture_x(t_dda *ray, t_player *player);
 void	init_ray(t_dda *ray, t_player *player, int x);
 void	wall_cast(t_cub *cub);
+void	ft_check(t_cub *cub);
+void	check_raydir(t_dda *ray, t_player *player);
 
 //minimap
 void	minimap(t_cub *cub);
