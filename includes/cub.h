@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 10:39:52 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 11:51:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,18 @@
 # define PLAYER 4
 
 //structs
+typedef struct s_fvector2
+{
+	float	x;
+	float	y;
+}t_fvector2;
+
+typedef struct s_ivector2
+{
+	int	x;
+	int	y;
+}t_ivector2;
+
 typedef struct s_img
 {
 	void	*img;
@@ -117,8 +129,7 @@ typedef struct s_key
 
 typedef struct s_player
 {
-	float	xp;
-	float	yp;
+	t_fvector2	pos;
 	double	dir_x;
 	double	dir_y;
 	double	plane_x;

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:20:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 10:41:50 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 11:57:55 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,41 +16,35 @@
 #define RAY_COLOR 0xFF0000
 #define TILE_SIZE 20
 
-static bool	ray_mm_border(int px, int py, int rx, int ry)
+static bool	ray_mm_border(t_fvector2 pos, t_fvector2 ray)
 {
-	int	screen_x;
-	int	screen_y;
+	t_fvector2	screen;
 
-	screen_x = (rx - px) * TILE_SIZE + 210;
-	screen_y = (ry - py) * TILE_SIZE + 110;
-	if (screen_x >= 390 || screen_y >= 210)
+	screen.x = (ray.x - pos.x) * TILE_SIZE + 210;
+	screen.y = (ray.y - pos.y) * TILE_SIZE + 110;
+	if (screen.x >= 390 || screen.y >= 210)
 		return (true);
 	return (false);
 }
 
 static void	draw_ray(t_cub *cub, float angle)
 {
-	float	rx;
-	float	ry;
-	float	px;
-	float	py;
+	t_fvector2 ray;
+	t_fvector2 pos;
 	int		i;
-
-	px = cub->player.xp;
-	py = cub->player.yp;
-	rx = px;
-	ry = py;
+	
+	ray = pos = cub->player.pos;
 	i = 0;
-	while (cub->parse.map[(int)ry][(int)rx] != '1')
+	while (cub->parse.map[(int)ray.y][(int)ray.x] != '1')
 	{
-		if (ray_mm_border(px, py, rx, ry) == true)
+		if (ray_mm_border(pos, ray) == true)
 			break ;
 		put_pixel_to_img(&cub->img.display,
-			(rx - px) * TILE_SIZE + 210,
-			(ry - py) * TILE_SIZE + 110,
+			(ray.x - pos.x) * TILE_SIZE + 210,
+			(ray.y - pos.y) * TILE_SIZE + 110,
 			RAY_COLOR);
-		rx += cos(angle) * RAY_STEP;
-		ry += sin(angle) * RAY_STEP;
+		ray.x += cos(angle) * RAY_STEP;
+		ray.y += sin(angle) * RAY_STEP;
 		i++;
 	}
 }

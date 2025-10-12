@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/15 21:56:51 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/12 11:58:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ static void	pos_init(t_cub *cub)
 		{
 			if (cub->parse.map[y][x] == 'P')
 			{
-				cub->player.xp = x;
-				cub->player.yp = y;
+				cub->player.pos.x = x;
+				cub->player.pos.y = y;
 				break ;
 			}
 		}

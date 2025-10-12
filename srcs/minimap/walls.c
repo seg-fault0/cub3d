@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 10:41:36 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 11:53:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,21 +18,19 @@
 
 static void	draw_minimap_cp(t_cub *cub, char **map)
 {
-	int		y;
-	int		x;
-	float	diff_y;
-	float	diff_x;
+	t_ivector2	it;
+	t_fvector2	diff;
 
-	y = -1;
-	while (map[++y])
+	it.y = -1;
+	while (map[++it.y])
 	{
-		x = -1;
-		while (map[y][++x])
+		it.x = -1;
+		while (map[it.y][++it.x])
 		{
-			diff_x = cub->player.xp - (int)cub->player.xp;
-			diff_y = cub->player.yp - (int)cub->player.yp;
-			if (map[y][x] == '1')
-				draw_img_to_img(&cub->img.display, &cub->img.mm_wall,(x - diff_x) * IMG_SIZE, (y - diff_y) * IMG_SIZE);
+			diff.x = cub->player.pos.x - (int)cub->player.pos.x;
+			diff.y = cub->player.pos.y - (int)cub->player.pos.y;
+			if (map[it.y][it.x] == '1')
+				draw_img_to_img(&cub->img.display, &cub->img.mm_wall,(it.x - diff.x) * IMG_SIZE, (it.y - diff.y) * IMG_SIZE);
 		}
 	}
 }
@@ -54,8 +52,8 @@ static char	**get_minimap_cp(t_cub *cub)
 		x = -1;
 		while (++x < X_RADIUS)
 		{
-			map_y = (int)cub->player.yp - Y_RADIUS / 2 + y;
-			map_x = (int)cub->player.xp - X_RADIUS / 2 + x;
+			map_y = (int)cub->player.pos.y - Y_RADIUS / 2 + y;
+			map_x = (int)cub->player.pos.x - X_RADIUS / 2 + x;
 			if (map_y >= 0 && map_y < cub->parse.max_map_y
 				&& map_x >= 0 && map_x < (int)ft_strlen(cub->parse.map[map_y]))
 				minimap[y][x] = cub->parse.map[map_y][map_x];

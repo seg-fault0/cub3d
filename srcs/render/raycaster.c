@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 11:18:47 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/12 11:59:56 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,22 +33,22 @@ void	check_raydir(t_dda *ray, t_player *player)
 	if (ray->raydir_x < 0)
 	{
 		ray->step_x = -1;
-		ray->sidedistx = (player->xp - ray->map_x) * ray->deltadistx;
+		ray->sidedistx = (player->pos.x - ray->map_x) * ray->deltadistx;
 	}
 	else
 	{
 		ray->step_x = 1;
-		ray->sidedistx = (ray->map_x + 1 - player->xp) * ray->deltadistx;
+		ray->sidedistx = (ray->map_x + 1 - player->pos.x) * ray->deltadistx;
 	}
 	if (ray->raydir_y < 0)
 	{
 		ray->step_y = -1;
-		ray->sidedisty = (player->yp - ray->map_y) * ray->deltadisty;
+		ray->sidedisty = (player->pos.y - ray->map_y) * ray->deltadisty;
 	}
 	else
 	{
 		ray->step_y = 1;
-		ray->sidedisty = (ray->map_y + 1 - player->yp) * ray->deltadisty;
+		ray->sidedisty = (ray->map_y + 1 - player->pos.y) * ray->deltadisty;
 	}
 }
 
@@ -94,9 +94,9 @@ void	draw_wall_stripe(t_cub *cub, int x)
 			cub->dda.tex_num = 3;
 	}
 	if (cub->dda.side == 0)
-		wall_x = cub->player.yp + cub->dda.walldist * cub->dda.raydir_y;
+		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir_y;
 	else
-		wall_x = cub->player.xp + cub->dda.walldist * cub->dda.raydir_x;
+		wall_x = cub->player.pos.y + cub->dda.walldist * cub->dda.raydir_x;
 	wall_x -= floor(wall_x);
 	int tex_x = (int)(wall_x * (double)TEXTERE_WIDHT);
 	if (cub->dda.side == 0 && cub->dda.raydir_x > 0)
@@ -121,9 +121,9 @@ void	draw_wall_stripe(t_cub *cub, int x)
 void	calc_wall_texture_x(t_dda *ray, t_player *player)
 {
 	if (ray->side == 0)
-		ray->wall_x = player->yp + ray->walldist * ray->raydir_y;
+		ray->wall_x = player->pos.y + ray->walldist * ray->raydir_y;
 	else
-		ray->wall_x = player->xp + ray->walldist * ray->raydir_x;
+		ray->wall_x = player->pos.x + ray->walldist * ray->raydir_x;
 	ray->wall_x -= floor(ray->wall_x);
 	ray->tex_x = (int)(ray->wall_x * (double)TEXTERE_WIDHT);
 	if (ray->side == 0 && ray->raydir_x > 0)
