@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:57:29 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:27:50 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,16 +25,16 @@ static void	draw_wall_stripe(t_cub *cub, int x)
 	if (cub->dda.side == 0)
 	{
 		if (cub->dda.ray_dir.x > 0)
-			cub->dda.tex_num = 5;
+			cub->dda.tex_num = 2;
 		else
-			cub->dda.tex_num = 6;
+			cub->dda.tex_num = 3;
 	}
 	else
 	{
 		if (cub->dda.ray_dir.y > 0)
-			cub->dda.tex_num = 4;
+			cub->dda.tex_num = 1;
 		else
-			cub->dda.tex_num = 3;
+			cub->dda.tex_num = 0;
 	}
 	if (cub->dda.side == 0)
 		wall_x = cub->player.pos.y + cub->dda.wall.dist * cub->dda.ray_dir.y;

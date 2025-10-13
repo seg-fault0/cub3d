@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 13:59:32 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:24:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@
 # define DOOR_PATH "./textures/door.xpm"
 
 //img
-# define TEXTURE_NBR 8
+# define TEXTURE_NBR 5
 # define DEMON_NBR 7
 # define TRANSP 0xFF00FF
 
