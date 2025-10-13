@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 14:44:03 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 14:24:47 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:33:23 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,19 @@ int	*load_tex_animation(t_img demon[DEMON_NBR])
 
 bool	texture_loader(t_cub *cub)
 {
+	int	i;
+
 	cub->textures[0] = load_tex(&cub->img.n_wall);
 	cub->textures[1] = load_tex(&cub->img.s_wall);
 	cub->textures[2] = load_tex(&cub->img.e_wall);
 	cub->textures[3] = load_tex(&cub->img.w_wall);
-	cub->textures[4] = load_tex_animation(cub->img.demon);
-	if (!cub->textures[0] || !cub->textures[1] || !cub->textures[2]
-		|| !cub->textures[3] || !cub->textures[4])
-		return (false);
+	cub->textures[4] = load_tex(&cub->img.door);
+	cub->textures[5] = load_tex_animation(cub->img.demon);
+	i = -1;
+	while (++i < TEXTURE_NBR)
+	{
+		if (!cub->textures[i])
+			return (false);
+	}
 	return (true);
 }

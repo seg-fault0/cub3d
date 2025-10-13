@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 14:24:19 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:38:23 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,10 +57,11 @@
 #  define BUFFER_SIZE 1
 # endif
 
-//player
+//SPEED
 # define PLAYER_SPEED 0.1
 # define ROTATION_SPEED 0.06
 # define DOOR_SPEED 30
+# define MOUSE_SPEED 0.01
 
 //other
 # define MAX_FILE_SIZE 150
@@ -75,7 +76,7 @@
 # define DOOR_PATH "./textures/door.xpm"
 
 //img
-# define TEXTURE_NBR 5
+# define TEXTURE_NBR 6
 # define DEMON_NBR 7
 # define TRANSP 0xFF00FF
 

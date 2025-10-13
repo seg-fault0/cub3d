@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:03:43 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:36:23 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,9 +54,9 @@ int	mouse_move(int x, int y, t_player *player)
 
 	(void) y;
 	if (x > old_x)
-		player->angle += (ROTATION_SPEED / 15);
+		player->angle += (MOUSE_SPEED);
 	else if (x < old_x)
-		player->angle -= (ROTATION_SPEED / 15);
+		player->angle -= (MOUSE_SPEED);
 	old_x = x;
 	return (0);
 }
