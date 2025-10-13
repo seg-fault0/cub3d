@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 09:30:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:22:33 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 11:58:00 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,5 +42,6 @@ bool	get_map(t_cub *cub)
 
 	cur_i = get_cur_i(cub->parse.file);
 	cub->parse.map = get_2darr_cp(&cub->parse.file[cur_i]);
+	cub->parse.max_map_y = get_arr_size(cub->parse.map);
 	return (true);
 }

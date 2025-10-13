@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 11:40:17 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 12:33:47 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <limits.h>
 # include <time.h>
 # include <math.h>
-
+	
 // win_dimensions
 # define WIN_WIDTH 1800
 # define WIN_HEIGHT 1000
@@ -69,6 +69,7 @@
 # define MM_WALL_PATH "./textures/mm_wall.xpm"
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
 # define MM_DEMON_PATH "./textures/mm_demon.xpm"
+# define PLAYER_PATH "./textures/player.xpm"
 
 //img
 # define TEXTURE_NBR 8
@@ -164,6 +165,7 @@ typedef struct s_imgs
 	t_img	s_wall;
 	t_img	e_wall;
 	t_img	w_wall;
+	t_img	player;
 	t_img	demon[DEMON_NBR];
 }t_imgs;
 
