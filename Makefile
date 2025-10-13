@@ -5,6 +5,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/engine/game_cycle.c				\
 		srcs/engine/mlx.c						\
 		srcs/engine/luncher.c					\
+		srcs/door/main.c						\
 		srcs/gnl/gnl.c							\
 		srcs/gnl/gnl_utils.c					\
 		srcs/core/err_msg.c						\

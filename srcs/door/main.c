@@ -1,33 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   game_cycle.c                                       :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/09/09 04:12:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 13:40:54 by wimam            ###   ########.fr       */
+/*   Created: 2025/10/13 12:51:20 by wimam             #+#    #+#             */
+/*   Updated: 2025/10/13 13:44:31 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-#define UPDATE_RATE 500
-
-int	game_cycle(t_cub *cub)
+void	door(t_cub *cub)
 {
-	static unsigned int	fps;
+	static unsigned int	speed;
+	char				**map;
+	int					y;
+	int					x;
 
-	if (fps == UINT_MAX)
-		fps = 0;
-	if ((fps % UPDATE_RATE) == 0)
+	if (speed == UINT_MAX)
+		speed = 0;
+	if ((speed % DOOR_SPEED) == 0)
 	{
-		render_world(cub);
-		minimap(cub);
-		player(cub);
-		door(cub);
-		mlx_put_image_to_window(cub->mlx.mlx,
-			cub->mlx.win, cub->img.display.img, 0, 0);
+		map = cub->parse.map;
+		y = -1;
+		while (map[++y])
+		{
+			x = -1;
+			while (map[y][++x] != '\n')
+			{
+				if (map[y][x] == 'C')
+					map[y][x] = 'O';
+				else if (map[y][x] == 'O')
+					map[y][x] = 'C';
+			}
+		}
+		print_arr(map);
 	}
-	return (fps++, 0);
+	speed++;
 }
