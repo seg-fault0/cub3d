@@ -33,7 +33,6 @@ SRCS = 	srcs/core/main.c						\
 		srcs/player/main.c						\
 		srcs/player/init.c						\
 		srcs/player/mouvement.c					\
-		srcs/player/collisions.c				\
 		srcs/player/rotation.c					\
 		srcs/render/main.c						\
 		srcs/render/init.c						\

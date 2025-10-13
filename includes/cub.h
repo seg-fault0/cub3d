@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:09:07 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 15:18:06 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@
 # define ROTATION_SPEED 0.06
 # define DOOR_SPEED 30
 # define MOUSE_SPEED 0.01
+# define COLLISION_RADIUS 0.2f
 
 //other
 # define MAX_FILE_SIZE 150
@@ -264,7 +265,6 @@ void	player(t_cub *cub);//main
 bool	player_init(t_cub *cub);
 void	player_mouvement(t_cub *cub);
 void	player_rotation(t_cub *cub);
-bool	collisions(t_cub *cub);
 
 //door
 void	door(t_cub *cub);

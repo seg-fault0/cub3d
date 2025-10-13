@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:55:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:09:21 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 15:11:58 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ static void	draw_player(t_cub *cub)
 
 void	player(t_cub *cub)
 {
-	if (collisions(cub) == false)
-		player_mouvement(cub);
+	player_mouvement(cub);
 	player_rotation(cub);
 	draw_player(cub);
 }
