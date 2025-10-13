@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 12:51:20 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 13:58:48 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:09:46 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,10 +30,11 @@ void	door(t_cub *cub)
 			x = -1;
 			while (map[y][++x] != '\n')
 			{
-				if (map[y][x] == 'C')
-					map[y][x] = 'O';
-				else if (map[y][x] == 'O')
+				if ((x != cub->player.pos.x && y != cub->player.pos.x)
+					&& map[y][x] == 'O')
 					map[y][x] = 'C';
+				else if (map[y][x] == 'C')
+					map[y][x] = 'O';
 			}
 		}
 	}

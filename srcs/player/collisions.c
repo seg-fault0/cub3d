@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:40:04 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:44:03 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:08:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ bool	can_player_move(t_cub *cub, float y, float x)
 	if (diff_y > 0 && y > cub->player.pos.y)
 		y += 1;
 	if (cub->parse.map[(int)y][(int)x] == '1'
-		|| cub->parse.map[(int)y][(int)x] == 'D')
+		|| cub->parse.map[(int)y][(int)x] == 'D'
+		|| cub->parse.map[(int)y][(int)x] == 'C')
 		return (true);
 	return (false);
 }
