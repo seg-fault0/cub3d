@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:29:43 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 09:24:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 11:37:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,8 @@ void	err_msg(int msg)
 		ft_putstr_fd("wrong clr format\n", STDERR);
 	else if (msg == ERR_MAP_BORDER)
 		ft_putstr_fd("wrong map border\n", STDERR);
+	else if (msg == ERR_MLTPL_PLYR)
+		ft_putstr_fd("multiple players\n", STDERR);
+	else if (msg == ERR_PLYR_NF)
+		ft_putstr_fd("no player has been found\n", STDERR);
 }

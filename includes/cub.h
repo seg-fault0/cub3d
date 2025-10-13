@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 09:28:22 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 11:40:17 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,8 @@
 # define ERR_ELMT_NF 8
 # define ERR_CLR_FORMAT 9
 # define ERR_MAP_BORDER 10
+# define ERR_MLTPL_PLYR 11
+# define ERR_PLYR_NF 12
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -230,6 +232,7 @@ void	err_msg(int msg);
 
 //init
 bool	ft_mlx_init(t_mlx *mlx);
+bool	parse(t_cub *cub, char *path);
 
 //img
 void	imgs_bzero(t_imgs *imgs);
@@ -257,8 +260,7 @@ bool	collisions(t_cub *cub);
 //engine
 int		game_cycle(t_cub *cub);//main
 
-//parser
-bool	parse(t_cub *cub, char *path);//main
+//parser geter
 bool	read_file(t_cub *cub, char *path);
 bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
@@ -266,6 +268,7 @@ bool	get_map(t_cub *cub);
 
 //parser checker
 bool	check_map_border(t_cub *cub);
+bool	check_repeated_map_chars(t_cub *cub);
 
 //raycasting
 void	render_world(t_cub *cub); //main

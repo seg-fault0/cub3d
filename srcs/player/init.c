@@ -6,16 +6,30 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 12:05:33 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 11:53:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	pos_init(t_cub *cub)
+static double	player_dir(char c)
 {
-	int	x;
-	int	y;
+	if (c == 'N')
+		return (3 * M_PI / 2);
+	else if (c == 'S')
+		return (M_PI / 2);
+	else if (c == 'E')
+		return (0.001);
+	else if (c == 'W')
+		return (M_PI);
+	return (-1);
+}
+
+static void	pos_angle_init(t_cub *cub)
+{
+	int		x;
+	int		y;
+	char	c;
 
 	y = -1;
 	while (++y < cub->parse.max_map_y)
@@ -23,10 +37,12 @@ static void	pos_init(t_cub *cub)
 		x = 0;
 		while (cub->parse.map[y][++x] != '\n')
 		{
-			if (cub->parse.map[y][x] == 'P')
+			c = cub->parse.map[y][x];
+			if (player_dir(c) > 0)
 			{
 				cub->player.pos.x = x;
 				cub->player.pos.y = y;
+				cub->player.angle = player_dir(c);
 				break ;
 			}
 		}
@@ -35,9 +51,7 @@ static void	pos_init(t_cub *cub)
 
 bool	player_init(t_cub *cub)
 {
-	pos_init(cub);
-	cub->player.angle = 3 * M_PI / 2;
-	cub->player.plane.x = 0.66;
-	cub->player.plane.y = 0;
+	pos_angle_init(cub);
+	angle2vector(&cub->player);
 	return (true);
 }
