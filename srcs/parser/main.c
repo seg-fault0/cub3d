@@ -6,11 +6,19 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:20:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 11:58:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 12:43:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+bool	allowed_char(char c)
+{
+	if (c == 'N' || c == 'S' || c == 'E' || c == 'W'
+		|| c == '1' || c == '0' || c == 'D' || c == 'B')
+		return (true);
+	return (false);
+}
 
 bool	parse(t_cub *cub, char *path)
 {

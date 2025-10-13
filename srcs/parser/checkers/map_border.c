@@ -6,19 +6,11 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 11:55:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 12:43:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
-
-static bool	allowed_char(char c)
-{
-	if (c == 'N' || c == 'S' || c == 'E' || c == 'W'
-		|| c == '1' || c == '0' || c == 'D' || c == 'B')
-		return (true);
-	return (false);
-}
 
 static bool	cur_line(char *prev_line, char *line, char *next_line)
 {

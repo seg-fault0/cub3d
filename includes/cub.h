@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 12:33:47 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 12:47:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@
 # include <limits.h>
 # include <time.h>
 # include <math.h>
-	
+
 // win_dimensions
 # define WIN_WIDTH 1800
 # define WIN_HEIGHT 1000
@@ -70,6 +70,7 @@
 # define MM_FLOOR_PATH "./textures/mm_floor.xpm"
 # define MM_DEMON_PATH "./textures/mm_demon.xpm"
 # define PLAYER_PATH "./textures/player.xpm"
+# define DOOR_PATH "./textures/door.xpm"
 
 //img
 # define TEXTURE_NBR 8
@@ -166,6 +167,7 @@ typedef struct s_imgs
 	t_img	e_wall;
 	t_img	w_wall;
 	t_img	player;
+	t_img	door;
 	t_img	demon[DEMON_NBR];
 }t_imgs;
 
@@ -269,6 +271,7 @@ bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 
 //parser checker
+bool	allowed_char(char c);
 bool	check_map_border(t_cub *cub);
 bool	check_repeated_map_chars(t_cub *cub);
 
