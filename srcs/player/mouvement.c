@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:51:10 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 15:10:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,4 @@ void	player_mouvement(t_cub *cub)
 		cub->player.pos.x += cos(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
 		cub->player.pos.y += sin(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
 	}
-	if (cub->key.r_arr == true)
-		cub->player.angle += ROTATION_SPEED;
-	if (cub->key.l_arr == true)
-		cub->player.angle -= ROTATION_SPEED;
 }

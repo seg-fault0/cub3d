@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 14:38:23 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 15:09:07 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -263,6 +263,7 @@ void	free_img(t_cub *cub);
 void	player(t_cub *cub);//main
 bool	player_init(t_cub *cub);
 void	player_mouvement(t_cub *cub);
+void	player_rotation(t_cub *cub);
 bool	collisions(t_cub *cub);
 
 //door
