@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:09 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 12:45:24 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:00:14 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ bool	img_init(t_cub *cub)
 	mlx_xpm(mlx, MM_WALL_PATH, &cub->img.mm_wall);
 	mlx_xpm(mlx, MM_FLOOR_PATH, &cub->img.mm_floor);
 	mlx_xpm(mlx, MM_DEMON_PATH, &cub->img.mm_demon);
+	mlx_xpm(mlx, MM_DOOR_PATH, &cub->img.mm_door);
 	mlx_xpm(mlx, cub->parse.n_wall, &cub->img.n_wall);
 	mlx_xpm(mlx, cub->parse.s_wall, &cub->img.s_wall);
 	mlx_xpm(mlx, cub->parse.e_wall, &cub->img.e_wall);
@@ -58,7 +59,8 @@ bool	img_init(t_cub *cub)
 	if (!cub->img.mm_frame.img || !cub->img.mm_wall.img || !cub->img.display.img
 		|| !cub->img.n_wall.img || !cub->img.s_wall.img || !cub->img.e_wall.img
 		|| !cub->img.w_wall.img || !cub->img.demon[0].img || !cub->img.player.img
-		|| !cub->img.mm_demon.img || !cub->img.mm_floor.img || !cub->img.door.img)
+		|| !cub->img.mm_demon.img || !cub->img.mm_floor.img || !cub->img.door.img
+		|| !cub->img.mm_door.img)
 		return (err_msg(ERR_IMG), false);
 	return (true);
 }

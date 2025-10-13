@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 21:06:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:51:56 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:01:51 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ static void	draw_minimap_cp(t_cub *cub, char **map)
 					(it.x - diff.x) * IMG_SIZE, (it.y - diff.y) * IMG_SIZE);
 			else if (map[it.y][it.x] == 'D')
 				draw_img_to_img(&cub->img.display, &cub->img.mm_demon,
+					(it.x - diff.x) * IMG_SIZE, (it.y - diff.y) * IMG_SIZE);
+			else if (map[it.y][it.x] == 'O' || map[it.y][it.x] == 'C')
+				draw_img_to_img(&cub->img.display, &cub->img.mm_door,
 					(it.x - diff.x) * IMG_SIZE, (it.y - diff.y) * IMG_SIZE);
 		}
 	}

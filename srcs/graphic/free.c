@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 15:30:08 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 12:46:20 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 14:01:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	imgs_bzero(t_imgs *imgs)
 	ft_memset(&imgs->mm_wall, 0, sizeof(t_img));
 	ft_memset(&imgs->mm_floor, 0, sizeof(t_img));
 	ft_memset(&imgs->mm_demon, 0, sizeof(t_img));
+	ft_memset(&imgs->mm_door, 0, sizeof(t_img));
 	ft_memset(&imgs->n_wall, 0, sizeof(t_img));
 	ft_memset(&imgs->s_wall, 0, sizeof(t_img));
 	ft_memset(&imgs->e_wall, 0, sizeof(t_img));
@@ -37,6 +38,8 @@ void	free_img(t_cub *cub)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_wall.img);
 	if (cub->img.mm_floor.img)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_floor.img);
+	if (cub->img.mm_door.img)
+		mlx_destroy_image(cub->mlx.mlx, cub->img.mm_door.img);
 	if (cub->img.n_wall.img)
 		mlx_destroy_image(cub->mlx.mlx, cub->img.n_wall.img);
 	if (cub->img.s_wall.img)
