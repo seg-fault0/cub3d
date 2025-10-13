@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:56:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/13 09:28:22 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@
 # define ERR_IMG 7
 # define ERR_ELMT_NF 8
 # define ERR_CLR_FORMAT 9
+# define ERR_MAP_BORDER 10
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -262,6 +263,9 @@ bool	read_file(t_cub *cub, char *path);
 bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
+
+//parser checker
+bool	check_map_border(t_cub *cub);
 
 //raycasting
 void	render_world(t_cub *cub); //main
