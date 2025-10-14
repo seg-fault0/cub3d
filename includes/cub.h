@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 13:45:15 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 20:39:54 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,6 +195,12 @@ typedef struct s_key
 	bool	l_arr;
 }t_key;
 
+typedef struct s_demon
+{
+	intq		total;
+	t_ivector2	*pos;
+}t_demon;
+
 typedef struct s_player
 {
 	t_fvector2	pos;
@@ -232,6 +238,7 @@ typedef struct s_cub
 	t_clr		clr;
 	int			*textures[TEXTURE_NBR];
 	t_player	player;
+	t_demon		demon;
 	t_dda		dda;
 }t_cub;
 
@@ -270,6 +277,9 @@ void	player_rotation(t_cub *cub);
 
 //door
 void	door(t_cub *cub);
+
+//demon
+bool	demon_init(t_cub *cub);
 
 //engine
 int		game_cycle(t_cub *cub);//main

@@ -5,7 +5,6 @@ SRCS = 	srcs/core/main.c						\
 		srcs/engine/game_cycle.c				\
 		srcs/engine/mlx.c						\
 		srcs/engine/luncher.c					\
-		srcs/door/main.c						\
 		srcs/gnl/gnl.c							\
 		srcs/gnl/gnl_utils.c					\
 		srcs/core/err_msg.c						\
@@ -40,6 +39,8 @@ SRCS = 	srcs/core/main.c						\
 		srcs/render/calculator.c				\
 		srcs/render/checker.c					\
 		srcs/render/door.c						\
+		srcs/bonus/door.c						\
+		srcs/bonus/demon.c						\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
