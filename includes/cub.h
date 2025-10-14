@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 20:39:54 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 20:43:57 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -197,7 +197,7 @@ typedef struct s_key
 
 typedef struct s_demon
 {
-	intq		total;
+	int			total;
 	t_ivector2	*pos;
 }t_demon;
 
