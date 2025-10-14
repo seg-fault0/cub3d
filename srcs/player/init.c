@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 11:53:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 13:48:32 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static double	player_dir(char c)
 	else if (c == 'S')
 		return (M_PI / 2);
 	else if (c == 'E')
-		return (0.001);
+		return (2 * M_PI);
 	else if (c == 'W')
 		return (M_PI);
 	return (-1);
