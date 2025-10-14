@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:48:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:25:03 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 13:13:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ int	key_press(int key, t_key *keys)
 		keys->s = true;
 	if (key == D_KEY)
 		keys->d = true;
+	if (key == E_KEY)
+		keys->e = true;
 	if (key == L_ARR)
 		keys->l_arr = true;
 	if (key == R_ARR)
@@ -41,6 +43,8 @@ int	key_release(int key, t_key *keys)
 		keys->s = false;
 	if (key == D_KEY)
 		keys->d = false;
+	if (key == E_KEY)
+		keys->e = false;
 	if (key == L_ARR)
 		keys->l_arr = false;
 	if (key == R_ARR)

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 09:48:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 13:12:34 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define S_KEY 115
 # define A_KEY 97
 # define D_KEY 100 
+# define E_KEY 101
 # define R_ARR 65363
 # define L_ARR 65361
 
@@ -60,12 +61,12 @@
 //SPEED
 # define PLAYER_SPEED 0.1
 # define ROTATION_SPEED 0.06
-# define DOOR_SPEED 30
 # define MOUSE_SPEED 0.01
 # define COLLISION_RADIUS 0.2f
 
 //other
 # define MAX_FILE_SIZE 150
+# define DOOR_RADIOUS 3
 
 //img_paths
 # define MM_FRAME_PATH "./textures/frame.xpm"
@@ -188,6 +189,7 @@ typedef struct s_key
 	bool	a;
 	bool	s;
 	bool	d;
+	bool	e;
 	bool	esq;
 	bool	r_arr;
 	bool	l_arr;
