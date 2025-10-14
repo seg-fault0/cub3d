@@ -39,6 +39,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/render/raycaster.c					\
 		srcs/render/calculator.c				\
 		srcs/render/checker.c					\
+		srcs/render/door.c						\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 

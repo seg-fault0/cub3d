@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:33:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 09:48:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -290,6 +290,7 @@ void	calc_line_height(t_dda *ray);
 void	calc_wall_texture_x(t_dda *ray, t_player *player);
 void	init_ray(t_dda *ray, t_player *player, int x);
 void	wall_cast(t_cub *cub);
+void	draw_door(t_cub *cub, int x);
 void	ft_check(t_cub *cub);
 void	check_raydir(t_dda *ray, t_player *player);
 
