@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 13:12:34 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/14 13:45:15 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,13 @@
 # define DOOR_RADIOUS 3
 
 //img_paths
-# define MM_FRAME_PATH "./textures/frame.xpm"
-# define MM_WALL_PATH "./textures/mm_wall.xpm"
-# define MM_FLOOR_PATH "./textures/mm_floor.xpm"
-# define MM_DOOR_PATH "./textures/mm_door.xpm"
-# define MM_DEMON_PATH "./textures/mm_demon.xpm"
+# define MM_FRAME_PATH "./textures/minimap/frame.xpm"
+# define MM_WALL_PATH "./textures/minimap/mm_wall.xpm"
+# define MM_FLOOR_PATH "./textures/minimap/mm_floor.xpm"
+# define MM_DOOR_PATH "./textures/minimap/mm_door.xpm"
+# define MM_DEMON_PATH "./textures/minimap/mm_demon.xpm"
 # define PLAYER_PATH "./textures/player.xpm"
-# define DOOR_PATH "./textures/door.xpm"
+# define DOOR_PATH "./textures/walls/door.xpm"
 
 //img
 # define TEXTURE_NBR 6
