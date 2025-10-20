@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 20:43:57 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/16 09:43:37 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -195,9 +195,22 @@ typedef struct s_key
 	bool	l_arr;
 }t_key;
 
+typedef	struct s_spirites
+{
+	double	dist;
+	double	transform_x;
+	double	transform_y;
+	int		height;
+	int		width;
+	int		screen_x;
+	t_draw	draw_x;
+	t_draw	draw_y;
+}t_spirites;
+
 typedef struct s_demon
 {
 	int			total;
+	t_spirites	*spirit;
 	t_ivector2	*pos;
 }t_demon;
 

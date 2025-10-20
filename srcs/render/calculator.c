@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   calculator.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/12 12:50:35 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:58:26 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/19 22:22:25 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,3 +54,11 @@ void	angle2vector(t_player *player)
 	player->plane.x = -sin(player->angle) * 0.66;
 	player->plane.y = cos(player->angle) * 0.66;
 }
+// void	calc_spirites(t_cub *cub)
+// {
+// 	double	spirit_x;
+// 	double	spirit_y;
+
+// 	spirit_x = cub->player.pos.x - cub->demon.pos[0].x;
+// 	spirit_y = cub->player.pos.x - cub->demon.pos[0].y;
+// }
