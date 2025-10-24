@@ -33,6 +33,7 @@ static void	render_floor_ceiling(t_cub *cub)
 
 void	render_world(t_cub *cub)
 {
+	cub->textures[5] = load_tex_animation(cub->img.demon);
 	render_floor_ceiling(cub);
 	angle2vector(&cub->player);
 	wall_cast(cub);
