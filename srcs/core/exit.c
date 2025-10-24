@@ -21,11 +21,23 @@ void	free_loaded_textures(int *textures[])
 		free(textures[i]);
 }
 
+void	free_sprite(t_cub *cub)
+{
+	if (cub->sprites.sprites)
+		free(cub->sprites.sprites);
+	if (cub->sprites.zbuffer)
+		free(cub->sprites.zbuffer);
+	if (cub->sprites.order)
+		free(cub->sprites.order);
+	if (cub->sprites.distance)
+		free(cub->sprites.distance);
+}
+
 int	ft_exit(t_cub *cub, int code)
 {
 	free_loaded_textures(cub->textures);
 	free_animation(cub->mlx.mlx, cub->img.demon);
-	free(cub->demon.pos);
+	// free_sprite(cub);
 	free2(cub->parse.file);
 	free2(cub->parse.map);
 	free(cub->parse.n_wall);

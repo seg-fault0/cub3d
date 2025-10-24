@@ -36,4 +36,5 @@ void	render_world(t_cub *cub)
 	render_floor_ceiling(cub);
 	angle2vector(&cub->player);
 	wall_cast(cub);
+	render_sprites(cub);
 }

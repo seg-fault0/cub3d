@@ -39,6 +39,8 @@ SRCS = 	srcs/core/main.c						\
 		srcs/render/calculator.c				\
 		srcs/render/checker.c					\
 		srcs/render/door.c						\
+		srcs/render/spirites.c					\
+		srcs/render/draw_spirites.c				\
 		srcs/bonus/door.c						\
 		srcs/bonus/demon.c						\
 

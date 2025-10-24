@@ -91,6 +91,7 @@ void	wall_cast(t_cub *cub)
 		}
 		calc_line_height(&cub->dda);
 		calc_wall_texture_x(&cub->dda, &cub->player);
+		cub->sprites.zbuffer[x] = cub->dda.wall.dist;
 		if (hit == 1)
 			draw_wall_stripe(cub, x);
 		else

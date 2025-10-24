@@ -20,7 +20,7 @@ static void	b_zero(t_cub *cub)
 	ft_memset(&cub->key, 0, sizeof(t_key));
 	ft_memset(&cub->player, 0, sizeof(t_player));
 	ft_memset(&cub->parse, 0, sizeof(t_parse));
-	ft_memset(&cub->demon, 0, sizeof(t_demon));
+	ft_memset(&cub->sprites, 0, sizeof(t_sprite));
 	imgs_bzero(&cub->img);
 }
 
@@ -32,7 +32,7 @@ bool	setup_cub(t_cub *cub, char **av)
 		||img_init(cub) == false
 		||texture_loader(cub) == false
 		||player_init(cub) == false
-		||demon_init(cub) == false)
+		||init_sprite_system(cub) == false)
 		return (ft_exit(cub, 1), false);
 	return (true);
 }

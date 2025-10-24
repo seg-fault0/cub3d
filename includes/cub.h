@@ -25,8 +25,8 @@
 # include <math.h>
 
 // win_dimensions
-# define WIN_WIDTH 1800
-# define WIN_HEIGHT 1000
+# define WIN_WIDTH 1300
+# define WIN_HEIGHT 600
 # define TEXTERE_HEIGHT 64
 # define TEXTERE_WIDHT  64 
 //key_code
@@ -195,24 +195,35 @@ typedef struct s_key
 	bool	l_arr;
 }t_key;
 
-typedef	struct s_spirites
+typedef struct s_sprite
 {
-	double	dist;
-	double	transform_x;
-	double	transform_y;
-	int		height;
-	int		width;
-	int		screen_x;
-	t_draw	draw_x;
-	t_draw	draw_y;
-}t_spirites;
+	double	x;
+	double	y;
+	int		texture;
+	int		type;
+}	t_sprite;
 
-typedef struct s_demon
+typedef struct s_sprite_data
 {
-	int			total;
-	t_spirites	*spirit;
-	t_ivector2	*pos;
-}t_demon;
+	t_sprite	*sprites;
+	int			count;
+	double		*zbuffer;
+	int			*order;
+	double		*distance;
+	double		sprite_x;
+	double		sprite_y;
+	double		inv_det;
+	double		transform_x;
+	double		transform_y;
+	int			sprite_screen_x;
+	int			sprite_height;
+	int			sprite_width;
+	int			draw_start_y;
+	int			draw_end_y;
+	int			draw_start_x;
+	int			draw_end_x;
+	int			stripe;
+}	t_sprite_data;
 
 typedef struct s_player
 {
@@ -251,7 +262,7 @@ typedef struct s_cub
 	t_clr		clr;
 	int			*textures[TEXTURE_NBR];
 	t_player	player;
-	t_demon		demon;
+	t_sprite_data	sprites;
 	t_dda		dda;
 }t_cub;
 
@@ -318,6 +329,9 @@ void	wall_cast(t_cub *cub);
 void	draw_door(t_cub *cub, int x);
 void	ft_check(t_cub *cub);
 void	check_raydir(t_dda *ray, t_player *player);
+void	render_sprites(t_cub *cub);
+void	sort_sprites(t_cub *cub);
+bool	init_sprite_system(t_cub *cub);
 
 //minimap
 void	minimap(t_cub *cub);//main
