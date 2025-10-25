@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 16:01:38 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 16:54:59 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -177,62 +177,42 @@ typedef struct s_imgs
 	t_img	demon[DEMON_NBR];
 }t_imgs;
 
-typedef struct s_mlx
-{
-	void	*mlx;
-	void	*win;
-}t_mlx;
-
-typedef struct s_key
-{
-	bool	w;
-	bool	a;
-	bool	s;
-	bool	d;
-	bool	e;
-	bool	esq;
-	bool	r_arr;
-	bool	l_arr;
-}t_key;
+/*
+********************************************
+**************   ANIMATION *****************
+********************************************
+*/
 
 typedef struct s_sprite
 {
-	double	x;
-	double	y;
-	int		texture;
-	int		type;
+	t_fvector2	pos;
+	int			texture;
+	int			type;
 }	t_sprite;
 
 typedef struct s_sprite_data
 {
 	t_sprite	*sprites;
+	t_fvector2	sprite;
+	t_fvector2	transform;
+	t_ivector2	draw_start;
+	t_ivector2	draw_end;
 	int			count;
 	double		*zbuffer;
 	int			*order;
 	double		*distance;
-	double		sprite_x;
-	double		sprite_y;
 	double		inv_det;
-	double		transform_x;
-	double		transform_y;
 	int			sprite_screen_x;
 	int			sprite_height;
 	int			sprite_width;
-	int			draw_start_y;
-	int			draw_end_y;
-	int			draw_start_x;
-	int			draw_end_x;
 	int			stripe;
-}	t_sprite_data;
+}t_animation;
 
-typedef struct s_player
-{
-	t_fvector2	pos;
-	t_fvector2	dir;
-	t_fvector2	plane;
-	int			has_move;
-	float		angle;
-}t_player;
+/*
+********************************************
+**************   PARSE  ********************
+********************************************
+*/
 
 typedef struct s_clr
 {
@@ -253,6 +233,45 @@ typedef struct s_parse
 	int		max_map_y;
 }t_parse;
 
+/*
+********************************************
+****************   MLX   *******************
+********************************************
+*/
+
+typedef struct s_mlx
+{
+	void	*mlx;
+	void	*win;
+}t_mlx;
+
+typedef struct s_key
+{
+	bool	w;
+	bool	a;
+	bool	s;
+	bool	d;
+	bool	e;
+	bool	esq;
+	bool	r_arr;
+	bool	l_arr;
+}t_key;
+
+/*
+********************************************
+**************    CUB    *******************
+********************************************
+*/
+
+typedef struct s_player
+{
+	t_fvector2	pos;
+	t_fvector2	dir;
+	t_fvector2	plane;
+	int			has_move;
+	float		angle;
+}t_player;
+
 typedef struct s_cub
 {
 	t_parse		parse;
@@ -262,9 +281,15 @@ typedef struct s_cub
 	t_clr		clr;
 	int			*textures[TEXTURE_NBR];
 	t_player	player;
-	t_sprite_data	sprites;
+	t_animation	sprites;
 	t_dda		dda;
 }t_cub;
+
+/*
+********************************************
+**************   PROTOTYPES  ***************
+********************************************
+*/
 
 //core
 bool	setup_cub(t_cub *cub, char **av);

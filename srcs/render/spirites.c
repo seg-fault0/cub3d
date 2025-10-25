@@ -1,4 +1,16 @@
-#include "../../includes/cub.h"
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   spirites.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/10/25 16:55:14 by wimam             #+#    #+#             */
+/*   Updated: 2025/10/25 16:56:18 by wimam            ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "cub.h"
 
 static void	count_sprites(t_cub *cub)
 {
@@ -29,6 +41,7 @@ bool	init_sprite_system(t_cub *cub)
 	int	i;
 	int	j;
 	int	idx;
+
 	count_sprites(cub);
 	idx = 0;
 	i = -1;
@@ -39,8 +52,8 @@ bool	init_sprite_system(t_cub *cub)
 		{
 			if (cub->parse.map[i][j] == 'D')
 			{
-				cub->sprites.sprites[idx].x = j + 0.5;
-				cub->sprites.sprites[idx].y = i + 0.5;
+				cub->sprites.sprites[idx].pos.x = j + 0.5;
+				cub->sprites.sprites[idx].pos.y = i + 0.5;
 				cub->sprites.sprites[idx].texture = 5;
 				cub->sprites.sprites[idx].type = 2;
 				idx++;
@@ -58,11 +71,11 @@ static void	spirite_ordre(t_cub *cub)
 	while (++i < cub->sprites.count)
 	{
 		cub->sprites.order[i] = i;
-		cub->sprites.distance[i] = ((cub->player.pos.x - 
-			cub->sprites.sprites[i].x) * (cub->player.pos.x - 
-			cub->sprites.sprites[i].x) + (cub->player.pos.y - 
-			cub->sprites.sprites[i].y) * (cub->player.pos.y - 
-			cub->sprites.sprites[i].y));
+		cub->sprites.distance[i] = ((cub->player.pos.x
+					- cub->sprites.sprites[i].pos.x) * (cub->player.pos.x
+					- cub->sprites.sprites[i].pos.x) + (cub->player.pos.y
+					- cub->sprites.sprites[i].pos.y) * (cub->player.pos.y
+					- cub->sprites.sprites[i].pos.y));
 	}
 }
 
@@ -80,8 +93,8 @@ void	sort_sprites(t_cub *cub)
 		j = -1;
 		while (++j < cub->sprites.count - 1 - i)
 		{
-			if (cub->sprites.distance[cub->sprites.order[j]] < 
-				cub->sprites.distance[cub->sprites.order[j + 1]])
+			if (cub->sprites.distance[cub->sprites.order[j]]
+				< cub->sprites.distance[cub->sprites.order[j + 1]])
 			{
 				temp_order = cub->sprites.order[j];
 				temp_dist = cub->sprites.distance[j];
