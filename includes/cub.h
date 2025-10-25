@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/16 09:43:37 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/10/25 16:01:38 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@
 # include <math.h>
 
 // win_dimensions
-# define WIN_WIDTH 1300
-# define WIN_HEIGHT 600
+# define WIN_WIDTH 1800
+# define WIN_HEIGHT 1000
 # define TEXTERE_HEIGHT 64
 # define TEXTERE_WIDHT  64 
 //key_code

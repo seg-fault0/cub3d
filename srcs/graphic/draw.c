@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/12 16:53:11 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 16:02:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ void	put_pixel_to_img(t_img *img, int x, int y, int color)
 {
 	char	*pixel;
 
+	if (color == TRANSP)
+		return ;
 	if (x < 0 || y < 0 || x >= img->width || y >= img->height)
 		return ;
 	pixel = img->addr + (y * img->size_line + x * (img->bpp / 8));
