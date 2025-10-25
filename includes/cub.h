@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 17:05:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 17:08:55 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -326,9 +326,6 @@ void	player_rotation(t_cub *cub);
 
 //door
 void	door(t_cub *cub);
-
-//demon
-bool	demon_init(t_cub *cub);
 
 //engine
 int		game_cycle(t_cub *cub);//main
