@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 20:29:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 17:02:59 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int	ft_exit(t_cub *cub, int code)
 {
 	free_loaded_textures(cub->textures);
 	free_animation(cub->mlx.mlx, cub->img.demon);
-	// free_sprite(cub);
+	free_sprite(cub);
 	free2(cub->parse.file);
 	free2(cub->parse.map);
 	free(cub->parse.n_wall);

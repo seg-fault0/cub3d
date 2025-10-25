@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 16:54:59 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 17:05:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,7 +190,7 @@ typedef struct s_sprite
 	int			type;
 }	t_sprite;
 
-typedef struct s_sprite_data
+typedef struct s_animation
 {
 	t_sprite	*sprites;
 	t_fvector2	sprite;

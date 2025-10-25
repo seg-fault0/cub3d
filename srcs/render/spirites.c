@@ -6,13 +6,13 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:55:14 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 16:56:18 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/25 17:07:26 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	count_sprites(t_cub *cub)
+static bool	count_sprites(t_cub *cub)
 {
 	int	i;
 	int	j;
@@ -34,6 +34,10 @@ static void	count_sprites(t_cub *cub)
 	cub->sprites.zbuffer = malloc(sizeof(double) * WIN_WIDTH);
 	cub->sprites.order = malloc(sizeof(int) * sprite_count);
 	cub->sprites.distance = malloc(sizeof(double) * sprite_count);
+	if (!cub->sprites.sprites || !cub->sprites.zbuffer
+		|| !cub->sprites.order || !cub->sprites.distance)
+		return (false);
+	return (true);
 }
 
 bool	init_sprite_system(t_cub *cub)
@@ -42,7 +46,8 @@ bool	init_sprite_system(t_cub *cub)
 	int	j;
 	int	idx;
 
-	count_sprites(cub);
+	if (count_sprites(cub) == false)
+		return (false);
 	idx = 0;
 	i = -1;
 	while (++i < cub->parse.max_map_y)
