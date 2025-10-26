@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:54:22 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 16:56:58 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/26 11:05:27 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,45 +34,33 @@ static void	draw_sprite_stripe(t_cub *cub, t_sprite *sprite)
 	}
 }
 
-static void	draw_one_sprite(t_cub *cub, int sprite_idx)
+static void	draw_one_sprite(t_cub *cub, int idx)
 {
 	t_sprite	*sprite;
+	t_animation	*s;
+	t_player	*p;
 
-	sprite = &cub->sprites.sprites[sprite_idx];
-	cub->sprites.sprite.x = sprite->pos.x - cub->player.pos.x;
-	cub->sprites.sprite.y = sprite->pos.y - cub->player.pos.y;
-	cub->sprites.inv_det = 1.0 / (cub->player.plane.x * cub->player.dir.y
-			-cub->player.dir.x * cub->player.plane.y);
-	cub->sprites.transform.x = cub->sprites.inv_det * (cub->player.dir.y * cub->sprites.sprite.x
-			- cub->player.dir.x * cub->sprites.sprite.y);
-	cub->sprites.transform.y = cub->sprites.inv_det * (-cub->player.plane.y * cub->sprites.sprite.x
-			+ cub->player.plane.x * cub->sprites.sprite.y);
-	if (cub->sprites.transform.y <= 0)
+	sprite = &cub->sprites.sprites[idx];
+	s = &cub->sprites;
+	p = &cub->player;
+	s->sprite.x = sprite->pos.x - p->pos.x;
+	s->sprite.y = sprite->pos.y - p->pos.y;
+	s->inv_det = 1.0 / (p->plane.x * p->dir.y - p->dir.x * p->plane.y);
+	s->transform.x = s->inv_det * (p->dir.y * s->sprite.x - p->dir.x * s->sprite.y);
+	s->transform.y = s->inv_det * (-p->plane.y * s->sprite.x + p->plane.x * s->sprite.y);
+	if (s->transform.y <= 0)
 		return ;
-	cub->sprites.sprite_screen_x = (int)((WIN_WIDTH / 2) * (1 + cub->sprites.transform.x / cub->sprites.transform.y));
-	cub->sprites.sprite_height = abs((int)(WIN_HEIGHT / cub->sprites.transform.y));
-	cub->sprites.sprite_width = abs((int)(WIN_HEIGHT / cub->sprites.transform.y));
-	cub->sprites.draw_start.y = -cub->sprites.sprite_height / 2 + WIN_HEIGHT / 2;
-	if (cub->sprites.draw_start.y < 0)
-		cub->sprites.draw_start.y = 0;
-	cub->sprites.draw_end.y = cub->sprites.sprite_height / 2 + WIN_HEIGHT / 2;
-	if (cub->sprites.draw_end.y >= WIN_HEIGHT)
-		cub->sprites.draw_end.y = WIN_HEIGHT - 1;
-	cub->sprites.draw_start.x = -cub->sprites.sprite_width / 2 + cub->sprites.sprite_screen_x;
-	if (cub->sprites.draw_start.x < 0)
-		cub->sprites.draw_start.x = 0;
-	cub->sprites.draw_end.x = cub->sprites.sprite_width / 2 + cub->sprites.sprite_screen_x;
-	if (cub->sprites.draw_end.x >= WIN_WIDTH)
-		cub->sprites.draw_end.x = WIN_WIDTH - 1;
-	cub->sprites.stripe = cub->sprites.draw_start.x - 1;
-	while (++cub->sprites.stripe < cub->sprites.draw_end.x)
-	{
-		if (cub->sprites.stripe >= 0 && cub->sprites.stripe < WIN_WIDTH
-			&& cub->sprites.transform.y < cub->sprites.zbuffer[cub->sprites.stripe])
-		{
+	s->sprite_screen_x = (int)((WIN_WIDTH / 2) * (1 + s->transform.x / s->transform.y));
+	s->sprite_height = abs((int)(WIN_HEIGHT / s->transform.y));
+	s->sprite_width = s->sprite_height;
+	s->draw_start.y = fmax(-s->sprite_height / 2 + WIN_HEIGHT / 2, 0);
+	s->draw_end.y = fmin(s->sprite_height / 2 + WIN_HEIGHT / 2, WIN_HEIGHT - 1);
+	s->draw_start.x = fmax(-s->sprite_width / 2 + s->sprite_screen_x, 0);
+	s->draw_end.x = fmin(s->sprite_width / 2 + s->sprite_screen_x, WIN_WIDTH - 1);
+	s->stripe = s->draw_start.x - 1;
+	while (++s->stripe < s->draw_end.x)
+		if (s->transform.y < s->zbuffer[s->stripe])
 			draw_sprite_stripe(cub, sprite);
-		}
-	}
 }
 
 void	render_sprites(t_cub *cub)
