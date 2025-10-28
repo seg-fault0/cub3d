@@ -52,6 +52,7 @@
 # define ERR_MAP_BORDER 10
 # define ERR_MLTPL_PLYR 11
 # define ERR_PLYR_NF 12
+# define ERR_MAP_NF 13
 
 //gnl
 # ifndef BUFFER_SIZE

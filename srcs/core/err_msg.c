@@ -14,6 +14,14 @@
 
 #define STDERR 2
 
+static void	err_msg_nor(int msg)
+{
+	if (msg == ERR_PLYR_NF)
+		ft_putstr_fd("no player has been found\n", STDERR);
+	else if (msg == ERR_MAP_NF)
+		ft_putstr_fd("map not found\n", STDERR);
+}
+
 void	err_msg(int msg)
 {
 	ft_putstr_fd("ERR : ", STDERR);
@@ -39,6 +47,6 @@ void	err_msg(int msg)
 		ft_putstr_fd("wrong map border\n", STDERR);
 	else if (msg == ERR_MLTPL_PLYR)
 		ft_putstr_fd("multiple players\n", STDERR);
-	else if (msg == ERR_PLYR_NF)
-		ft_putstr_fd("no player has been found\n", STDERR);
+	else
+		err_msg_nor(msg);
 }

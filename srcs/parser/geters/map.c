@@ -41,6 +41,8 @@ bool	get_map(t_cub *cub)
 	int	cur_i;
 
 	cur_i = get_cur_i(cub->parse.file);
+	if (cub->parse.file[cur_i] == NULL)
+		return (err_msg(ERR_MAP_NF), false);
 	cub->parse.map = get_2darr_cp(&cub->parse.file[cur_i]);
 	cub->parse.max_map_y = get_arr_size(cub->parse.map);
 	return (true);
