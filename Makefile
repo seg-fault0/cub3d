@@ -9,6 +9,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/gnl/gnl_utils.c					\
 		srcs/core/err_msg.c						\
 		srcs/libft/memset.c						\
+		srcs/libft/is_space.c					\
 		srcs/libft/strlen.c						\
 		srcs/libft/strdup.c						\
 		srcs/libft/arrays.c						\

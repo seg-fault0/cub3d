@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 17:08:55 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/29 13:34:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -376,6 +376,7 @@ int		get_arr_size(char **arr);
 char	**get_2darr_cp(char **arr);
 void	print_arr(char **arr);
 void	free2(char **arr);
+int		is_space(char c);
 
 //gnl
 char	*ft_strljoin(char *s1, char *s2, int size);

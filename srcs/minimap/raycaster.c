@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 13:20:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:52:41 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/29 13:33:11 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static void	draw_ray(t_cub *cub, float angle)
 	while (cub->parse.map[(int)ray.y][(int)ray.x] != '1'
 		&& cub->parse.map[(int)ray.y][(int)ray.x] != 'D'
 		&& cub->parse.map[(int)ray.y][(int)ray.x] != 'O'
-		&& cub->parse.map[(int)ray.y][(int)ray.x] != 'C')
+		&& cub->parse.map[(int)ray.y][(int)ray.x] != 'C'
+		&& is_space(cub->parse.map[(int)ray.y][(int)ray.x]))
 	{
 		if (ray_mm_border(pos, ray))
 			break ;
