@@ -3,25 +3,22 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 09:49:21 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/28 20:42:13 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static void	draw_wall_stripe(t_cub *cub, int x)
+void	get_tex_num(t_cub *cub, int hit)
 {
-	int		y;
-	int		color;
-	double	wall_x;
-	int		tex_x;
-
-	cub->dda.tex.step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
-	cub->dda.tex.pos = (cub->dda.draw.start - WIN_HEIGHT / 2
-			+ cub->dda.line_height / 2) * cub->dda.tex.step;
+	if (hit == 2)
+	{
+		cub->dda.tex_num = 4;
+		return ;
+	}
 	if (cub->dda.side == 0)
 	{
 		if (cub->dda.ray_dir.x > 0)
@@ -36,6 +33,19 @@ static void	draw_wall_stripe(t_cub *cub, int x)
 		else
 			cub->dda.tex_num = 0;
 	}
+}
+
+static void	draw_wall_stripe(t_cub *cub, int x, int hit)
+{
+	int		y;
+	int		color;
+	double	wall_x;
+	int		tex_x;
+
+	cub->dda.tex.step = 1.0 * TEXTERE_HEIGHT / cub->dda.line_height;
+	cub->dda.tex.pos = (cub->dda.draw.start - WIN_HEIGHT / 2
+			+ cub->dda.line_height / 2) * cub->dda.tex.step;
+	get_tex_num(cub, hit);
 	if (cub->dda.side == 0)
 		wall_x = cub->player.pos.y + cub->dda.wall.dist * cub->dda.ray_dir.y;
 	else
@@ -81,7 +91,8 @@ void	wall_cast(t_cub *cub)
 			if (cub->dda.map.x >= 0 && cub->dda.map.y >= 0
 				&& cub->dda.map.y < cub->parse.max_map_y
 				&& cub->dda.map.x < ft_strlen(cub->parse.map[cub->dda.map.y])
-				&& cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '1')
+				&& (cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '1' ||
+				cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '\n'))
 				hit = 1;
 			else if (cub->dda.map.x >= 0 && cub->dda.map.y >= 0
 				&& cub->dda.map.y < cub->parse.max_map_y
@@ -92,10 +103,6 @@ void	wall_cast(t_cub *cub)
 		calc_line_height(&cub->dda);
 		calc_wall_texture_x(&cub->dda, &cub->player);
 		cub->sprites.zbuffer[x] = cub->dda.wall.dist;
-		if (hit == 1)
-			draw_wall_stripe(cub, x);
-		else
-			draw_door(cub, x);
+		draw_wall_stripe(cub, x, hit);
 	}
-	return ;
 }
