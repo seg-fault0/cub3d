@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_spirites.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/25 16:54:22 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/26 11:05:27 by wimam            ###   ########.fr       */
+/*   Updated: 2025/10/30 22:51:56 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ static void	draw_sprite_stripe(t_cub *cub, t_sprite *sprite)
 	int				d;
 	unsigned int	color;
 
-	tex_x = (int)((cub->sprites.stripe - (-cub->sprites.sprite_width / 2 + cub->sprites.sprite_screen_x))
-			* TEXTERE_WIDHT / cub->sprites.sprite_width);
+	tex_x = (int)((cub->sprites.stripe - (-cub->sprites.sprite_width / 2 
+			+ cub->sprites.sprite_screen_x)) * TEXTERE_WIDHT / cub->sprites.sprite_width);
 	y = cub->sprites.draw_start.y - 1;
 	while (++y < cub->sprites.draw_end.y)
 	{
@@ -59,8 +59,10 @@ static void	draw_one_sprite(t_cub *cub, int idx)
 	s->draw_end.x = fmin(s->sprite_width / 2 + s->sprite_screen_x, WIN_WIDTH - 1);
 	s->stripe = s->draw_start.x - 1;
 	while (++s->stripe < s->draw_end.x)
+	{
 		if (s->transform.y < s->zbuffer[s->stripe])
 			draw_sprite_stripe(cub, sprite);
+	}
 }
 
 void	render_sprites(t_cub *cub)
@@ -72,7 +74,5 @@ void	render_sprites(t_cub *cub)
 	sort_sprites(cub);
 	i = -1;
 	while (++i < cub->sprites.count)
-	{
 		draw_one_sprite(cub, cub->sprites.order[i]);
-	}
 }
