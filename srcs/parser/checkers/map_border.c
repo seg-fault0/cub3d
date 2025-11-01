@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/01 20:34:36 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 20:37:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,14 @@ static bool	first_last(char *line)
 	int	i;
 
 	i = 0;
-	while (line[i] != '\n')
-	{
-		if (line[i] != ' ' && line[i] != '1')
-			return (false);
+	while (line[i] && line[i] == ' ')
 		i++;
-	}
+	while (line[i] && line[i] == '1')
+		i++;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] != '\0' && line[i] != '\n')
+		return (false);
 	return (true);
 }
 
