@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mouvement.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/12 08:33:12 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 15:20:31 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 15:48:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ bool	collision(t_cub *cub, float y, float x)
 	return (true);
 }
 
-void	player_mouvement(t_cub *cub)
+static t_fvector2	get_new_pos(t_cub *cub)
 {
 	t_fvector2	new;
 
@@ -61,6 +61,14 @@ void	player_mouvement(t_cub *cub)
 		new.x += cos(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
 		new.y += sin(cub->player.angle + M_PI / 2) * PLAYER_SPEED;
 	}
+	return (new);
+}
+
+void	player_mouvement(t_cub *cub)
+{
+	t_fvector2	new;
+
+	new = get_new_pos(cub);
 	if (collision(cub, cub->player.pos.y, new.x))
 		cub->player.pos.x = new.x;
 	if (collision(cub, new.y, cub->player.pos.x))

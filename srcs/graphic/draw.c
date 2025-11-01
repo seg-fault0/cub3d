@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 11:31:34 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 16:02:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 15:38:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,30 +29,22 @@ void	draw_img_to_img(t_img *dst, t_img *src, int px, int py)
 	int		x;
 	int		y;
 	int		color;
-	char	*dst_pixel;
-	char	*src_pixel;
+	char	*src_pxl;
 
 	y = 0;
 	while (y < src->height)
 	{
-		if (py + y >= 0 && py + y < dst->height)
+		x = 0;
+		while (x < src->width)
 		{
-			x = 0;
-			while (x < src->width)
+			if (px + x >= 0 && py + y >= 0
+				&& px + x < dst->width && py + y < dst->height)
 			{
-				if (px + x >= 0 && px + x < dst->width)
-				{
-					src_pixel = src->addr + (y * src->size_line + x * (src->bpp / 8));
-					color = *(unsigned int *)src_pixel;
-					if (color != TRANSP)
-					{
-						dst_pixel = dst->addr
-							+ ((py + y) * dst->size_line + (px + x) * (dst->bpp / 8));
-						*(unsigned int *)dst_pixel = color;
-					}
-				}
-				x++;
+				src_pxl = src->addr + (y * src->size_line + x * (src->bpp / 8));
+				color = *(unsigned int *)src_pxl;
+				put_pixel_to_img(dst, px + x, py + y, color);
 			}
+			x++;
 		}
 		y++;
 	}
