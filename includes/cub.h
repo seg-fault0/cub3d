@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/29 13:34:37 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 17:37:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@
 # define ERR_MLTPL_PLYR 11
 # define ERR_PLYR_NF 12
 # define ERR_MAP_NF 13
+# define ERR_DOUBLE 14
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -340,7 +341,8 @@ bool	get_map(t_cub *cub);
 //parser checker
 bool	allowed_char(char c);
 bool	check_map_border(t_cub *cub);
-bool	check_repeated_map_chars(t_cub *cub);
+bool	check_double_player(t_cub *cub);
+bool	check_double_textures(t_cub *cub);
 
 //raycasting
 void	render_world(t_cub *cub); //main

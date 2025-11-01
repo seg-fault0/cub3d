@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   repeated_chars.c                                   :+:      :+:    :+:   */
+/*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 11:28:59 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 11:55:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 17:37:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static bool	found_player(char c)
 	return (false);
 }
 
-bool	check_repeated_map_chars(t_cub *cub)
+bool	check_double_player(t_cub *cub)
 {
 	int		player_found;
 	int		y;

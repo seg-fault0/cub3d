@@ -29,7 +29,8 @@ SRCS = 	srcs/core/main.c						\
 		srcs/parser/geters/colors.c				\
 		srcs/parser/geters/textures.c			\
 		srcs/parser/checkers/map_border.c		\
-		srcs/parser/checkers/repeated_chars.c	\
+		srcs/parser/checkers/player.c			\
+		srcs/parser/checkers/double.c			\
 		srcs/player/main.c						\
 		srcs/player/init.c						\
 		srcs/player/mouvement.c					\

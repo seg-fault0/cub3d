@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:20:52 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 13:40:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 17:37:13 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ bool	parse(t_cub *cub, char *path)
 		|| get_clr_format(cub) == false)
 		return (false);
 	if (check_map_border(cub) == false
-		|| check_repeated_map_chars(cub) == false)
+		|| check_double_player(cub) == false
+		|| check_double_textures(cub) == false)
 		return (false);
 	return (true);
 }
