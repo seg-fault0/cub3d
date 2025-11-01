@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map_border.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/13 12:43:37 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 18:44:05 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static bool	cur_line(char *prev_line, char *line, char *next_line)
 			zero_found = false;
 		if (zero_found == true)
 		{
-			if (allowed_char(line[i]) == false
+			if (allowed_char(line[i + 1]) == false
+				|| allowed_char(line[i - 1]) == false
 				|| allowed_char(next_line[i]) == false
 				|| allowed_char(prev_line[i]) == false)
 				return (false);
