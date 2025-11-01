@@ -11,6 +11,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/libft/memset.c						\
 		srcs/libft/is_space.c					\
 		srcs/libft/strlen.c						\
+		srcs/libft/ft_isdigit.c					\
 		srcs/libft/strdup.c						\
 		srcs/libft/arrays.c						\
 		srcs/libft/memcmp.c						\
@@ -29,6 +30,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/parser/geters/colors.c				\
 		srcs/parser/geters/textures.c			\
 		srcs/parser/checkers/map_border.c		\
+		srcs/parser/checkers/color.c			\
 		srcs/parser/checkers/player.c			\
 		srcs/parser/checkers/double.c			\
 		srcs/player/main.c						\

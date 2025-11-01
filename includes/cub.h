@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/01 17:37:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 17:52:34 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -343,6 +343,7 @@ bool	allowed_char(char c);
 bool	check_map_border(t_cub *cub);
 bool	check_double_player(t_cub *cub);
 bool	check_double_textures(t_cub *cub);
+bool	check_clr_format(t_cub *cub);
 
 //raycasting
 void	render_world(t_cub *cub); //main
@@ -379,6 +380,7 @@ char	**get_2darr_cp(char **arr);
 void	print_arr(char **arr);
 void	free2(char **arr);
 int		is_space(char c);
+int		ft_isdigit(int i);
 
 //gnl
 char	*ft_strljoin(char *s1, char *s2, int size);
