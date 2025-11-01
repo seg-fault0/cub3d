@@ -6,11 +6,28 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/01 18:44:05 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/01 20:34:36 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
+
+static bool	cur_line_limit(char *line)
+{
+	int	i;
+
+	i = 0;
+	while (line[i] && line[i] == ' ')
+		i++;
+	if (line[i] != '1')
+		return (false);
+	i = ft_strlen(line) - 2;
+	while (i > 0 && line[i] == ' ')
+		i--;
+	if (line[i] != '1')
+		return (false);
+	return (true);
+}
 
 static bool	cur_line(char *prev_line, char *line, char *next_line)
 {
@@ -38,21 +55,14 @@ static bool	cur_line(char *prev_line, char *line, char *next_line)
 	return (true);
 }
 
-static bool	first_last_line(char **map, int max)
+static bool	first_last(char *line)
 {
 	int	i;
 
 	i = 0;
-	while (map[0] && map[0][i] != '\n')
+	while (line[i] != '\n')
 	{
-		if (map[0][i] != ' ' && map[0][i] != '1')
-			return (false);
-		i++;
-	}
-	i = 0;
-	while (map[max] && map[max][i] != '\n')
-	{
-		if (map[max][i] != ' ' && map[max][i] != '1')
+		if (line[i] != ' ' && line[i] != '1')
 			return (false);
 		i++;
 	}
@@ -67,12 +77,14 @@ bool	check_map_border(t_cub *cub)
 	map = cub->parse.map;
 	if (!map)
 		return (false);
-	if (first_last_line(map, cub->parse.max_map_y - 1) == false)
+	if (first_last(map[cub->parse.max_map_y - 1]) == false
+		|| first_last(map[0]) == false)
 		return (err_msg(ERR_MAP_BORDER), false);
 	y = 1;
 	while (y < cub->parse.max_map_y - 1)
 	{
-		if (cur_line(map[y - 1], map[y], map[y + 1]) == false)
+		if (cur_line(map[y - 1], map[y], map[y + 1]) == false
+			|| cur_line_limit(map[y]) == false)
 			return (err_msg(ERR_MAP_BORDER), false);
 		y++;
 	}
