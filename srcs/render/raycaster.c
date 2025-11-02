@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycaster.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:51:32 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/30 04:41:38 by mohmajdo         ###   ########.fr       */
+/*   Updated: 2025/11/02 15:00:00 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,31 +82,41 @@ static void	draw_wall_stripe(t_cub *cub, int x, int hit)
 	}
 }
 
+static int	get_hit(t_cub *cub)
+{
+	int		hit;
+	char	cell;
+
+	hit = 0;
+	while (hit == 0)
+	{
+		ft_check(cub);
+		if (cub->dda.map.x >= 0 && cub->dda.map.y >= 0
+			&& cub->dda.map.y < cub->parse.max_map_y
+			&& cub->dda.map.x
+			< (int)ft_strlen(cub->parse.map[cub->dda.map.y]))
+		{
+			cell = cub->parse.map[cub->dda.map.y][cub->dda.map.x];
+			if (cell == '1' || cell == '\n')
+				hit = 1;
+			else if (cell == 'C')
+				hit = 2;
+		}
+	}
+	return (hit);
+}
+
 void	wall_cast(t_cub *cub)
 {
-	int	hit;
 	int	x;
+	int	hit;
 
 	x = -1;
 	while (++x < WIN_WIDTH)
 	{
 		init_ray(&cub->dda, &cub->player, x);
 		check_raydir(&cub->dda, &cub->player);
-		hit = 0;
-		while (hit == 0)
-		{
-			ft_check(cub);
-			if (cub->dda.map.x >= 0 && cub->dda.map.y >= 0
-				&& cub->dda.map.y < cub->parse.max_map_y
-				&& cub->dda.map.x < ft_strlen(cub->parse.map[cub->dda.map.y]))
-			{
-				if ((cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '1'
-					|| cub->parse.map[cub->dda.map.y][cub->dda.map.x] == '\n'))
-					hit = 1;
-				else if (cub->parse.map[cub->dda.map.y][cub->dda.map.x] == 'C')
-					hit = 2;
-			}
-		}
+		hit = get_hit(cub);
 		calc_line_height(&cub->dda);
 		calc_wall_texture_x(&cub->dda, &cub->player);
 		cub->sprites.zbuffer[x] = cub->dda.wall.dist;
