@@ -30,6 +30,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/parser/geters/colors.c				\
 		srcs/parser/geters/textures.c			\
 		srcs/parser/checkers/map_border.c		\
+		srcs/parser/checkers/map.c				\
 		srcs/parser/checkers/color.c			\
 		srcs/parser/checkers/player.c			\
 		srcs/parser/checkers/double.c			\
@@ -52,7 +53,7 @@ OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
 NAME	= cub3d
 
-FLAGS	= -g -Wall -Wextra -Werror -g
+FLAGS	= -g -Wall -Wextra -Werror
 
 I		= -I includes/
 

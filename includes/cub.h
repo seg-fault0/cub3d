@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/01 17:52:34 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 15:17:44 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@
 # define ERR_PLYR_NF 12
 # define ERR_MAP_NF 13
 # define ERR_DOUBLE 14
+# define ERR_MAP_EXT 15
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -69,6 +70,7 @@
 //other
 # define MAX_FILE_SIZE 150
 # define DOOR_RADIOUS 3
+# define MAP_EXTENTION ".cub"
 
 //img_paths
 # define MM_FRAME_PATH "./textures/minimap/frame.xpm"
@@ -339,6 +341,7 @@ bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 
 //parser checker
+bool	check_map_extension(char *path);
 bool	allowed_char(char c);
 bool	check_map_border(t_cub *cub);
 bool	check_double_player(t_cub *cub);

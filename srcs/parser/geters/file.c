@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   reader.c                                           :+:      :+:    :+:   */
+/*   file.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 03:03:59 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 10:03:38 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 15:19:41 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ bool	read_file(t_cub *cub, char *path)
 {
 	int		map_size;
 
+	if (check_map_extension(path) == false)
+		return (err_msg(ERR_MAP_EXT), false);
 	map_size = get_file_size(path);
 	if (map_size == -1)
 		return (false);
