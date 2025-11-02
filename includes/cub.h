@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/02 15:17:44 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 17:22:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@
 # define ERR_IMG 7
 # define ERR_ELMT_NF 8
 # define ERR_CLR_FORMAT 9
-# define ERR_MAP_BORDER 10
+# define ERR_BAD_MAP 10
 # define ERR_MLTPL_PLYR 11
 # define ERR_PLYR_NF 12
 # define ERR_MAP_NF 13

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/01 20:37:25 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 17:22:18 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,13 +81,13 @@ bool	check_map_border(t_cub *cub)
 		return (false);
 	if (first_last(map[cub->parse.max_map_y - 1]) == false
 		|| first_last(map[0]) == false)
-		return (err_msg(ERR_MAP_BORDER), false);
+		return (err_msg(ERR_BAD_MAP), false);
 	y = 1;
 	while (y < cub->parse.max_map_y - 1)
 	{
 		if (cur_line(map[y - 1], map[y], map[y + 1]) == false
 			|| cur_line_limit(map[y]) == false)
-			return (err_msg(ERR_MAP_BORDER), false);
+			return (err_msg(ERR_BAD_MAP), false);
 		y++;
 	}
 	return (true);
