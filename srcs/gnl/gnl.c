@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   gnl.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/01 00:07:08 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 04:10:30 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 17:04:34 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,13 +103,15 @@ static char	*ft_update_data(char *text)
 
 char	*get_next_line(int fd)
 {
-	static char	*data[10240];
+	static char	*data;
 	char		*line;
 
+	if (fd == -2)
+		free(data);
 	if (fd < 0 || BUFFER_SIZE <= 0 || fd >= 10240)
 		return (NULL);
-	data[fd] = ft_get_data(fd, data[fd]);
-	line = ft_get_line(data[fd]);
-	data[fd] = ft_update_data(data[fd]);
+	data = ft_get_data(fd, data);
+	line = ft_get_line(data);
+	data = ft_update_data(data);
 	return (line);
 }

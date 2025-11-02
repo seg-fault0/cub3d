@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:27:10 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/25 17:02:59 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/02 17:05:03 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ void	free_sprite(t_cub *cub)
 
 int	ft_exit(t_cub *cub, int code)
 {
+	get_next_line(-2);
 	free_loaded_textures(cub->textures);
 	free_animation(cub->mlx.mlx, cub->img.demon);
 	free_sprite(cub);
