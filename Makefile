@@ -47,7 +47,6 @@ SRCS = 	srcs/core/main.c						\
 		srcs/render/spirites.c					\
 		srcs/render/draw_spirites.c				\
 		srcs/bonus/door.c						\
-		srcs/bonus/demon.c						\
 
 OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
