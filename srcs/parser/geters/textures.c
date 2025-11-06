@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 09:46:01 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/02 17:19:28 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/06 14:02:12 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,24 +24,15 @@ static bool	texture_checker(t_cub *cub)
 	return (true);
 }
 
-static char	*rm_new_line(char *str)
+static char	*skip_spaces(char	*str)
 {
-	int		i;
-	int		len;
-	char	*ret;
+	char	*p;
 
-	len = ft_strlen(str);
-	ret = malloc(len + 1);
-	if (!ret)
-		return (NULL);
-	i = 0;
-	while (str[i] && str[i] != '\n')
-	{
-		ret[i] = str[i];
-		i++;
-	}
-	ret[i] = '\0';
-	return (ret);
+	while (*str && *str == ' ')
+		str++;
+	p = ft_strdup(str);
+	p[ft_strlen(p) - 1] = '\0';
+	return (p);
 }
 
 bool	get_textures(t_cub *cub)
@@ -53,18 +44,18 @@ bool	get_textures(t_cub *cub)
 	i = -1;
 	while (file[++i] != NULL)
 	{
-		if (ft_memcmp(file[i], "NO ", 3) == 0)
-			cub->parse.n_wall = rm_new_line(file[i] + 3);
-		if (ft_memcmp(file[i], "SO ", 3) == 0)
-			cub->parse.s_wall = rm_new_line(file[i] + 3);
-		if (ft_memcmp(file[i], "WE ", 3) == 0)
-			cub->parse.w_wall = rm_new_line(file[i] + 3);
-		if (ft_memcmp(file[i], "EA ", 3) == 0)
-			cub->parse.e_wall = rm_new_line(file[i] + 3);
-		if (ft_memcmp(file[i], "F ", 2) == 0)
-			cub->parse.floor_clr = rm_new_line(file[i] + 2);
-		if (ft_memcmp(file[i], "C ", 2) == 0)
-			cub->parse.sky_clr = rm_new_line(file[i] + 2);
+		if (ft_memcmp(file[i], "NO", 2) == 0)
+			cub->parse.n_wall = skip_spaces(file[i] + 2);
+		if (ft_memcmp(file[i], "SO", 2) == 0)
+			cub->parse.s_wall = skip_spaces(file[i] + 2);
+		if (ft_memcmp(file[i], "WE", 2) == 0)
+			cub->parse.w_wall = skip_spaces(file[i] + 2);
+		if (ft_memcmp(file[i], "EA", 2) == 0)
+			cub->parse.e_wall = skip_spaces(file[i] + 2);
+		if (ft_memcmp(file[i], "F", 1) == 0)
+			cub->parse.floor_clr = skip_spaces(file[i] + 1);
+		if (ft_memcmp(file[i], "C", 1) == 0)
+			cub->parse.sky_clr = skip_spaces(file[i] + 1);
 	}
 	return (texture_checker(cub));
 }
