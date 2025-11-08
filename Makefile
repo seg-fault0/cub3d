@@ -16,6 +16,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/libft/arrays.c						\
 		srcs/libft/memcmp.c						\
 		srcs/libft/putstr_fd.c					\
+		srcs/libft/atoi.c						\
 		srcs/minimap/raycaster.c				\
 		srcs/minimap/main.c						\
 		srcs/minimap/walls.c					\

@@ -1,33 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   color.c                                            :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 11:07:17 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/13 11:14:15 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/08 20:35:01 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
+static const char	*skip_to_next(const char *s, char c)
+{
+	while (*s && *s != c)
+		s++;
+	return (s);
+}
+
 static int	get_clr(const char *str)
 {
-	int		r;
-	int		g;
-	int		b;
-	char	*ptr;
+	int				r;
+	int				g;
+	int				b;
+	const char		*ptr;
 
-	r = (int)strtol(str, &ptr, 10);
+	r = atoi(str);
+	ptr = skip_to_next(str, ',');
 	if (*ptr != ',')
 		return (-1);
 	ptr++;
-	g = (int)strtol(ptr, &ptr, 10);
+	g = atoi(ptr);
+	ptr = skip_to_next(ptr, ',');
 	if (*ptr != ',')
 		return (-1);
 	ptr++;
-	b = (int)strtol(ptr, &ptr, 10);
+	b = atoi(ptr);
+	ptr = skip_to_next(ptr, '\0');
 	if (*ptr != '\0')
 		return (-1);
 	return ((r << 16) | (g << 8) | b);

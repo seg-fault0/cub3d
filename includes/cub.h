@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/02 17:22:03 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/08 20:33:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -384,6 +384,7 @@ void	print_arr(char **arr);
 void	free2(char **arr);
 int		is_space(char c);
 int		ft_isdigit(int i);
+int		ft_atoi(char *str);
 
 //gnl
 char	*ft_strljoin(char *s1, char *s2, int size);
