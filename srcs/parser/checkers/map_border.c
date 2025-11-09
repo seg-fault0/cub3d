@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/09 13:54:45 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:02:16 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ bool	check_map_border(t_cub *cub)
 	map = cub->parse.map;
 	it.y = -1;
 	if (!map || !map[0] || !map[1])
-		return (false);
+		return (err_msg(ERR_BAD_MAP), false);
 	while (map[++it.y])
 	{
 		it.x = -1;
