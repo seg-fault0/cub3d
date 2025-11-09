@@ -6,87 +6,91 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/06 11:49:04 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/09 13:54:45 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub.h"
 
-static bool	cur_line_limit(char *line)
+bool	check_one_norm(char **map, t_ivector2 it)
 {
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] == ' ')
-		i++;
-	if (line[i] != '1')
-		return (false);
-	i = ft_strlen(line) - 2;
-	while (i > 0 && line[i] == ' ')
-		i--;
-	if (line[i] != '1')
-		return (false);
-	return (true);
+	if (map[it.y + 1] && map[it.y + 1][it.x + 1]
+		&& map[it.y + 1][it.x + 1] != '\n'
+		&& allowed_char(map[it.y + 1][it.x + 1]) == true)
+		return (true);
+	if (it.x > 0 && it.y > 0
+		&& allowed_char(map[it.y - 1][it.x - 1]) == true)
+		return (true);
+	if (it.x > 0 && map[it.y + 1] && map[it.y + 1][it.x]
+		&& map[it.y + 1][it.x] != '\n'
+		&& allowed_char(map[it.y + 1][it.x - 1]) == true)
+		return (true);
+	if (it.y > 0 && map[it.y - 1][it.x + 1]
+		&& map[it.y - 1][it.x + 1] != '\n'
+		&& allowed_char(map[it.y - 1][it.x + 1]) == true)
+		return (true);
+	return (false);
 }
 
-static bool	cur_line(char *prev_line, char *line, char *next_line)
+bool	check_one(char **map, t_ivector2 it)
 {
-	int		i;
-	bool	zero_found;
-
-	i = 0;
-	zero_found = false;
-	while (line[i])
-	{
-		if (line[i] == '0')
-			zero_found = true;
-		else
-			zero_found = false;
-		if (zero_found == true)
-		{
-			if (allowed_char(line[i + 1]) == false
-				|| allowed_char(line[i - 1]) == false
-				|| allowed_char(next_line[i]) == false
-				|| allowed_char(prev_line[i]) == false)
-				return (false);
-		}
-		i++;
-	}
-	return (true);
+	if (it.x > 0 && allowed_char(map[it.y][it.x - 1]) == true)
+		return (true);
+	if (it.y > 0 && allowed_char(map[it.y - 1][it.x]) == true)
+		return (true);
+	if (map[it.y + 1] && map[it.y + 1][it.x]
+		&& map[it.y + 1][it.x] != '\n'
+		&& allowed_char(map[it.y + 1][it.x]) == true)
+		return (true);
+	if (map[it.y][it.x + 1] && map[it.y][it.x + 1] != '\n'
+		&& allowed_char(map[it.y][it.x + 1]) == true)
+		return (true);
+	return (check_one_norm(map, it));
 }
 
-static bool	first_last(char *line)
+bool	check_other(char **map, t_ivector2 it)
 {
-	int	i;
-
-	i = 0;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] != ' ' && line[i] != '1')
-			return (false);
-		i++;
-	}
+	if (it.x > 0 && allowed_char(map[it.y][it.x - 1]) == false)
+		return (false);
+	if (it.y > 0 && allowed_char(map[it.y - 1][it.x]) == false)
+		return (false);
+	if (map[it.y + 1] && map[it.y + 1][it.x]
+		&& map[it.y + 1][it.x] != '\n'
+		&& allowed_char(map[it.y + 1][it.x]) == false)
+		return (false);
+	if (map[it.y][it.x + 1] && map[it.y][it.x + 1] != '\n'
+		&& allowed_char(map[it.y][it.x + 1]) == false)
+		return (false);
 	return (true);
 }
 
 bool	check_map_border(t_cub *cub)
 {
-	int		y;
-	char	**map;
+	t_ivector2	it;
+	char		**map;
 
 	map = cub->parse.map;
-	if (!map)
+	it.y = -1;
+	if (!map || !map[0] || !map[1])
 		return (false);
-	if (first_last(map[cub->parse.max_map_y - 1]) == false
-		|| first_last(map[0]) == false)
-		return (err_msg(ERR_BAD_MAP), false);
-	y = 1;
-	while (y < cub->parse.max_map_y - 1)
+	while (map[++it.y])
 	{
-		if (cur_line(map[y - 1], map[y], map[y + 1]) == false
-			|| cur_line_limit(map[y]) == false)
-			return (err_msg(ERR_BAD_MAP), false);
-		y++;
+		it.x = -1;
+		while (map[it.y][++it.x] && map[it.y][it.x] != '\n')
+		{
+			if (map[it.y][it.x] == '1')
+			{
+				if (check_one(map, it) == false)
+					return (err_msg(ERR_BAD_MAP), false);
+			}
+			else if (allowed_char(map[it.y][it.x]) == true)
+			{
+				if (check_other(map, it) == false)
+					return (err_msg(ERR_BAD_MAP), false);
+			}
+			else if (map[it.y][it.x] != ' ')
+				return (err_msg(ERR_BAD_MAP), false);
+		}
 	}
 	return (true);
 }
