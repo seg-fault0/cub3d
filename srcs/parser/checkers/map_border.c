@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/10/13 09:06:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/09 14:02:16 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/09 14:12:48 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,10 +55,10 @@ bool	check_other(char **map, t_ivector2 it)
 	if (it.y > 0 && allowed_char(map[it.y - 1][it.x]) == false)
 		return (false);
 	if (map[it.y + 1] && map[it.y + 1][it.x]
-		&& map[it.y + 1][it.x] != '\n'
+		&& map[it.y + 1][it.x] != '\0'
 		&& allowed_char(map[it.y + 1][it.x]) == false)
 		return (false);
-	if (map[it.y][it.x + 1] && map[it.y][it.x + 1] != '\n'
+	if (map[it.y][it.x + 1] && map[it.y][it.x + 1] != '\0'
 		&& allowed_char(map[it.y][it.x + 1]) == false)
 		return (false);
 	return (true);
