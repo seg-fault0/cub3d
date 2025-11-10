@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:10:05 by wimam             #+#    #+#             */
-/*   Updated: 2025/10/14 13:48:32 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 15:24:27 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,8 @@ static void	pos_angle_init(t_cub *cub)
 			c = cub->parse.map[y][x];
 			if (player_dir(c) > 0)
 			{
-				cub->player.pos.x = x;
-				cub->player.pos.y = y;
+				cub->player.pos.x = x + 0.5;
+				cub->player.pos.y = y + 0.5;
 				cub->player.angle = player_dir(c);
 				break ;
 			}
