@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:29:43 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/02 17:22:13 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 17:07:08 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,8 @@ static void	err_msg_nor(int msg)
 		ft_putstr_fd("double componants\n", STDERR);
 	else if (msg == ERR_MAP_EXT)
 		ft_putstr_fd("wrong map extention <.cub>\n", STDERR);
+	else if (msg == ERR_LONG_LINE)
+		ft_putstr_fd("long line\n", STDERR);
 }
 
 void	err_msg(int msg)
