@@ -53,11 +53,11 @@ OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
 NAME	= cub3d
 
-FLAGS	= -g -Wall -Wextra -Werror
+FLAGS	= -g -Wall -Wextra -Werror -fsanitize=address
 
 I		= -I includes/
 
-L = -L mlxlib/ -lmlx_Linux -lXext -lX11 -lm
+L = -L mlxlib/ -lmlx_Linux -lXext -lX11 -lm -fsanitize=address
 
 all: mlx $(NAME)
 
