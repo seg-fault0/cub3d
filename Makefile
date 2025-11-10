@@ -17,6 +17,8 @@ SRCS = 	srcs/core/main.c						\
 		srcs/libft/memcmp.c						\
 		srcs/libft/putstr_fd.c					\
 		srcs/libft/atoi.c						\
+		srcs/libft/memmove.c					\
+		srcs/libft/calloc.c						\
 		srcs/minimap/raycaster.c				\
 		srcs/minimap/main.c						\
 		srcs/minimap/walls.c					\
@@ -30,6 +32,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/parser/geters/map.c				\
 		srcs/parser/geters/colors.c				\
 		srcs/parser/geters/textures.c			\
+		srcs/parser/geters/map_helper.c			\
 		srcs/parser/checkers/map_border.c		\
 		srcs/parser/checkers/map.c				\
 		srcs/parser/checkers/color.c			\
@@ -53,11 +56,11 @@ OBJS	= $(SRCS:srcs/%.c=objs/%.o)
 
 NAME	= cub3d
 
-FLAGS	= -g -Wall -Wextra -Werror -fsanitize=address
+FLAGS	= -g -Wall -Wextra -Werror #-fsanitize=address
 
 I		= -I includes/
 
-L = -L mlxlib/ -lmlx_Linux -lXext -lX11 -lm -fsanitize=address
+L = -L mlxlib/ -lmlx_Linux -lXext -lX11 -lm #-fsanitize=address
 
 all: mlx $(NAME)
 

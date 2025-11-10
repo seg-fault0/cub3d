@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/10 17:10:03 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 18:18:19 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -341,6 +341,7 @@ bool	read_file(t_cub *cub, char *path);
 bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
+char	**same_len(char **map);//map helper
 
 //parser checker
 bool	check_map_extension(char *path);
@@ -387,6 +388,8 @@ void	free2(char **arr);
 int		is_space(char c);
 int		ft_isdigit(int i);
 int		ft_atoi(char *str);
+void	*ft_memmove(void *dst, const void *src, size_t len);
+void	*ft_calloc(size_t count, size_t size);
 
 //gnl
 char	*ft_strljoin(char *s1, char *s2, int size);
