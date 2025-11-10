@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/08 20:33:08 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:55:00 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,7 @@
 # define MAX_FILE_SIZE 150
 # define DOOR_RADIOUS 3
 # define MAP_EXTENTION ".cub"
+# define MAX_LINE 5
 
 //img_paths
 # define MM_FRAME_PATH "./textures/minimap/frame.xpm"

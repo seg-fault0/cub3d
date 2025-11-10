@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   arrays.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 20:54:50 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 21:00:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:56:25 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,25 @@ char	**get_2darr_cp(char **arr)
 	int		size;
 	int		i;
 
+	if (!arr)
+		return (NULL);
 	size = get_arr_size(arr);
-	ret = malloc((size + 1) * sizeof(char **));
+	ret = malloc((size + 1) * sizeof(char *));
 	if (!ret)
 		return (NULL);
 	i = -1;
 	while (arr[++i])
+	{
 		ret[i] = ft_strdup(arr[i]);
+		if (!ret[i] || ft_strlen(ret[i]) > MAX_LINE)
+		{
+			if (ft_strlen(ret[i]) > MAX_LINE)
+				free(ret[i]);
+			while (--i >= 0)
+				free(ret[i]);
+			return (free(ret), NULL);
+		}
+	}
 	ret[i] = NULL;
 	return (ret);
 }

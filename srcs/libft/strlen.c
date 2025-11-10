@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   strlen.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:31:53 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/09 00:32:45 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 16:54:37 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	ft_strlen(char *str)
 {
 	int	len;
 
+	if (!str)
+		return (0);
 	len = 0;
 	while (str[len])
 		len++;
