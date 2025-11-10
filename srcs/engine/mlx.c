@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   mlx.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wimam <walidimam69gmail.com>               +#+  +:+       +#+        */
+/*   By: mohmajdo <mohmajdo@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 08:42:26 by wimam             #+#    #+#             */
-/*   Updated: 2025/09/10 11:34:01 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/10 20:34:15 by mohmajdo         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,10 @@
 
 void	free_mlx(t_mlx mlx)
 {
-	mlx_destroy_window(mlx.mlx, mlx.win);
-	mlx_destroy_display(mlx.mlx);
+	if (mlx.win)
+		mlx_destroy_window(mlx.mlx, mlx.win);
+	if (mlx.mlx)
+		mlx_destroy_display(mlx.mlx);
 	free(mlx.mlx);
 }
 
