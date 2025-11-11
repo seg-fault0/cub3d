@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 00:29:43 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/10 17:07:08 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/11 13:59:52 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ static void	err_msg_nor(int msg)
 		ft_putstr_fd("wrong map extention <.cub>\n", STDERR);
 	else if (msg == ERR_LONG_LINE)
 		ft_putstr_fd("long line\n", STDERR);
+	else if (msg == ERR_BAD_FILE)
+		ft_putstr_fd("bad file\n", STDERR);
 }
 
 void	err_msg(int msg)

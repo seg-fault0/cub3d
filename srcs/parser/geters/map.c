@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/13 09:30:36 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/10 18:24:19 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:03:21 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static bool	is_top_of_map(char *line)
 	return (false);
 }
 
-static int	get_map_i(char **file)
+int	get_map_i(char **file)
 {
 	int	i;
 

@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/09 03:03:59 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/02 15:19:41 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:00:47 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,5 +63,7 @@ bool	read_file(t_cub *cub, char *path)
 	if (map_size == -1)
 		return (false);
 	cub->parse.file = ft_read_file(path, map_size);
+	if (check_file(cub->parse.file) == false)
+		return (err_msg(ERR_BAD_FILE), false);
 	return (true);
 }

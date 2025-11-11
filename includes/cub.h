@@ -6,7 +6,7 @@
 /*   By: wimam <walidimam69@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/08 22:02:44 by wimam             #+#    #+#             */
-/*   Updated: 2025/11/10 18:18:19 by wimam            ###   ########.fr       */
+/*   Updated: 2025/11/11 14:04:39 by wimam            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@
 # define ERR_DOUBLE 14
 # define ERR_MAP_EXT 15
 # define ERR_LONG_LINE 16
+# define ERR_BAD_FILE 17
 
 //gnl
 # ifndef BUFFER_SIZE
@@ -342,6 +343,7 @@ bool	get_textures(t_cub *cub);
 bool	get_clr_format(t_cub *cub);
 bool	get_map(t_cub *cub);
 char	**same_len(char **map);//map helper
+int		get_map_i(char **file);
 
 //parser checker
 bool	check_map_extension(char *path);
@@ -350,6 +352,7 @@ bool	check_map_border(t_cub *cub);
 bool	check_double_player(t_cub *cub);
 bool	check_double_textures(t_cub *cub);
 bool	check_clr_format(t_cub *cub);
+bool	check_file(char **file);
 
 //raycasting
 void	render_world(t_cub *cub); //main

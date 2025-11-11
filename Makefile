@@ -33,6 +33,7 @@ SRCS = 	srcs/core/main.c						\
 		srcs/parser/geters/colors.c				\
 		srcs/parser/geters/textures.c			\
 		srcs/parser/geters/map_helper.c			\
+		srcs/parser/checkers/file.c				\
 		srcs/parser/checkers/map_border.c		\
 		srcs/parser/checkers/map.c				\
 		srcs/parser/checkers/color.c			\
