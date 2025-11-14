@@ -119,7 +119,7 @@ C 225,230,220
 
 ## 👤 Author
 
-Made with ❤️ by [@seg-fault0](https://github.com/seg-fault0) and [@mohmajd](https://github.com/mohmajd) at 42 School
+Made by [@seg-fault0](https://github.com/seg-fault0) and [@mohmajd](https://github.com/mohmajd) at 42 School
 
 ## 📝 License
 
