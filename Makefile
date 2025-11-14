@@ -87,12 +87,11 @@ re: fclean all
 
 mlx:
 	@if [ ! -f mlxlib/libmlx_Linux.a ] || [ ! -f includes/mlx.h ]; then \
-		tar -xvzf mlxlib/mlx.tgz && \
-		cd minilibx-linux && make && \
-		cd .. && \
-		mv -f minilibx-linux/libmlx_Linux.a mlxlib/ && \
-		mv -f minilibx-linux/mlx.h includes/ && \
-		rm -fr minilibx-linux; \
+		mkdir -p mlxlib; \
+		$(MAKE) -C minilibx-linux; \
+		mv minilibx-linux/libmlx_Linux.a mlxlib/; \
+		mv minilibx-linux/libmlx.a mlxlib/; \
+		cp minilibx-linux/mlx.h includes/; \
 	fi
 
 ffclean: fclean
