@@ -109,9 +109,9 @@ C 225,230,220
 ## 🎮 Controls
 
 ### Mandatory:
-- **W/A/S/D** or **Arrow Keys**: Move forward/left/backward/right
+- **W/A/S/D**: Move forward/left/backward/right
 - **E** : opening and closing the door
-- **Left/Right Arrows/Mouse**: Rotate camera
+- **Left/Right Arrows** or **Mouse**: Rotate camera
 - **ESC**: Exit game
 
 ## 👾 Gameplay
