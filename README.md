@@ -115,7 +115,7 @@ C 225,230,220
 - **ESC**: Exit game
 
 ## 👾 Gameplay
-
+![Gameplay](gameplay.gif)
 
 ## 👤 Author
 
